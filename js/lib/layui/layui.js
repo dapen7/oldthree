@@ -5,8 +5,10 @@ layui.use(['jquery'], function(){
     $("body").on("click","a",function(event){
         if(window.location.href.indexOf("github")!=-1){
             window.location.href = "https://dapen7.github.io/oldthree/"+$(this).attr("href");
-            event.stopPropagation();
-            event.preventDefault();
+            // event.stopPropagation();
+            // event.preventDefault();
+            event.cancelBubble = true;
+            event.returnValue = false; 
             return false;
         }
     });

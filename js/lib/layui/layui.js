@@ -3,8 +3,8 @@
 layui.use(['jquery'], function(){
     var $ = layui.jquery
     $("body").on("click","a",function(){
-        if(window.location.origin.indexOf("github")!=-1){
-            window.location.href = window.location.origin+"/oldthree/"+$(this).attr("href");
+        if(window.location.indexOf("github")!=-1){
+            window.location.href = "https://dapen7.github.io/oldthree"+$(this).attr("href");
             event.stopPropagation();
             event.preventDefault();
             return false;

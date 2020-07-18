@@ -40,7 +40,7 @@
         <!-- 顶部logo -->
         <div class="topLogo">
             <a href="/views/nav.first.html">
-                <img class="logo left" src="/img/access/first/home_logo_icon.png" alt="">
+                <img class="logo left" src="../../img/access/first/home_logo_icon.png" alt="">
                 <span class="comName left">CASC</span>
             </a>
             <div class="clearFloat"></div>
@@ -53,8 +53,8 @@
                     <p :if="@menu.child.length" :click="@clickMenuCall(@menu)" class="menuText">{{ @menu.text }}</p>
                     <a :if="!@menu.child.length" class="menuText" :attr="{href:@menu.url}">{{ @menu.text }}</a>
                     <div :if="@menu.child.length" class="menuStates">
-                        <img :if="@menu.open" src="/img/access/first/home_open_icon.png" alt="">
-                        <img :if="!@menu.open" src="/img/access/first/home_close_icon.png" alt="">
+                        <img :if="@menu.open" src="../../img/access/first/home_open_icon.png" alt="">
+                        <img :if="!@menu.open" src="../../img/access/first/home_close_icon.png" alt="">
                     </div>
                 </div>
                 <!-- 二级菜单 -->
@@ -67,8 +67,8 @@
                             <a :if="!@chMenu.child.length" class="menuText" :attr="{href:@chMenu.url}">{{ @chMenu.text
                                 }}</a>
                             <div :if="@chMenu.child.length" class="menuStates">
-                                <img :if="@chMenu.open" src="/img/access/first/home_open_icon.png" alt="">
-                                <img :if="!@chMenu.open" src="/img/access/first/home_close_icon.png" alt="">
+                                <img :if="@chMenu.open" src="../../img/access/first/home_open_icon.png" alt="">
+                                <img :if="!@chMenu.open" src="../../img/access/first/home_close_icon.png" alt="">
                             </div>
                         </div>
                         <!-- 三级菜单 -->
@@ -88,27 +88,27 @@
     <div class="body">
         <div class="topBar">
             <div class="tbHello left">
-                <img onclick="menuToggleShow()" class="left" src="/img/access/first/home_list_icon.png" alt="">
+                <img onclick="menuToggleShow()" class="left" src="../../img/access/first/home_list_icon.png" alt="">
                 <span class="left">您好，电机电源精细化管理系统！</span>
             </div>
             <div class="otherBox right">
                 <ul class="fucList left">
                     <li class="fucItem left">
                         <a href="/views/nav.first.html">
-                            <img class="left" src="/img/access/first/home_icon.png" alt="">
+                            <img class="left" src="../../img/access/first/home_icon.png" alt="">
                             <span class="left">首页</span>
                         </a>
                     </li>
                     <li class="fucItem left" onclick="toggleTheme()">
-                        <img class="left" src="/img/access/first/theme_icon.png" alt="">
+                        <img class="left" src="../../img/access/first/theme_icon.png" alt="">
                         <span class="left">主题</span>
                     </li>
                 </ul>
                 <div class="userInfo left">
                     <div class="userInfoBox">
                         <span class="left">您好！系统管理员</span>
-                        <img class="headPic left" src="/img/access/first/home_headpic_icon.png" alt="">
-                        <img class="loginSelect left" src="/img/access/first/login_select_icon.png" alt="">
+                        <img class="headPic left" src="../../img/access/first/home_headpic_icon.png" alt="">
+                        <img class="loginSelect left" src="../../img/access/first/login_select_icon.png" alt="">
                     </div>
                     <ul class="userInfoTodo">
                         <li class="userInfoTodoItem">个人信息</li>

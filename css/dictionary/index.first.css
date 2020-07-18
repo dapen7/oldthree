@@ -17,6 +17,6 @@
 .table{height: 50%;padding:0 25px;}
 .table a{color: #2A7FDA;}
 .table .icon{width: 28px;height: 28px;cursor: pointer;margin:0 20px;display: inline-block;background-size: 100%;}
-.table .editIcon{background-image: url("/img/access/first/edit_icon.png");}
-.table .delIcon{background-image: url("/img/access/first/delete_icon.png");}
-.table .addIcon{background-image: url("/img/access/first/add_icon.png");}
+.table .editIcon{background-image: url("../../img/access/first/edit_icon.png");}
+.table .delIcon{background-image: url("../../img/access/first/delete_icon.png");}
+.table .addIcon{background-image: url("../../img/access/first/add_icon.png");}

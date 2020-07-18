@@ -2,7 +2,7 @@ body{position: relative;font-size: 14px;}
 .nav{
     height: 100%;
     width: 100%;
-    background-image: url("/img/access/third/mobile/system_bg.png");
+    background-image: url("../../img/access/third/mobile/system_bg.png");
     background-size: cover;
     position: relative;
     overflow: hidden;

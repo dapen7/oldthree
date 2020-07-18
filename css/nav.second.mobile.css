@@ -1,6 +1,6 @@
 body{background: #F8F8F8;}
 .top{width: 100%;height: 245px;
-    background: url("/img/access/second/mobile/system_bg.png") center no-repeat;}
+    background: url("../../img/access/second/mobile/system_bg.png") center no-repeat;}
 .top img{width: 100%;display: inline-block;}
 
 .title{

@@ -39,18 +39,18 @@
       <!-- 顶部logo -->
       <div class="topLogo left">
         <a href="/views/nav.second.html">
-          <img class="logo left" src="/img/access/second/home_logo_icon.png" alt="">
+          <img class="logo left" src="../../img/access/second/home_logo_icon.png" alt="">
           <span class="comName left">CASC</span>
         </a>
         <p class="clearFloat"></p>
       </div>
       <div class="topMenu left">
-        <img onclick="menuToggleShow()" class="menuSHBtn left" src="/img/access/second/home_list_icon.png" alt="">
+        <img onclick="menuToggleShow()" class="menuSHBtn left" src="../../img/access/second/home_list_icon.png" alt="">
         <ul class="secondMenus" :controller="secondMenus">
           <li class="menuItem" :for="(i, menu) in @secondMenus">
             <span :if="@menu.child.length">{{ @menu.text }}</span>
             <a :if="@menu.child.length===0" class="menuLink" :class="[(@menu.url===@active ? 'active':'')]" :attr="{href:@menu.url}">{{ @menu.text }}</a>
-            <img :if="@menu.child.length" class="more" src="/img/access/second/zhankai_icon.png" alt="">
+            <img :if="@menu.child.length" class="more" src="../../img/access/second/zhankai_icon.png" alt="">
             <ul class="moreMenu" :for="(mi, moreMenu) in @menu.child">
               <li class="moreMItem" :class="[(@menu.url===@active ? 'active':'')]">
                 <a :attr="{href:@moreMenu.url}">{{ @moreMenu.text }}</a>
@@ -64,25 +64,25 @@
           <div class="inputItem">
             <div class="inputBox icon inline">
               <input type="text" placeholder="输入关键词搜索…">
-              <img src="/img/access/second/search_icon.png" alt="">
+              <img src="../../img/access/second/search_icon.png" alt="">
             </div>
           </div>
         </div>
         <ul class="fucList left">
           <li class="fucItem left">
             <a href="/views/nav.second.html">
-              <img class="left" src="/img/access/second/home_icon.png" alt="">
+              <img class="left" src="../../img/access/second/home_icon.png" alt="">
             </a>
           </li>
           <li class="fucItem left">
-            <img onclick="toggleTheme()" class="left" src="/img/access/second/theme_icon.png" alt="">
+            <img onclick="toggleTheme()" class="left" src="../../img/access/second/theme_icon.png" alt="">
           </li>
         </ul>
         <div class="userInfo left">
           <div class="userInfoBox">
-            <img class="headPic left" src="/img/access/second/home_headpic_icon.png" alt="">
+            <img class="headPic left" src="../../img/access/second/home_headpic_icon.png" alt="">
             <span class="left">系统管理员</span>
-            <img class="loginSelect left" src="/img/access/second/zhankai_icon.png" alt="">
+            <img class="loginSelect left" src="../../img/access/second/zhankai_icon.png" alt="">
           </div>
           <ul class="userInfoTodo">
             <li class="userInfoTodoItem">个人信息</li>

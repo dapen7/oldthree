@@ -468,16 +468,16 @@
     display: inline-block;
     *display:inline;
     *zoom:1;
-    background: url("/img/access/first/file2_icon.png") no-repeat;
+    background: url("../../img/access/first/file2_icon.png") no-repeat;
 }
 
 .tiIcon.hadChild {
-    background: url("/img/access/first/file_icon.png") no-repeat;
+    background: url("../../img/access/first/file_icon.png") no-repeat;
 }
 
 .tiInfo.hadChild .tiOpenStatus {
     z-index: 2;
-    background-image: url("/img/access/first/suo_icon.png");
+    background-image: url("../../img/access/first/suo_icon.png");
 }
 
 .tiHLine {

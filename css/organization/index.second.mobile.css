@@ -11,8 +11,8 @@
 .table{background: #fff;padding:0 15px;padding-bottom: 5px;}
 .table a{color: #058669;}
 .table .icon{width: 20px;height: 20px;cursor: pointer;margin:0 5px;display: inline-block;background-size: 100%;}
-.table .editIcon{background-image: url("/img/access/second/edit_icon.png");}
-.table .delIcon{background-image: url("/img/access/second/delete_icon.png");}
+.table .editIcon{background-image: url("../../img/access/second/edit_icon.png");}
+.table .delIcon{background-image: url("../../img/access/second/delete_icon.png");}
 
 /* 添加 */
 .inputMain{padding: 10px;background: #fff;}

@@ -29,7 +29,7 @@
         <!-- 顶部logo -->
         <div class="topLogo">
           <a href="/views/nav.first.mobile.html">
-            <img class="logo left" src="/img/access/third/home_logo_icon.png" alt="">
+            <img class="logo left" src="../../img/access/third/home_logo_icon.png" alt="">
             <span class="comName left">CASC</span>
           </a>
           <p class="clearFloat"></p>
@@ -42,8 +42,8 @@
               <p :if="@menu.child.length" :click="@clickMenuCall(@menu,1)" class="menuText">{{ @menu.text }}</p>
               <a :if="!@menu.child.length" class="menuText" :attr="{href:@menu.url}">{{ @menu.text }}</a>
               <div :if="@menu.child.length" class="menuStates">
-                <img :if="@menu.open" src="/img/access/first/home_open_icon.png" alt="">
-                <img :if="!@menu.open" src="/img/access/first/home_close_icon.png" alt="">
+                <img :if="@menu.open" src="../../img/access/first/home_open_icon.png" alt="">
+                <img :if="!@menu.open" src="../../img/access/first/home_close_icon.png" alt="">
               </div>
             </div>
             <!-- 二级菜单 -->
@@ -54,8 +54,8 @@
                   <p :if="@chMenu.child.length" :click="@clickMenuCall(@chMenu,2)" class="menuText">{{ @chMenu.text }}</p>
                   <a :if="!@chMenu.child.length" class="menuText" :attr="{href:@chMenu.url}">{{ @chMenu.text }}</a>
                   <div :if="@chMenu.child.length" class="menuStates">
-                    <img :if="@chMenu.open" src="/img/access/first/home_open_icon.png" alt="">
-                    <img :if="!@chMenu.open" src="/img/access/first/home_close_icon.png" alt="">
+                    <img :if="@chMenu.open" src="../../img/access/first/home_open_icon.png" alt="">
+                    <img :if="!@chMenu.open" src="../../img/access/first/home_close_icon.png" alt="">
                   </div>
                 </div>
                 <!-- 三级菜单 -->
@@ -77,24 +77,24 @@
     <div class="body">
       <div class="topBar">
         <div class="tbHello left">
-          <img onclick="menuToggleShow()" class="left" src="/img/access/third/mobile/home_list_icon.png" alt="">
+          <img onclick="menuToggleShow()" class="left" src="../../img/access/third/mobile/home_list_icon.png" alt="">
           <span class="left">您好，电机电源精细化管理系统</span>
         </div>
         <div class="otherBox right">
           <ul class="fucList left">
             <li class="fucItem left">
               <a href="/views/nav.first.mobile.html">
-                <img class="left" src="/img/access/third/mobile/home_icon.png" alt="">
+                <img class="left" src="../../img/access/third/mobile/home_icon.png" alt="">
               </a>
             </li>
             <li class="fucItem left" onclick="toggleTheme()">
-              <img class="left" src="/img/access/third/theme_icon.png" alt="">
+              <img class="left" src="../../img/access/third/theme_icon.png" alt="">
             </li>
           </ul>
           <div class="userInfo left">
             <a href="/views/login.first.mobile.html">
-              <img class="headPic left" src="/img/access/third/mobile/home_headpic_icon.png" alt="">
-              <img class="loginSelect left" src="/img/access/third/mobile/home_select_icon1.png" alt="">
+              <img class="headPic left" src="../../img/access/third/mobile/home_headpic_icon.png" alt="">
+              <img class="loginSelect left" src="../../img/access/third/mobile/home_select_icon1.png" alt="">
             </a>
           </div>
           <p class="clearFloat"></p>
@@ -182,13 +182,13 @@
                 <label class="left inputText"><span>*</span>是否允许登录</label>
                 <div class="left radioBox" :controller="canLogin">
                   <p class="inline" :click="@canLoginCall(true)">
-                    <img :if="@canLogin===true" class="left" src="/img/access/third/radio_select_icon.png" alt="">
-                    <img :if="@canLogin===false" class="left" src="/img/access/third/radio_icon.png" alt="">
+                    <img :if="@canLogin===true" class="left" src="../../img/access/third/radio_select_icon.png" alt="">
+                    <img :if="@canLogin===false" class="left" src="../../img/access/third/radio_icon.png" alt="">
                     <span class="text left">是</span>
                   </p>
                   <p class="inline" :click="@canLoginCall(false)">
-                    <img :if="@canLogin===true" class="left" src="/img/access/third/radio_icon.png" alt="">
-                    <img :if="@canLogin===false" class="left" src="/img/access/third/radio_select_icon.png" alt="">
+                    <img :if="@canLogin===true" class="left" src="../../img/access/third/radio_icon.png" alt="">
+                    <img :if="@canLogin===false" class="left" src="../../img/access/third/radio_select_icon.png" alt="">
                     <span class="text left">否</span>
                   </p>
                   <div class="clearFloat"></div>
@@ -208,8 +208,8 @@
                 <label class="left inputText"><span>*</span>用户角色</label>
                 <div class="left checkBox" :controller="userRules">
                   <p class="inline" :for="(index, rules) in @userAllRules" :click="@userRulesCall(rules)">
-                    <img :if="@userRules.indexOf(rules)>-1" class="left" src="/img/access/third/checkbox_select_icon.png" alt="">
-                    <img :if="@userRules.indexOf(rules)===-1" class="left" src="/img/access/third/checkbox_icon.png" alt="">
+                    <img :if="@userRules.indexOf(rules)>-1" class="left" src="../../img/access/third/checkbox_select_icon.png" alt="">
+                    <img :if="@userRules.indexOf(rules)===-1" class="left" src="../../img/access/third/checkbox_icon.png" alt="">
                     <span class="text left">{{ @rules }}</span>
                   </p>
                 </div>

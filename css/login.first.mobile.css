@@ -2,7 +2,7 @@ body{position: relative;font-size: 14px;}
 .login {
     height: 100%;
     width: 100%;
-    background-image: url("../../img/access/first/mobile/login_bg.png");
+    background-image: url("../img/access/first/mobile/login_bg.png");
     background-size: cover;
 }
 

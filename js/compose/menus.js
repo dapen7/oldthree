@@ -12,21 +12,21 @@ var menus = avalon.define({
     location: [], // 当前位置
     menus: [
         {
-            icon: '/img/access/' + __themeName + '/home_home_icon.png',
+            icon: '../../img/access/' + __themeName + '/home_home_icon.png',
             text: '首页',
             url: '/views/nav.' + __themeName + mobile + '.html',
             open: false,
             child: []
         },
         {
-            icon: '/img/access/' + __themeName + '/home_working_icon.png',
+            icon: '../../img/access/' + __themeName + '/home_working_icon.png',
             text: '我的工作台',
             url: '/views/home.' + __themeName + mobile + '.html',
             open: false,
             child: []
         },
         {
-            icon: '/img/access/' + __themeName + '/home_organ_icon.png',
+            icon: '../../img/access/' + __themeName + '/home_organ_icon.png',
             text: '机构用户',
             url: '',
             open: false,
@@ -59,7 +59,7 @@ var menus = avalon.define({
             ]
         },
         {
-            icon: '/img/access/' + __themeName + '/home_set_icon.png',
+            icon: '../../img/access/' + __themeName + '/home_set_icon.png',
             text: '系统设置',
             url: '',
             open: false,
@@ -74,7 +74,7 @@ var menus = avalon.define({
             ]
         },
         {
-            icon: '/img/access/' + __themeName + '/home_set_icon.png',
+            icon: '../../img/access/' + __themeName + '/home_set_icon.png',
             text: '项目周期',
             url: '',
             open: false,

@@ -21,7 +21,7 @@ var menus = avalon.define({
     {
       icon: '../../img/access/' + __themeName + '/home_working_icon.png',
       text: '我的工作台',
-      url: '/views/home.' + __themeName + mobile + '.html',
+      url: '../views/home.' + __themeName + mobile + '.html',
       open: false,
       child: []
     },

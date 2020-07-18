@@ -1,0 +1,140 @@
+.inline{
+    display: inline-block;
+}
+
+body{background: #262C4E;min-width:1200px;}
+
+/* 当前位置 */
+.locationInfo{line-height: 22px;font-size: 16px;color: #fff;}
+.locationInfo .text,.chat{margin-right: 5px}
+
+/* 输入 */
+.inputItem{line-height: 40px;}
+.inputItem .inputText{color: #ccc;font-size: 16px;margin-right: 8px;}
+.inputBox{width: 200px;height: 40px;position: relative;border: 1px solid #DDDFE6;padding: 0 5px;border-radius: 5px;}
+.inputBox input,select,textarea{color: #ccc;border: none;width: 100%;height: 100%;background: transparent;}
+.inputBox.icon input{padding-right: 30px;width: auto;height: 40px;position: absolute;left: 0;right: 40px;}
+.inputItem .inputBox select{border: none;width: 100%;height: 100%;}
+.inputItem .textarea{padding: 5px;}
+.inputItem .inputBox textarea{width: 100%;height: 100%;border: none;outline: none;}
+.inputItem .inputBox img{width: 22px;height: 22px;position: absolute;right: 10px;top: 8px;cursor: pointer;}
+
+/* 影藏花括号 */
+.ms-controller{visibility: hidden !important;}
+
+/* 布局 */
+.layout {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+}
+.topBar{width: 100%;height: 88px;z-index: 2;background: #2C345B;position: absolute;top:0;left: 0;}
+.topBarBox{width: 90%;min-width:1200px;max-width: 1600px;margin: 0 auto;}
+.body{width: 100%;position: absolute;z-index: 1;left: 0;right: 0;top: 88px;bottom: 0;}
+.menu{width: 210px;height: 100%;transition: left 0.5s;
+    -moz-transition: left 0.5s; /* Firefox 4 */
+    -webkit-transition: left 0.5s; /* Safari 和 Chrome */
+    -o-transition: left 0.5s; /* Opera */
+    background: #3C454E;position: absolute;left: -210px;top: 0;}
+.main{width: 90%;min-width:1200px;max-width: 1600px;margin: 0 auto;}
+
+.topLogo{width: 175px;overflow: hidden;height: 42px;margin: 23px 0;display: inline-block;}
+.topLogo .logo{width: 42px;height: 42px;}
+.topLogo .comName{line-height: 42px;font-size:30px;font-weight: bold;color: #fff;margin-left: 10px;}
+
+/*.topMenu{height: 24px;padding-left: 48px;font-size: 18px;}*/
+/*.topMenu .menuSHBtn{height: 18px;width: 20px;padding: 32px 0;cursor: pointer;margin-top: 3px;}*/
+/*.topMenu .secondMenus{display: inline-block;}*/
+/*.topMenu a{text-decoration: none;color: #fff;}*/
+/*.topMenu .menuLink.active{color: #058669;}*/
+/*.topMenu .menuItem{display: inline-block;padding: 32px 0;position: relative;margin-left: 60px;cursor: pointer;}*/
+/*.topMenu .menuItem span{color: #fff;font-size: 18px;}*/
+/*.topMenu .menuItem:hover .moreMenu{display: block;}*/
+/*.topMenu .moreMenu{width: 200px;display: none;padding: 5px 0;position: absolute;left: -50%;top: 88px;margin-left:-20px;background: #3C454E;border-radius: 4px;}*/
+/*.topMenu .more{margin-left: 6px;}*/
+/*.topMenu .moreMItem{text-align: center;line-height: 58px;}*/
+/*.topMenu .moreMItem.active,.topMenu .moreMItem:hover {background: #058669;}*/
+
+.topMenu{min-width: 760px;}
+.menus{color: #fff;}
+.menus a{color: #fff;}
+.menus .menuItem{margin-left: 50px;position: relative;}
+.menus .menuItem.noMarLeft{margin-left: 0px;position: relative;}
+.menus .menuBox.one{height: 88px;}
+.menus .menuBox.one .menuText{margin-left: 10px;text-decoration: none;line-height: 88px;font-size: 18px;color: #fff;cursor: pointer;}
+.menus .menuBox.one img,.menus .menuBox.one span{float: left;}
+.menus .menuBox.one img{margin-top: 30px;}
+.menus .menuTwoBox{width: 200px;display: none;position: absolute;left: 0;top: 88px;text-align: center;}
+.menus .menuTwoBox .menuChild{margin-top: 10px;background: #2C345B;}
+.menus .menuTwoBox .menuBox{width: 200px;height: 60px;text-align: center;cursor: pointer;}
+.menus .menuTwoBox .menuBox span{float: none;}
+.menus .menuTwoBox .menuItem{margin-left: 0;position: relative;}
+.menus .menuTwoBox .menuText{line-height: 60px;font-size: 18px;}
+.menus .thirdBox{width: 220px;display: none;position: absolute;top: 0px;left: 200px;}
+.menus .thirdBox .menuChild{margin-top: 0;margin-left: 20px;width: 200px;background: #2C345B;}
+.menus .menuItem:hover .menuBox.one .menuText{color: #3884F8;}
+.menus .menuItem:hover .menuTwoBox{display: block;}
+.menus .menuTwoBox .menuItem:hover .thirdBox{display: block;}
+.menus .menuTwoBox .menuItem:hover .menuBox.two .menuText{color: #3884F8;}
+.menus .thirdBox .menuItem:hover .menuBox.three .menuText{color: #3884F8;}
+
+
+.otherBox{height: 65px;margin-top: 23px;}
+.otherBox .fucList{margin-top: 10px;}
+.otherBox .fucItem{margin-right: 20px;cursor: pointer;}
+.otherBox .fucItem img{width: 20px;height: 20px;}
+.otherBox .fucItem span{font-size: 18px;color: #333;margin-left: 10px;}
+.otherBox .userInfo{position: relative;color: #fff;}
+.otherBox .userInfoBox{height: 65px;cursor: pointer;}
+.otherBox .userInfoBox span{font-size: 18px;line-height: 42px;margin-left: 10px;}
+.otherBox .userInfoBox .headPic{width: 42px;height: 42px;margin-left: 10px;}
+.otherBox .userInfoBox .loginSelect{width: 12px;height: 7px;margin-left: 10px;margin-top: 18px;}
+
+.userInfo:hover .userInfoTodo{display: block;}
+.userInfoTodo{width: 156px;display: none;z-index: 11;position: absolute;top: 65px;right: 0;background:#2C345B;box-shadow:0px 2px 10px 0px #262C4E;border-radius:4px;border:1px solid #2C345B;}
+.userInfoTodo .userInfoTodoItem{line-height: 52px;text-align: center;}
+.userInfoTodo .userInfoTodoItem a{color: #fff;}
+.userInfoTodo .userInfoTodoItem.line{border-top:1px solid #EEE;}
+
+
+.topSearch .inputItem{}
+.topSearch .inputBox{border-radius: 27px;background: #fff;}
+.topSearch .inputBox input{left: 10px;}
+
+/* 日历 */
+.calendar{background: #fff;border-radius: 5px;}
+.calendar .top{width: 100%;padding: 24px 0;box-shadow: 0 0 10px 0 rgba(0,0,0,0.05);}
+.calendar .top .topMain{width: 86%;height: 100%;margin: 0 auto;position: relative;}
+.calendar .top .iBtn{width: 28px;height: 28px;position: absolute;top: 0;cursor: pointer;}
+.calendar .top .pre{left: 0;}
+.calendar .top .next{right: 0;}
+.calendar .top p{text-align: center;font-size: 22px;color: #111;line-height: 28px;}
+.calendar .weeks{width: 86%;height: 20px;margin: 0 auto;margin-top: 25px;}
+.calendar .weeks .item{width: 14.285%;color: #666;text-align: center;font-size: 14px;line-height: 20px;}
+.calendar .days{width: 86%;height: 250px;margin: 0 auto;margin-top:10px;padding-bottom: 10px;}
+.calendar .days .item{width: 14.285%;height: 40px;cursor: pointer;line-height: 40px;;color: #111;text-align: center;font-size: 14px;}
+.calendar .days .item.noDay{cursor: auto;}
+.calendar .days .day.active{width: 100%;max-width: 40px;margin: 0 auto;
+    background: #058669;border-radius: 50%;color: #fff;}
+
+/* 按钮 */
+.btn{line-height: 40px;display: inline-block;text-decoration: none;font-size: 16px;color: #fff;padding: 0 20px;
+    background: #3884F8;border-radius: 4px;outline: none;border: none;cursor: pointer;}
+.btn.primary{background: #fff;border:1px solid #DDDFE6;color: #333;}
+.btn.text{background: none;color: #ccc;border:1px solid #ccc;}
+.btn.text.primary{border: none;color: #3884F8;background: none;}
+.btn.primary:hover{color: #333;}
+.btn:hover{color: #fff;}
+
+/* 单选 */
+.radioBox{height: auto;}
+.radioBox p{cursor: pointer;color: #ccc;margin-right: 40px;}
+.radioBox .text{margin-left: 14px;line-height: 24px;font-size: 16px;}
+
+/* 复选 */
+.checkBox{height: auto;}
+.checkBox p{cursor: pointer;color: #ccc;margin-right: 40px;}
+.checkBox .text{margin-left: 14px;line-height: 24px;font-size: 16px;}

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>我的工作台</title>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-control" content="no-cache">
+  <meta http-equiv="Cache" content="no-cache">
+
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/js/lib/layui/css/layui.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/dictionary/index.first.css">
+  <!-- 大于等于IE8小于等于IE10 -->
+  <!--[if (gte IE 8)&(lte IE 10)]>
+  <script src="/js/patch/ie7.js"></script>
+  <script src="/js/patch/json3.min.js"></script>
+  <script src="/js/patch/promise.js"></script>
+  <![endif]-->
+  <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+  <!--[if lt IE 9]>
+  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script>
+    var __themeName = 'first';
+  </script>
+  <script src="/js/lib/avalon/avalon.js"></script>
+  <script src="/js/lib/layui/layui.js"></script>
+</head>
+<body class="firstTheme">
+  <div class="layout showMenu ms-controller" :controller="layout">
+    <div class="menu">
+      <!-- 顶部logo -->
+      <div class="topLogo">
+        <a href="/views/nav.first.html">
+          <img class="logo left" src="/img/access/first/home_logo_icon.png" alt="">
+          <span class="comName left">CASC</span>
+        </a>
+        <p class="clearFloat"></p>
+      </div>
+      <ul class="menus ms-controller" :controller="menus">
+        <!-- 一级菜单 -->
+        <li class="menuItem" :for="(i, menu) in @menus">
+          <div class="menuBox" :class="[(@menu.url===active ? 'active':'')]">
+            <img class="menuIcon" :if="@menu.icon!==''" :attr="{src:@menu.icon}" alt="">
+            <p :if="@menu.child.length" :click="@clickMenuCall(@menu)" class="menuText">{{ @menu.text }}</p>
+            <a :if="!@menu.child.length" class="menuText" :attr="{href:@menu.url}">{{ @menu.text }}</a>
+            <div :if="@menu.child.length" class="menuStates">
+              <img :if="@menu.open" src="/img/access/first/home_open_icon.png" alt="">
+              <img :if="!@menu.open" src="/img/access/first/home_close_icon.png" alt="">
+            </div>
+          </div>
+          <!-- 二级菜单 -->
+          <ul class="menuChild" :for="(chI, chMenu) in @menu.child" :visible="@menu.open">
+            <li class="menuItem">
+              <div class="menuBox" :class="[(@chMenu.url===active ? 'active':'')]">
+                <img class="menuIcon" :if="@chMenu.icon!==''" :attr="{src:@chMenu.icon}" alt="">
+                <p :if="@chMenu.child.length" :click="@clickMenuCall(@chMenu)" class="menuText">{{ @chMenu.text }}</p>
+                <a :if="!@chMenu.child.length" class="menuText" :attr="{href:@chMenu.url}">{{ @chMenu.text }}</a>
+                <div :if="@chMenu.child.length" class="menuStates">
+                  <img :if="@chMenu.open" src="/img/access/first/home_open_icon.png" alt="">
+                  <img :if="!@chMenu.open" src="/img/access/first/home_close_icon.png" alt="">
+                </div>
+              </div>
+              <!-- 三级菜单 -->
+              <ul class="menuChild" :for="(sI, sMenu) in @chMenu.child" :visible="@chMenu.open">
+                <li class="menuItem">
+                  <div class="menuBox" :class="[(@sMenu.url===active ? 'active':'')]">
+                    <img class="menuIcon" :if="@sMenu.icon!==''" :attr="{src:@sMenu.icon}" alt="">
+                    <a class="menuText" :attr="{href:@sMenu.url}">{{ @sMenu.text }}</a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="body">
+      <div class="topBar">
+        <div class="tbHello left">
+          <img onclick="menuToggleShow()" class="left" src="/img/access/first/home_list_icon.png" alt="">
+          <span class="left">您好，电机电源精细化管理系统！</span>
+        </div>
+        <div class="otherBox right">
+          <ul class="fucList left">
+            <li class="fucItem left">
+              <a href="/views/nav.first.html">
+                <img class="left" src="/img/access/first/home_icon.png" alt="">
+                <span class="left">首页</span>
+              </a>
+            </li>
+            <li class="fucItem left" onclick="toggleTheme()">
+              <img class="left" src="/img/access/first/theme_icon.png" alt="">
+              <span class="left">主题</span>
+            </li>
+          </ul>
+          <div class="userInfo left">
+            <div class="userInfoBox">
+              <span class="left">您好！系统管理员</span>
+              <img class="headPic left" src="/img/access/first/home_headpic_icon.png" alt="">
+              <img class="loginSelect left" src="/img/access/first/login_select_icon.png" alt="">
+            </div>
+            <ul class="userInfoTodo">
+              <li class="userInfoTodoItem">个人信息</li>
+              <li class="userInfoTodoItem">修改密码</li>
+              <li class="userInfoTodoItem">我的通知</li>
+              <li class="userInfoTodoItem line"><a href="/views/login.first.html"><span>退出</span></a></li>
+            </ul>
+          </div>
+          <p class="clearFloat"></p>
+        </div>
+        <p class="clearFloat"></p>
+      </div>
+      <div class="main">
+        <div class="treeContentLayout">
+          <!-- 左侧树 -->
+          <div class="treeMain">
+            <!-- 树 -->
+            <div class="tree" :controller="tree">
+              <div class="treeItem" :for="(index,item) in tree">
+                <div class="tiInfo" :class="[@item.child.length?'hadChild':'']">
+                  <span class="tiOpenStatus" :class="[@item.open?'open':'']" :click="ocTree(@item)"></span>
+                  <span class="tiHLine"></span>
+                  <span class="tiVLine" :class="[@item.child.length?'hadChild':'']"></span>
+                  <span class="tiIcon" :class="[@item.child.length?'hadChild':'']"></span>
+                  <span class="tiText" :click="selectTree(@item)">{{ @item.text }}</span>
+                </div>
+                <!-- 一级 -->
+                <div class="tiChild" :if="@item.child.length" :class="[@item.open?'open':'']">
+                  <div class="treeItem" :for="(cIndex,cItem) in @item.child">
+                    <div class="tiInfo" :class="[@cItem.child.length?'hadChild':'']">
+                      <span class="tiOpenStatus" :class="[@cItem.open?'open':'']" :click="ocTree(@cItem)"></span>
+                      <span class="tiHLine"></span>
+                      <span class="tiVLine" :class="[@cItem.child.length?'hadChild':'']"></span>
+                      <span class="tiIcon" :class="[@cItem.child.length?'hadChild':'']"></span>
+                      <span class="tiText" :click="selectTree(@cItem)">{{ @cItem.text }}</span>
+                    </div>
+                    <!-- 二级 -->
+                    <div class="tiChild" :if="@cItem.child.length" :class="[@cItem.open?'open':'']">
+                      <div class="treeItem" :for="(sIndex,sItem) in @cItem.child">
+                        <div class="tiInfo" :class="[@sItem.child.length?'hadChild':'']">
+                          <span class="tiOpenStatus" :class="[@sItem.open?'open':'']" :click="ocTree(@sItem)"></span>
+                          <span class="tiHLine"></span>
+                          <span class="tiVLine" :class="[@sItem.child.length?'hadChild':'']"></span>
+                          <span class="tiIcon" :class="[@sItem.child.length?'hadChild':'']"></span>
+                          <span class="tiText" :click="selectTree(@sItem)">{{ @sItem.text }}</span>
+                        </div>
+                        <!-- 三级 -->
+                        <div class="tiChild" :if="@sItem.child.length" :class="[@sItem.open?'open':'']">
+                          <div class="treeItem" :for="(tIndex,tItem) in @sItem.child">
+                            <div class="tiInfo" :class="[@tItem.child.length?'hadChild':'']">
+                              <span class="tiOpenStatus" :class="[@tItem.open?'open':'']" :click="ocTree(@tItem)"></span>
+                              <span class="tiHLine"></span>
+                              <span class="tiVLine" :class="[@tItem.child.length?'hadChild':'']"></span>
+                              <span class="tiIcon" :class="[@tItem.child.length?'hadChild':'']"></span>
+                              <span class="tiText" :click="selectTree(@tItem)">{{ @tItem.text }}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 右侧内容 -->
+          <div class="contentMain">
+            <div class="contentBody">
+              <!-- 当前位置 -->
+              <ul class="locationInfo add ms-controller" :controller="locationInfo">
+                <li class="inline">当前位置：</li>
+                <li class="inline" :for="(i, menu) in @locationInfo">
+                  <span class="text">{{ @menu.text }}</span>
+                  <span class="chat" :if="@i!==@locationInfo.length-1">></span>
+                </li>
+              </ul>
+              <!-- 搜索 -->
+              <div class="btnBox">
+                <button class="btn">添加字典</button>
+              </div>
+              <!-- 表格 -->
+              <div class="table">
+                <table id="table"></table>
+              </div>
+              <!-- 分页 -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/html" id="tagTpl">
+    <a href="">{{ d.tag }}</a>
+  </script>
+  <script type="text/html" id="typeTpl">
+    <a href="">{{ d.type }}</a>
+  </script>
+  <script type="text/html" id="barDemo">
+    <a class="icon editIcon" lay-event="edit"></a>
+    <a class="icon delIcon" lay-event="del"></a>
+    <a class="icon addIcon" lay-event="add"></a>
+  </script>
+  <script src="/js/compose/layout.js"></script>
+  <script src="/js/compose/menus.js"></script>
+  <script>
+    var locationInfo = avalon.define({
+      $id: 'locationInfo',
+      locationInfo: []
+    });
+
+    var tree = avalon.define({
+      $id: 'tree',
+      tree: [
+        {
+          id: 1, text: '山东省总公司', open: true, child: [
+            {
+              id: 2, text: '公司领导', open: false, child: []
+            }, {
+              id: 3, text: '综合部', open: false, child: []
+            }, {
+              id: 4, text: '市场部', open: false, child: []
+            }, {
+              id: 5, text: '技术部', open: false, child: []
+            }, {
+              id: 6, text: '研发部', open: false, child: []
+            }, {
+              id: 7, text: '济南市分公司', open: false, child: [
+                {
+                  id: 8, text: '公司领导', open: false, child: []
+                }, {
+                  id: 9, text: '综合部', open: false, child: []
+                }, {
+                  id: 10, text: '市场部', open: false, child: []
+                }, {
+                  id: 11, text: '技术部', open: false, child: []
+                }, {
+                  id: 12, text: '历城分公司', open: false, child: [
+                    {
+                      id: 13, text: '公司领导', open: false, child: []
+                    }, {
+                      id: 14, text: '综合部', open: false, child: []
+                    }, {
+                      id: 15, text: '市场部', open: false, child: []
+                    }, {
+                      id: 16, text: '技术部', open: false, child: []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      ocTree: function (tree) {
+        tree.open = !tree.open;
+      },
+      selectTree: function (tree) {
+        console.log('选择tree：', tree);
+      }
+    });
+
+    // 初始化菜单选中
+    menus.$watch('onReady', function () {
+      locationInfo.locationInfo = this.location.$model;
+    });
+    layui.use('table', function () {
+      var table = layui.table;
+
+      table.render({
+        elem: '#table'
+        , id: 'table'
+        , height: 'full-320'
+        , limit: 20
+        , filter: 'table'
+        , even: true
+        , cols: [
+          [
+            {field: 'key', title: '键值', align: 'center', style: 'height:60px;'} //width 支持：数字、百分比和不填写。你还可以通过 minWidth 参数局部定义当前单元格的最小宽度，layui 2.2.1 新增
+            , {field: 'tag', title: '标签', align: 'center', templet: '#tagTpl', style: 'height:60px;'}
+            , {field: 'type', title: '类型', align: 'center', templet: '#typeTpl', style: 'height:60px;'}
+            , {field: 'des', title: '描述', align: 'center', style: 'height:60px;'}
+            , {field: 'order', title: '排序', align: 'center', style: 'height:60px;'} //单元格内容水平居中
+            , {field: 'todo', title: '操作', toolbar: '#barDemo', align: 'center'}
+          ]]
+        , data: [
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20},
+          {key: 'creulean', tag: 'creulean主题', type: 'theme', des: '主题方案主题方案主题方案主题', order: 20}
+        ]
+        , page: {
+          theme: '#2A7FDA'
+        }
+      });
+
+      //监听工具条
+      table.on('tool(table)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+        var data = obj.data; //获得当前行数据
+        var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+        var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
+        switch (layEvent) {
+          case 'del':
+            break;
+          case 'edit':
+            break;
+        }
+      });
+
+      layout.$watch('menuShow', function observe (a, b) {
+        setTimeout(function () {
+          //执行表格“尺寸结构”的重置，一般写在对应的事件中
+          table.resize('table');
+        }, 1000 * 0.6);
+      });
+
+      window.onresize = function () {
+        //执行表格“尺寸结构”的重置，一般写在对应的事件中
+        table.resize('table');
+      };
+
+    });
+  </script>
+</body>
+</html>

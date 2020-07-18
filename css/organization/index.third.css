@@ -1,0 +1,63 @@
+.body{overflow: hidden;overflow-y: auto;}
+.main{
+    padding: 25px 0;
+    max-height: 100%;
+}
+.contentBody{
+    height: 100%;
+}
+
+.homeBody.margin{margin-bottom: 25px;}
+.homeMainBox{padding: 20px;margin-top: 25px;background: #2C345B;border-radius: 4px}
+
+.search{}
+.search .inputItem{margin-right: 25px;margin-bottom: 25px;}
+.search .inputItem{margin-right: 25px;margin-bottom: 25px;}
+.search .inputBox{width: 192px;}
+.search .btn{margin-left: 8px;margin-bottom: 25px;}
+
+.table{height: 50%;}
+.table a{color: #3884F8;}
+.table .icon{width: 28px;height: 28px;cursor: pointer;margin:0 20px;display: inline-block;background-size: 100%;}
+.table .editIcon{background-image: url("/img/access/third/edit_icon.png");}
+.table .delIcon{background-image: url("/img/access/third/delete_icon.png");}
+.layui-laypage .layui-laypage-curr .layui-laypage-em{background: #2C345B;}
+.layui-table-page .layui-laypage input{background: #2C345B;color: #ccc;}
+.layui-table td, .layui-table th, .layui-table-col-set, .layui-table-fixed-r, .layui-table-grid-down, .layui-table-header, .layui-table-page, .layui-table-tips-main, .layui-table-tool, .layui-table-total, .layui-table-view, .layui-table[lay-skin=line], .layui-table[lay-skin=row]{background: #2C345B;color: #ccc;}
+.layui-table-page .layui-laypage span{color: #ccc;}
+/* 添加 */
+.inputMain{margin-top: 35px;}
+.inputMain .inputItem{margin-top: 25px;}
+.inputMain .inputItem .inputBox{width: 350px;margin-left: 25px;}
+.inputMain .inputItem .inputText{width: 150px;display: inline-block;text-align: right;}
+.inputMain .inputItem .inputText span{color: #E91126;font-size: 16px;line-height: 40px;margin-right: 4px;}
+.inputMain .inputItem .tips{color: #3884F8;font-size: 16px;margin-left: 50px;}
+.inputMain .inputItem .radioBox{padding-top: 5px;margin-left: 25px;}
+.inputMain .inputItem .checkBox{height: auto;padding-top: 5px;margin-left: 25px;}
+.inputMain .inputItem .checkBox p{padding: 8px 0;}
+.inputMain .inputItem .textarea{width: 80%;height: 250px;line-height: normal;}
+.inputMain .btnBox{padding-left: 182px;padding-top: 30px;}
+.inputMain .btnBox .btn{margin-right: 20px;}
+
+/* 添加 */
+.inputMain2{margin-top: 35px;}
+.inputMain2 .inputItem{margin-top: 25px;}
+.inputMain2 .inputItem.inline{width: 300px;}
+.inputMain2 .inputItem.inline .inputBox{width: 100px;margin-left: 25px;}
+.inputMain2 .inputItem.btnBox .btn{margin-right: 25px;}
+.inputMain2 .inputItem .readonly{background: #262C4E;width: 660px;}
+.inputMain2 .inputItem .readonly input{background: #262C4E;color: #fff;}
+.inputMain2 .thSelect{width: 694px;height: 42px;}
+.inputMain2 .thSelect .inputBox{width: 30%;margin-right: 1%;}
+.inputMain2 .showText{border: none;}
+.inputMain2 .result{width: 660px;border: none;height: auto;}
+.inputMain2 .result .inputBox{width: 90%;height: 40px;}
+.inputMain2 .result .layui-table-cell{height: auto;}
+.inputMain2 .showText span{color: #3884F8;}
+.inputMain2 .inputItem .inputText{width: 150px;display: inline-block;text-align: right;}
+.inputMain2 .inputItem .inputText span{color: #E91126;font-size: 16px;line-height: 40px;margin-right: 4px;}
+.inputMain2 .inputItem .tips{color: #E91126;font-size: 16px;margin-left: 50px;}
+.inputMain2 .inputItem .radioBox{padding-top: 5px;margin-left: 25px;}
+.inputMain2 .inputItem .checkBox{height: auto;padding-top: 5px;margin-left: 25px;}
+.inputMain2 .inputItem .checkBox p{padding: 8px 0;}
+.inputMain2 .inputItem .textarea{width: 80%;height: 250px;line-height: normal;}

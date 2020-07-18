@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>我的工作台</title>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-control" content="no-cache">
+  <meta http-equiv="Cache" content="no-cache">
+
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/js/lib/layui/css/layui.css">
+  <link rel="stylesheet" href="/css/layout.third.css">
+  <link rel="stylesheet" href="/css/organization/index.third.css">
+  <!-- 大于等于IE8小于等于IE10 -->
+  <!--[if (gte IE 8)&(lte IE 10)]>
+  <script src="/js/patch/ie7.js"></script>
+  <script src="/js/patch/json3.min.js"></script>
+  <script src="/js/patch/promise.js"></script>
+  <![endif]-->
+  <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+  <!--[if lt IE 9]>
+  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script>
+    var __themeName = 'third';
+  </script>
+  <script src="/js/lib/avalon/avalon.js"></script>
+  <script src="/js/lib/layui/layui.js"></script>
+</head>
+<body class="thirdTheme">
+  <div class="layout showMenu" :controller="layout">
+    <div class="topBar">
+      <div class="topBarBox">
+        <!-- 顶部logo -->
+        <div class="topLogo left">
+          <a href="/views/nav.third.html">
+            <img class="logo left" src="/img/access/third/home_logo_icon.png" alt="">
+            <span class="comName left">CASC</span>
+          </a>
+          <p class="clearFloat"></p>
+        </div>
+        <div class="topMenu left">
+          <!-- 菜单 -->
+          <ul class="menus ms-controller" :controller="menus">
+            <!-- 一级菜单 -->
+            <li class="menuItem left" :for="(i, menu) in @menus" :class="{noMarLeft:@i===0}">
+              <div class="menuBox one" :class="[(@menu.url===active ? 'active':'')]">
+                <img class="menuIcon" :if="@menu.icon!==''" :attr="{src:@menu.icon}" alt="">
+                <span :if="@menu.child.length" :click="@clickMenuCall(@menu,1)" class="menuText">{{ @menu.text }}</span>
+                <a :if="!@menu.child.length" class="menuText" :attr="{href:@menu.url}">{{ @menu.text }}</a>
+              </div>
+              <!-- 二级菜单 -->
+              <div class="menuTwoBox" :if="@menu.child.length">
+                <ul class="menuChild">
+                  <li class="menuItem" :for="(chI, chMenu) in @menu.child">
+                    <div class="menuBox two" :class="[(@chMenu.url===active ? 'active':'')]">
+                      <img class="menuIcon" :if="@chMenu.icon!==''" :attr="{src:@chMenu.icon}" alt="">
+                      <span :if="@chMenu.child.length" :click="@clickMenuCall(@chMenu,2)" class="menuText">{{ @chMenu.text }}</span>
+                      <a :if="!@chMenu.child.length" class="menuText" :attr="{href:@chMenu.url}">{{ @chMenu.text }}</a>
+                    </div>
+                    <!-- 三级菜单 -->
+                    <div class="thirdBox" :if="@chMenu.child.length">
+                      <ul class="menuChild">
+                        <li class="menuItem" :for="(sI, sMenu) in @chMenu.child">
+                          <div class="menuBox three" :class="[(@sMenu.url===active ? 'active':'')]">
+                            <a class="menuText" :attr="{href:@sMenu.url}">{{ @sMenu.text }}</a>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="otherBox right">
+          <ul class="fucList left">
+            <li class="fucItem left">
+              <a href="/views/nav.third.html">
+                <img class="left" src="/img/access/third/home_icon.png" alt="">
+              </a>
+            </li>
+            <li class="fucItem left">
+              <img class="left" onclick="toggleTheme()" src="/img/access/third/theme_icon.png" alt="">
+            </li>
+          </ul>
+          <div class="userInfo left">
+            <div class="userInfoBox">
+              <img class="headPic left" src="/img/access/third/home_headpic_icon.png" alt="">
+              <span class="left">系统管理员</span>
+              <img class="loginSelect left" src="/img/access/third/zhankai_icon.png" alt="">
+            </div>
+            <ul class="userInfoTodo">
+              <li class="userInfoTodoItem">个人信息</li>
+              <li class="userInfoTodoItem">修改密码</li>
+              <li class="userInfoTodoItem">我的通知</li>
+              <li class="userInfoTodoItem line"><a href="/views/login.third.html"><span>退出</span></a></li>
+            </ul>
+          </div>
+          <p class="clearFloat"></p>
+        </div>
+        <p class="clearFloat"></p>
+      </div>
+    </div>
+    <div class="body">
+      <div class="main">
+        <div class="homeBody">
+          <!-- 当前位置 -->
+          <ul class="locationInfo add ms-controller" :controller="locationInfo">
+            <li class="inline">当前位置：</li>
+            <li class="inline" :for="(i, menu) in @locationInfo">
+              <span class="text">{{ @menu.text }}</span>
+              <span class="chat" :if="@i!==@locationInfo.length-1">></span>
+            </li>
+          </ul>
+          <div class="homeMainBox">
+            <!-- 搜索 -->
+            <div class="search">
+              <div class="inputItem inline">
+                <label class="inputText inline">归属公司</label>
+                <div class="inputBox inline">
+                  <select name="interest" lay-filter="aihao">
+                    <option value="0">山东省总公司</option>
+                  </select>
+                </div>
+              </div>
+              <div class="inputItem inline">
+                <label class="inputText inline">归属部门</label>
+                <div class="inputBox inline">
+                  <select name="interest" lay-filter="aihao">
+                    <option value="0">公司领导</option>
+                  </select>
+                </div>
+              </div>
+              <div class="inputItem inline">
+                <label class="inputText inline">登录名</label>
+                <div class="inputBox inline">
+                  <input type="text" placeholder="请输入登录名">
+                </div>
+              </div>
+              <div class="inputItem inline">
+                <label class="inputText inline">姓名</label>
+                <div class="inputBox inline">
+                  <input type="text" placeholder="请输入姓名">
+                </div>
+              </div>
+              <button class="btn">编辑</button>
+              <button class="btn">导出</button>
+              <button class="btn">导入</button>
+              <a href="add.third.html">
+                <button class="btn right">添加用户</button>
+              </a>
+              <div class="clearFloat"></div>
+            </div>
+            <!-- 表格 -->
+            <div class="table">
+              <table id="table"></table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/html" id="usernameTpl">
+    <a href="">{{ d.username }}</a>
+  </script>
+  <script type="text/html" id="barDemo">
+    <a class="icon editIcon" lay-event="edit"></a>
+    <a class="icon delIcon" lay-event="del"></a>
+  </script>
+  <script src="/js/compose/layout.js"></script>
+  <script src="/js/compose/menus.js"></script>
+  <script>
+    var locationInfo = avalon.define({
+      $id: 'locationInfo',
+      locationInfo: []
+    });
+
+    // 初始化菜单选中
+    menus.$watch('onReady', function () {
+      locationInfo.locationInfo = this.location.$model;
+    });
+
+    layui.use('table', function () {
+      var table = layui.table;
+
+      table.render({
+        elem: '#table'
+        , id: 'table'
+        , height: 'full-340'
+        , limit: 20
+        , filter: 'table'
+//        , even: true
+        , cols: [
+          [
+            {field: 'com', title: '归属公司', align: 'center', style: 'height:60px;'} //width 支持：数字、百分比和不填写。你还可以通过 minWidth 参数局部定义当前单元格的最小宽度，layui 2.2.1 新增
+            , {field: 'dep', title: '归属部门', align: 'center', style: 'height:60px;'}
+            , {field: 'login', title: '登录名', align: 'center', templet: '#usernameTpl', style: 'height:60px;'}
+            , {field: 'username', title: '姓名', align: 'center', style: 'height:60px;'}
+            , {field: 'call', title: '电话', align: 'center', style: 'height:60px;'} //单元格内容水平居中
+            , {field: 'phone', title: '手机', align: 'center', style: 'height:60px;'} //单元格内容水平居中
+            , {field: 'todo', title: '操作', toolbar: '#barDemo', align: 'center',style:'width:150px'}
+          ]]
+        , data: [
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''},
+          {com: '山东总公司', dep: '公司领导', login: 'admin', 'username': '管理员', call: '', phone: ''}
+        ]
+        , page: true
+      });
+
+      //监听工具条
+      table.on('tool(table)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+        var data = obj.data; //获得当前行数据
+        var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+        var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
+        switch (layEvent) {
+          case 'del':
+            break;
+          case 'edit':
+            break;
+        }
+      });
+
+      layout.$watch('menuShow', function observe (a, b) {
+        setTimeout(function () {
+          //执行表格“尺寸结构”的重置，一般写在对应的事件中
+          table.resize('table');
+        }, 1000 * 0.6);
+      });
+
+      window.onresize = function () {
+        //执行表格“尺寸结构”的重置，一般写在对应的事件中
+        table.resize('table');
+      };
+    });
+  </script>
+</body>
+</html>

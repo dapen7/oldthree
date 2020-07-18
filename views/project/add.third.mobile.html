@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>机构信息</title>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-control" content="no-cache">
+  <meta http-equiv="Cache" content="no-cache">
+
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/js/lib/layui/css/layui.css">
+  <link rel="stylesheet" href="/css/layout.third.mobile.css">
+  <link rel="stylesheet" href="/css/project/index.third.mobile.css">
+  <script>
+    var __themeName = 'third';
+  </script>
+  <script src="/js/lib/avalon/avalon.js"></script>
+  <script src="/js/lib/layui/layui.js"></script>
+</head>
+<body class="thirdTheme">
+  <div class="layout" :controller="layout">
+    <div class="menuMain">
+      <div class="menu">
+        <!-- 顶部logo -->
+        <div class="topLogo">
+          <a href="/views/nav.first.mobile.html">
+            <img class="logo left" src="/img/access/third/home_logo_icon.png" alt="">
+            <span class="comName left">CASC</span>
+          </a>
+          <p class="clearFloat"></p>
+        </div>
+        <ul class="menus ms-controller" :controller="menus">
+          <!-- 一级菜单 -->
+          <li class="menuItem" :for="(i, menu) in @menus">
+            <div class="menuBox" :class="[(@menu.url===active ? 'active':'')]">
+              <img class="menuIcon" :if="@menu.icon!==''" :attr="{src:@menu.icon}" alt="">
+              <p :if="@menu.child.length" :click="@clickMenuCall(@menu,1)" class="menuText">{{ @menu.text }}</p>
+              <a :if="!@menu.child.length" class="menuText" :attr="{href:@menu.url}">{{ @menu.text }}</a>
+              <div :if="@menu.child.length" class="menuStates">
+                <img :if="@menu.open" src="/img/access/first/home_open_icon.png" alt="">
+                <img :if="!@menu.open" src="/img/access/first/home_close_icon.png" alt="">
+              </div>
+            </div>
+            <!-- 二级菜单 -->
+            <ul class="menuChild" :for="(chI, chMenu) in @menu.child" :visible="@menu.open">
+              <li class="menuItem">
+                <div class="menuBox" :class="[(@chMenu.url===active ? 'active':'')]">
+                  <img class="menuIcon" :if="@chMenu.icon!==''" :attr="{src:@chMenu.icon}" alt="">
+                  <p :if="@chMenu.child.length" :click="@clickMenuCall(@chMenu,2)" class="menuText">{{ @chMenu.text }}</p>
+                  <a :if="!@chMenu.child.length" class="menuText" :attr="{href:@chMenu.url}">{{ @chMenu.text }}</a>
+                  <div :if="@chMenu.child.length" class="menuStates">
+                    <img :if="@chMenu.open" src="/img/access/first/home_open_icon.png" alt="">
+                    <img :if="!@chMenu.open" src="/img/access/first/home_close_icon.png" alt="">
+                  </div>
+                </div>
+                <!-- 三级菜单 -->
+                <!--							<ul class="menuChild" :for="(sI, sMenu) in @chMenu.child" :visible="@chMenu.open">-->
+                <!--								<li class="menuItem">-->
+                <!--									<div class="menuBox" :class="[(@sMenu.url===active ? 'active':'')]">-->
+                <!--										<img class="menuIcon" :if="@sMenu.icon!==''" :attr="{src:@sMenu.icon}" alt="">-->
+                <!--										<a class="menuText" :attr="{href:@sMenu.url}">{{ @sMenu.text }}</a>-->
+                <!--									</div>-->
+                <!--								</li>-->
+                <!--							</ul>-->
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="closeMenu" onclick="menuToggleShow()"></div>
+    </div>
+    <div class="body">
+      <div class="topBar">
+        <div class="tbHello left">
+          <img onclick="menuToggleShow()" class="left" src="/img/access/third/mobile/home_list_icon.png" alt="">
+          <span class="left">您好，电机电源精细化管理系统</span>
+        </div>
+        <div class="otherBox right">
+          <ul class="fucList left">
+            <li class="fucItem left">
+              <a href="/views/nav.first.mobile.html">
+                <img class="left" src="/img/access/third/mobile/home_icon.png" alt="">
+              </a>
+            </li>
+            <li class="fucItem left" onclick="toggleTheme()">
+              <img class="left" src="/img/access/third/theme_icon.png" alt="">
+            </li>
+          </ul>
+          <div class="userInfo left">
+            <a href="/views/login.first.mobile.html">
+              <img class="headPic left" src="/img/access/third/mobile/home_headpic_icon.png" alt="">
+              <img class="loginSelect left" src="/img/access/third/mobile/home_select_icon1.png" alt="">
+            </a>
+          </div>
+          <p class="clearFloat"></p>
+        </div>
+        <p class="clearFloat"></p>
+      </div>
+      <div class="main">
+        <div class="homeBody">
+          <ul class="bodyFuncList" :controller="secondMenus" :if="@secondMenus.length">
+            <li class="bodyFuncItem left" ms-for="(index, menu) in @secondMenus"
+                :class="[(@active===@menu.text ? 'active':''),(@index===0 ? 'first':'')]">
+              <a class="menuText" :attr="{href:@menu.url}">{{ @menu.text }}</a>
+            </li>
+            <li class="clearFloat"></li>
+          </ul>
+          <!-- 当前位置 -->
+          <ul class="locationInfo ms-controller" :controller="locationInfo">
+            <li class="inline" :for="(i, menu) in @locationInfo">
+              <span class="text">{{ @menu.text }}</span>
+              <span class="chat" :if="@i!==@locationInfo.length-1">/</span>
+            </li>
+          </ul>
+          <div class="contentBody">
+            <!-- 分类 -->
+            <div class="layui-row infoClassBox ms-controller" :controller="infoClass">
+              <div class="inline class" ms-for="(k, v) in @infoClass" :class="[(@classActive===@v.classStr ? 'active':'')]" :click="@clickMenuCall(@v)">
+                {{ v.classStr }}
+              </div>
+            </div>
+            <!-- 填写 -->
+            <form class="inputMain">
+              <div class="inputItem noMargin">
+                <label class="inputText first"><span>*</span>项目牵头部门承担任务</label>
+                <div class="inputBox textarea">
+                  <textarea autosize="off" cols="30" rows="10" placeholder="请输入项目进展情况"></textarea>
+                </div>
+                <div class="clearFloat"></div>
+              </div>
+              <div class="inputItem" :controller="masterPro">
+                <div>
+                  <p class="classTitle left">各部门承担任务项目牵头部门</p>
+                  <a class="btn text right" :click="@add">添加</a>
+                  <div class="clearFloat"></div>
+                </div>
+                <div class="inputTableBox">
+                  <div class="inputTableItem" ms-for="(i,pro) in @inputVal">
+                    <ul class="topInfo">
+                      <li class="left index"><span>序号{{ i+1 }}</span></li>
+                      <li class="left type"><span>经营计划处</span></li>
+                      <li class="left icon"><img :click="@remove(@i)" src="/img/access/first/delete_icon.png" alt=""></li>
+                      <li class="clearFloat"></li>
+                    </ul>
+                    <ul class="inputTableMain">
+                      <li ms-for="(pi,proItem) in @pro">
+                        <div class="inputItem">
+                          <label class="inputText left">{{ proItem.title }}</label>
+                          <div class="inputBox left">
+                            <input type="text" value="">
+                          </div>
+                          <div class="clearFloat"></div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="inputItem" :controller="slavePro">
+                <div>
+                  <p class="classTitle left">各部门承担任务项目参与部门</p>
+                  <a class="btn text right" :click="@add">添加</a>
+                  <div class="clearFloat"></div>
+                </div>
+                <div class="inputTableBox">
+                  <div class="inputTableItem" ms-for="(i,pro) in @inputVal">
+                    <ul class="topInfo">
+                      <li class="left index"><span>序号{{ i+1 }}</span></li>
+                      <li class="left type"><span>经营计划处</span></li>
+                      <li class="left icon"><img :click="@remove(@i)" src="/img/access/first/delete_icon.png" alt=""></li>
+                      <li class="clearFloat"></li>
+                    </ul>
+                    <ul class="inputTableMain">
+                      <li ms-for="(pi,proItem) in @pro">
+                        <div class="inputItem">
+                          <label class="inputText left">{{ proItem.title }}</label>
+                          <div class="inputBox left">
+                            <input type="text" value="">
+                          </div>
+                          <div class="clearFloat"></div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="btnBox">
+                <button class="btn">提交</button>
+                <button class="btn">保存</button>
+                <button class="btn green">关联附表</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/html" id="usernameTpl">
+    <div class="inputBox">
+      <input type="text" placeholder="请输入" :input="@d.username">
+    </div>
+  </script>
+  <script type="text/html" id="dutyTpl">
+    <div class="inputBox">
+      <input type="text" placeholder="请输入" :input="@d.duty">
+    </div>
+  </script>
+  <script type="text/html" id="titleTpl">
+    <div class="inputBox">
+      <input type="text" placeholder="请输入" :input="@d.title">
+    </div>
+  </script>
+  <script type="text/html" id="typeTpl">
+    <div class="inputBox">
+      <input type="text" placeholder="请输入" :input="@d.type">
+    </div>
+  </script>
+  <script type="text/html" id="workloadTpl">
+    <div class="inputBox">
+      <input type="text" placeholder="请输入" :input="@d.workload">
+    </div>
+  </script>
+  <script type="text/html" id="todoTpl">
+    <button class="btn primary text" lay-event="del">删除</button>
+  </script>
+  <script src="/js/compose/layout.js"></script>
+  <script src="/js/compose/menus.js"></script>
+  <script>
+    var locationInfo = avalon.define({
+      $id: 'locationInfo',
+      locationInfo: []
+    });
+    // 初始化菜单选中
+    menus.$watch('onReady', function () {
+      locationInfo.locationInfo = this.location.$model;
+    });
+
+    var infoClass = avalon.define({
+      $id: 'infoClass',
+      classActive: '基础信息',
+      infoClass: [
+        {classStr: '基础信息'},
+        {classStr: '计划节点'},
+        {classStr: '质量控制和成果'},
+        {classStr: '承担的任务'},
+        {classStr: '全周期成本情况'},
+        {classStr: '全周期收入预算'},
+        {classStr: '全周期支出预算'}
+      ],
+      clickMenuCall: function (menu) {
+        this.classActive = menu.classStr;
+      }
+    });
+
+    var masterPro = avalon.define({
+      $id: 'masterPro',
+      inputVal: [
+        [
+          {title: '姓名', val: ''},
+          {title: '职责', val: ''},
+          {title: '职称及学历', val: ''},
+          {title: '类别', val: ''},
+          {title: '工作量（人/年）', val: ''}
+        ]
+      ],
+      add: function () {
+        this.inputVal.push([
+          {title: '姓名', val: ''},
+          {title: '职责', val: ''},
+          {title: '职称及学历', val: ''},
+          {title: '类别', val: ''},
+          {title: '工作量（人/年）', val: ''}
+        ]);
+      },
+      remove: function (i) {
+        this.inputVal.splice(i, 1);
+      }
+    });
+
+    var slavePro = avalon.define({
+      $id: 'slavePro',
+      inputVal: [
+        [
+          {title: '姓名', val: ''},
+          {title: '职责', val: ''},
+          {title: '职称及学历', val: ''},
+          {title: '类别', val: ''},
+          {title: '工作量（人/年）', val: ''}
+        ]
+      ],
+      add: function () {
+        this.inputVal.push([
+          {title: '姓名', val: ''},
+          {title: '职责', val: ''},
+          {title: '职称及学历', val: ''},
+          {title: '类别', val: ''},
+          {title: '工作量（人/年）', val: ''}
+        ]);
+      },
+      remove: function (i) {
+        this.inputVal.splice(i, 1);
+      }
+    });
+
+  </script>
+</body>
+</html>

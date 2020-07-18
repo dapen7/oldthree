@@ -1,0 +1,55 @@
+.main{padding: 15px;}
+.homeBody{height: 100%;overflow: hidden;overflow-y: auto;}
+
+.info {}
+.info .infoItem{cursor:pointer;
+    background: #fff;border-radius: 8px;height: 60px;padding: 10px 0;overflow: hidden;}
+.info .infoBox{width: 140px;margin: 0 auto;}
+.info .infoBox img{width: 48px;height: 48px;margin: 4px 0;}
+.info .infoText{margin-left: 10px;font-size: 14px;color: #333;}
+.info .infoText p{line-height: 24px;margin-top: 0px;}
+.info .infoText .num{font-size: 16px;margin-top: 7px;}
+.info .infoItem.active{background: #058669;}
+.info .infoItem.active p{color: #fff;}
+.info .infoItem.active img{width: 38px;height: 38px;padding: 4px;border-radius: 5px;overflow: hidden;
+    background-color: #fff;}
+
+.homeBodyContent{padding: 15px;background: #fff;}
+.homeBodyContent .topInfo{height: 40px;margin-bottom: 10px;border-bottom: 2px solid #EEEEEE;}
+.homeBodyContent .topClass{width: 7px;height: 30px;display: inline-block;background: #18A283;}
+.homeBodyContent .topClassText{font-size: 16px;line-height: 30px;margin-left:10px;color: #333;}
+.homeBodyContent .topClassText b{font-weight: normal;color: #ccc;}
+.homeBodyContent .topClassMore{font-size: 14px;line-height: 30px;color: #ccc;cursor: pointer;}
+.homeBodyContent .contentBox{margin-bottom: -25px}
+.homeBodyContent .contentItem{height: 64px;line-height: 64px;overflow: hidden;border-bottom: 1px solid #F5F5F5;}
+.homeBodyContent .class{font-size: 14px;font-weight: 500;}
+.homeBodyContent .describe{font-size: 14px;font-weight: 400;}
+.homeBodyContent .date{font-size: 16px;font-weight: 400;color: #9B9B9B;}
+.homeBodyContent.matter{margin-top: 25px;}
+.homeBodyContent.matter .contentItem{height: 48px;line-height: 48px;}
+.notice .topInfo{border: none;height: 76px;}
+.notice .noticeClassBox{padding-top: 45px;text-align: center; }
+.notice .noticeClassBox .class{font-size: 14px;}
+.notice .contentContentBox{margin-bottom: -25px; }
+.notice .class{cursor: pointer;padding-bottom: 8px;border-bottom:2px solid #F5F5F5;padding-left: 10px;}
+.notice .date{text-align: center;}
+.notice .active{color: #058669;border-bottom:2px solid #058669; }
+.notice .contentItem{height: 40px;line-height: 40px;border: none;background: #F9FBFF;margin-bottom: 12px;}
+
+
+.dataView{margin-top: 25px;}
+.dataView .contentContentBox{width: 100%;height: 356px;}
+#dataViewMain{width: 100%;height: 100%;}
+
+.taskCount .topInfo{margin-bottom: 15px;}
+.taskCount .contentBox{padding-bottom: 15px;}
+.taskCountMain{background: #EAF5FF;border-radius: 20px;}
+.taskCountMain .percentage{width: 100%;font-size: 26px;text-align: center;line-height: 100px;position: absolute;left: 0;top: 20px;}
+.taskCountMain .svg{width: 100px;height: 100px;position: relative;display: block;margin: 0 auto;padding-top: 20px;}
+.taskCountMain .svg circle {
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 1s linear;
+}
+.taskCountMain .infoBox{margin-top: 8px;text-align: center;padding-bottom: 15px;}
+.taskCountMain .infoBox .title{padding-bottom: 2px;color: #333;font-size: 14px;}
+.taskCountMain .infoBox .des{font-size: 12px;color: #9B9B9B;}

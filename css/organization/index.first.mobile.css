@@ -1,0 +1,60 @@
+.main{
+    padding: 15px;
+    overflow: auto;
+}
+.contentBody{
+    height: 100%;
+    background: #fff;
+    overflow: auto;
+}
+.locationInfo.add {padding-bottom: 25px;border-bottom: 1px solid #F5F5F5;}
+
+.search{background: #fff;;padding:15px;}
+.search .inputItem{margin-bottom: 12px;}
+.search .btn{margin-left: 8px;}
+
+.table{background: #fff;height: 50%;padding:0 25px;}
+.table a{color: #2A7FDA;}
+.table .icon{width: 20px;height: 20px;cursor: pointer;margin:0 5px;display: inline-block;background-size: 100%;}
+.table .editIcon{background-image: url("/img/access/first/edit_icon.png");}
+.table .delIcon{background-image: url("/img/access/first/delete_icon.png");}
+
+/* 添加 */
+.inputMain{padding: 10px;background: #fff;}
+.inputMain .inputItem{margin-top: 12px;}
+.inputMain .inputItem .inputBox{width: 68%}
+.inputMain .inputItem .inputText{width: 24%;text-align: right;}
+.inputMain .inputItem .inputText span{color: #E91126;font-size: 16px;line-height: 40px;margin-right: 4px;}
+.inputMain .inputItem .tips{color: #E91126;margin-left: 15px;line-height: normal;}
+.inputMain .inputItem .radioBox{padding-top: 5px;margin-left: 10px;}
+.inputMain .inputItem .checkBox{width: 68%;padding-top: 5px;margin-left: 10px;}
+.inputMain .inputItem .checkBox p{padding: 8px 0;}
+.inputMain .inputItem .textarea{width: 68%;height: 130px;line-height: normal;}
+.inputMain .btnBox{width:100%;box-shadow: 0px 0px 5px #ccc;padding: 10px 25px;margin:-25px;margin-top: 15px;background: #fff;text-align: center;}
+.inputMain .btnBox .btn{margin: 0 10px;}
+
+/* 添加 */
+.inputMain2{padding: 10px;background: #fff;}
+.inputMain2 .inputItem{margin-bottom: 10px;}
+.inputMain2 .inputItem.inline{}
+.inputMain2 .inputItem .inline .inputText{width: 22%;text-align: right;}
+.inputMain2 .inputItem .inline .inputBox{width: 71%;}
+.inputMain2 .inputItem.inline .inputText{width: auto;}
+.inputMain2 .inputItem.inline span{color: #2A7FDA;margin-left: 10px;margin-right: 20px;font-weight: 500;}
+.inputMain2 .inputItem.inline .inputBox{width: 100px;margin-left: 25px;}
+.inputMain2 .inputItem.btnBox .btn{margin-right: 25px;}
+.inputMain2 .inputItem .readonly{background: #DDDFE6;}
+.inputMain2 .inputItem .readonly input{background: #DDDFE6;color: #333;}
+.inputMain2 .thSelect{width: 68%;}
+.inputMain2 .thSelect .inputBox{width: 100%;margin-bottom: 10px;}
+.inputMain2 .showText{border: none;}
+.inputMain2 .result.inputBox{width: 100%;border: none;padding: 0;}
+.inputMain2 .result .inputBox{width: 90%;height: 40px;}
+.inputMain2 .result .layui-table-cell{height: auto;}
+.inputMain2 .showText span{color: #2A7FDA;}
+.inputMain2 .inputItem .inputText span{color: #E91126;font-size: 16px;line-height: 40px;margin-right: 4px;}
+.inputMain2 .inputItem .tips{color: #E91126;font-size: 16px;margin-left: 50px;}
+.inputMain2 .inputItem .radioBox{padding-top: 5px;margin-left: 25px;}
+.inputMain2 .inputItem .checkBox{height: auto;padding-top: 5px;margin-left: 25px;}
+.inputMain2 .inputItem .checkBox p{padding: 8px 0;}
+.inputMain2 .inputItem .textarea{height: 130px;line-height: normal;}

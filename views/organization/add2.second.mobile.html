@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>我的工作台</title>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-control" content="no-cache">
+  <meta http-equiv="Cache" content="no-cache">
+
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/js/lib/layui/css/layui.css">
+  <link rel="stylesheet" href="/css/layout.second.mobile.css">
+  <link rel="stylesheet" href="/css/organization/index.second.mobile.css">
+  <script>
+    var __themeName = 'second';
+  </script>
+  <script src="/js/lib/avalon/avalon.js"></script>
+  <script src="/js/lib/layui/layui.js"></script>
+</head>
+<body class="secondTheme">
+  <div class="layout" :controller="layout">
+    <div class="topBar">
+      <div class="topBarBox">
+        <!-- 顶部logo -->
+        <div class="topMenu left">
+          <img onclick="menuToggleShow()" class="menuSHBtn left" src="/img/access/second/home_list_icon.png" alt="">
+          <!--        <ul class="secondMenus" :controller="secondMenus">-->
+          <!--          <li class="menuItem" :for="(i, menu) in @secondMenus">-->
+          <!--            <span :if="@menu.child.length">{{ @menu.text }}</span>-->
+          <!--            <a :if="@menu.child.length===0" class="menuLink" :class="[(@menu.url===@active ? 'active':'')]" :attr="{href:@menu.url}">{{ @menu.text }}</a>-->
+          <!--            <img :if="@menu.child.length" class="more" src="/img/access/second/zhankai_icon.png" alt="">-->
+          <!--            <ul class="moreMenu" :for="(mi, moreMenu) in @menu.child">-->
+          <!--              <li class="moreMItem" :class="[(@menu.url===@active ? 'active':'')]">-->
+          <!--                <a :attr="{href:@moreMenu.url}">{{ @moreMenu.text }}</a>-->
+          <!--              </li>-->
+          <!--            </ul>-->
+          <!--          </li>-->
+          <!--        </ul>-->
+        </div>
+        <div class="otherBox left">
+          <div class="topSearch left">
+            <div class="inputItem">
+              <div class="inputBox icon inline">
+                <input type="text" placeholder="输入关键词搜索…">
+                <img src="/img/access/second/search_icon.png" alt="">
+              </div>
+            </div>
+          </div>
+          <ul class="fucList left">
+            <li class="fucItem left">
+              <a href="/views/nav.second.mobile.html">
+                <img class="left" src="/img/access/second/home_icon.png" alt="">
+              </a>
+            </li>
+            <li class="fucItem left">
+              <img class="left" onclick="toggleTheme()" src="/img/access/second/theme_icon.png" alt="">
+            </li>
+          </ul>
+          <div class="userInfo left">
+            <div class="userInfoBox">
+              <a href="/views/login.second.mobile.html">
+                <img class="headPic left" src="/img/access/second/home_headpic_icon.png" alt="">
+              </a>
+              <img class="loginSelect left" src="/img/access/second/zhankai_icon.png" alt="">
+            </div>
+          </div>
+          <p class="clearFloat"></p>
+        </div>
+        <p class="clearFloat"></p>
+      </div>
+    </div>
+    <!-- 菜单 -->
+    <div class="menu">
+      <ul class="menus" :controller="menus" :css="{width:@width}">
+        <li class="menuItem" :for="(i, menu) in @menus">
+          <div class="menuBox" :class="[(@menu.open && @menu.url===@active ? 'active':'')]">
+            <p :if="@menu.child.length" :click="@clickMenuCall(@menu,2)" class="menuText hadChild">{{ @menu.text }}</p>
+            <a :if="!@menu.child.length" class="menuText" :attr="{href:@menu.url}">{{ @menu.text }}</a>
+            <span class="menuIcon" :if="@menu.child.length"></span>
+          </div>
+          <!-- 二级菜单 -->
+          <ul class="menuChild" :class="[(@menu.open ? 'active':'')]">
+            <li class="menuItem" :for="(chI, chMenu) in @menu.child">
+              <div class="menuBox" :class="[(@chMenu.url===active ? 'active':'')]">
+                <p :if="@chMenu.child.length" :click="@clickMenuCall(@chMenu,2)" class="menuText">{{ @chMenu.text }}</p>
+                <a :if="!@chMenu.child.length" class="menuText" :attr="{href:@chMenu.url}">{{ @chMenu.text }}</a>
+                <span class="menuIcon" :if="@chMenu.child.length"></span>
+              </div>
+              <!-- 三级菜单 -->
+              <ul class="menuChild" :for="(sI, sMenu) in @chMenu.child" :class="[(@chMenu.url===active ? 'active':'')]" :visible="@chMenu.open">
+                <li class="menuItem">
+                  <div class="menuBox" :class="[(@sMenu.url===active ? 'active':'')]">
+                    <span class="menuIcon" :if="@sMenu.child.length"></span>
+                    <a class="menuText" :attr="{href:@sMenu.url}">{{ @sMenu.text }}</a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="body">
+      <div class="main">
+        <!-- 当前位置 -->
+        <ul class="locationInfo add" :controller="locationInfo">
+          <li class="inline" :for="(i, menu) in @locationInfo">
+            <span class="text">{{ @menu.text }}</span>
+            <span class="chat" :if="@i!==@locationInfo.length-1">/</span>
+          </li>
+        </ul>
+        <div class="contentBody">
+          <!-- 填写 -->
+          <form class="inputMain2" action="">
+            <div class="inputItem inline">
+              <label class="inputText">报工状态</label>
+              <span>未报工</span>
+              <label class="inputText">检验状态</label>
+              <span>未报工</span>
+            </div>
+            <div class="inputItem btnBox inline">
+              <button class="btn">互检完成</button>
+              <button class="btn">快速报工</button>
+            </div>
+            <div class="inputItem">
+              <label class="inputText left">技术要求</label>
+              <div class="thSelect left">
+                <div class="inputBox inline">
+                  <select name="interest" lay-filter="aihao" class="inline">
+                    <option value="0">工序1</option>
+                  </select>
+                </div>
+                <div class="inputBox inline">
+                  <select name="interest" lay-filter="aihao" class="inline">
+                    <option value="0">请选择</option>
+                  </select>
+                </div>
+                <div class="inputBox inline">
+                  <select name="interest" lay-filter="aihao" class="inline">
+                    <option value="0">请选择</option>
+                  </select>
+                </div>
+              </div>
+              <div class="clearFloat"></div>
+            </div>
+
+            <div class="inputItem">
+              <label class="inputText left" style="width: 100%;text-align: left;"><span>*</span>检查结果</label>
+              <div class="inputBox result left">
+                <table id="table"></table>
+              </div>
+              <div class="clearFloat"></div>
+            </div>
+            <div class="inputItem">
+              <label class="inputText left">执行状态</label>
+              <div class="inputBox readonly left">
+                <input type="text" readonly value="填报完成">
+              </div>
+              <div class="clearFloat"></div>
+            </div>
+
+            <div class="inputItem">
+              <label class="inputText left">备注</label>
+              <div class="inputBox textarea left">
+                <textarea autosize="off" cols="30" rows="10" placeholder="请输入备注"></textarea>
+              </div>
+              <div class="clearFloat"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/html" id="nameTpl">
+    <div class="inputBox inline">
+      <input type="text" placeholder="请输入" :input="@d.name">
+    </div>
+  </script>
+  <script type="text/html" id="valTpl">
+    <div class="inputBox inline">
+      <input type="text" placeholder="请输入" :input="@d.val">
+    </div>
+  </script>
+  <script src="/js/compose/layout.js"></script>
+  <script src="/js/compose/menus.js"></script>
+  <script>
+    var locationInfo = avalon.define({
+      $id: 'locationInfo',
+      locationInfo: []
+    });
+    // 初始化菜单选中
+    menus.$watch('onReady', function () {
+      locationInfo.locationInfo = this.location.$model;
+    });
+
+    layui.use('table', function () {
+      var table = layui.table;
+
+      table.render({
+        elem: '#table'
+        , cols: [
+          [
+            {field: 'name', title: '参数名称', align: 'center', style: 'height:60px;', templet: '#nameTpl'}, //width 支持：数字、百分比和不填写。你还可以通过 minWidth 参数局部定义当前单元格的最小宽度，layui 2.2.1 新增
+            {field: 'val', title: '参数值', align: 'center', style: 'height:60px;', templet: '#valTpl'}
+          ]]
+        , data: [
+          {name: 'test07', val: '123'},
+          {name: 'test08', val: '456'}
+        ]
+      });
+
+      //监听工具条
+      table.on('tool(table)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+        var data = obj.data; //获得当前行数据
+        var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+        var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
+        switch (layEvent) {
+          case 'del':
+            break;
+          case 'edit':
+            break;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+.body{overflow: hidden;overflow-y: auto;}
+.main{
+    padding: 25px 0;
+}
+.contentBody{
+    height: 100%;
+}
+
+.homeMainBox{padding: 20px;margin-top: 25px;background: #2C345B;border-radius: 4px}
+
+.infoClassBox{padding:0 25px;border-bottom:2px solid #DDDFE6;color: #ccc;}
+.infoClassBox .class{cursor: pointer;padding-bottom: 20px;border-bottom:2px solid #DDDFE6;margin:0 30px;margin-bottom: -2px;}
+.infoClassBox .active{color: #3884F8;border-bottom:2px solid #3884F8; }
+
+/* 添加 */
+.inputMain{margin-top: 35px;padding: 0 25px;color: #ccc;}
+.inputMain .inputItem{margin-top: 25px;}
+.inputMain .inputItem .inputBox{width: 350px;margin-left: 25px;}
+.inputMain .inputItem .inputText{width: 150px;display: inline-block;text-align: right;}
+.inputMain .inputItem .first{width: 172px;}
+.inputMain .inputItem .layui-table .inputBox{width: 100%;height: 40px;margin-left: 0;}
+.inputMain .inputItem .layui-table-cell{height: auto;}
+.inputMain .inputItem .inputText span{color: #E91126;font-size: 16px;line-height: 40px;margin-right: 4px;}
+.inputMain .inputItem .tips{color: #E91126;font-size: 16px;margin-left: 50px;}
+.inputMain .inputItem .radioBox{padding-top: 5px;margin-left: 25px;}
+.inputMain .inputItem .checkBox{height: auto;padding-top: 5px;margin-left: 25px;}
+.inputMain .inputItem .checkBox p{padding: 8px 0;}
+.inputMain .inputItem .textarea{width: 100%;height: 250px;line-height: normal;margin-left: 0}
+.inputMain .btnBox{padding-top: 30px;}
+.inputMain .btnBox .btn{margin-right: 20px;}
+
+.layui-laypage .layui-laypage-curr .layui-laypage-em{background: #2C345B;}
+.layui-table-page .layui-laypage input{background: #2C345B;color: #ccc;}
+.layui-table td, .layui-table th, .layui-table-col-set, .layui-table-fixed-r, .layui-table-grid-down, .layui-table-header, .layui-table-page, .layui-table-tips-main, .layui-table-tool, .layui-table-total, .layui-table-view, .layui-table[lay-skin=line], .layui-table[lay-skin=row]{background: #2C345B;color: #ccc;}
+.layui-table-page .layui-laypage span{color: #ccc;}

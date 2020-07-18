@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>中国航天电子技术研究院</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-control" content="no-cache">
+  <meta http-equiv="Cache" content="no-cache">
+
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/nav.third.mobile.css">
+  <link rel="stylesheet" href="/css/swiper.min.css">
+  <script>
+    var __themeName = 'third';
+  </script>
+  <script src="/js/lib/avalon/avalon.js"></script>
+  <script src="/js/lib/tool/swiper.min.js"></script>
+</head>
+<body class="thirdTheme">
+  <div class="nav">
+    <h1 class="title">中国航天电子技术研究院</h1>
+    <p class="appName">质量管理信息系统</p>
+    <ul class="apps swiper-wrapper" ms-controller="apps" >
+      <li class="appItem swiper-slide left" ms-for="(k, v) in @apps" :class="[(@k===@apps.length-1 ? 'last':'')]">
+        <img :attr="{src:@v.icon}" alt="">
+        <h2>{{ v.title }}</h2>
+        <p ms-for="(lk, lv) in @apps[k]['links']" :class="[(@lk===0 ? 'third':'')]">
+          <a :attr="{href:@lv.url}">{{ lv.text }}</a>
+        </p>
+      </li>
+      <li class="clearFloat"></li>
+    </ul>
+  </div>
+  <script>
+    var apps = avalon.define({
+      $id: 'apps',
+      apps: [
+        {
+          icon: '/img/access/third/system_select1_icon.png',
+          title: '质量管理',
+          links: [
+            {url: './home.third.mobile.html', text: '质量快报'},
+            {url: './home.third.mobile.html', text: '问题跟踪'},
+            {url: './home.third.mobile.html', text: 'A1采集卡'},
+            {url: './home.third.mobile.html', text: '举一反三'},
+            {url: './home.third.mobile.html', text: '监督检查'}
+          ]
+        },
+        {
+          icon: '/img/access/third/system_select2_icon.png',
+          title: '知识管理',
+          links: [
+            {url: './home.third.mobile.html', text: '质量管理体系'},
+            {url: './home.third.mobile.html', text: '规章制度'},
+            {url: './home.third.mobile.html', text: '质量案例'},
+            {url: './home.third.mobile.html', text: '归零报告汇编'},
+            {url: './home.third.mobile.html', text: '质量体系评估'},
+            {url: './home.third.mobile.html', text: '最佳实践'}
+          ]
+        },
+        {
+          icon: '/img/access/third/system_select3_icon.png',
+          title: '领导驾驶舱',
+          links: [
+            {url: './home.third.mobile.html', text: '统计分析'},
+            {url: './home.third.mobile.html', text: '数据展现'}
+          ]
+        },
+        {
+          icon: '/img/access/third/system_select4_icon.png',
+          title: '重要通知',
+          links: [
+            {url: '', text: '外交部：中俄深化友…'},
+            {url: '', text: '全国统战部长会议在…'},
+            {url: '', text: '李克强：多措并举为…'},
+            {url: '', text: '李克强主持召开座谈…'},
+            {url: '', text: '亲自抓、带头干，习…'},
+            {url: '', text: '更多'}
+          ]
+        }
+      ]
+    });
+
+    // 初始化菜单选中
+    apps.$watch('onReady', function () {
+      var swiper = new Swiper('.nav', {
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        loop: true,
+        spaceBetween: 30,
+        coverflow: {
+          rotate: -50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows : true
+        }
+      });
+    });
+  </script>
+</body>
+</html>

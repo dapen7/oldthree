@@ -1,0 +1,22 @@
+.main{
+    padding: 25px;
+    overflow: auto;
+}
+.contentBody{
+    height: 100%;
+    overflow: auto;
+}
+
+.homeMainBox{padding: 20px;margin-top: 25px;background: #2C345B;border-radius: 4px}
+
+
+.table{height: 50%;margin-top: 20px;}
+.table a{color: #3884F8;}
+.table .icon{width: 28px;height: 28px;cursor: pointer;margin:0 20px;display: inline-block;background-size: 100%;}
+.table .editIcon{background-image: url("/img/access/third/edit_icon.png");}
+.table .delIcon{background-image: url("/img/access/third/delete_icon.png");}
+.table .addIcon{background-image: url("/img/access/third/add_icon.png");}
+.layui-laypage .layui-laypage-curr .layui-laypage-em{background: #2C345B;}
+.layui-table-page .layui-laypage input{background: #2C345B;color: #ccc;}
+.layui-table td, .layui-table th, .layui-table-col-set, .layui-table-fixed-r, .layui-table-grid-down, .layui-table-header, .layui-table-page, .layui-table-tips-main, .layui-table-tool, .layui-table-total, .layui-table-view, .layui-table[lay-skin=line], .layui-table[lay-skin=row]{background: #2C345B;color: #ccc;}
+.layui-table-page .layui-laypage span{color: #ccc;}

@@ -1,0 +1,34 @@
+.main{
+    padding: 25px;
+    overflow: auto;
+}
+.contentBody{
+    height: 100%;
+    background: #fff;
+    overflow: auto;
+}
+.locationInfo{
+    padding:25px 25px 0;
+}
+.locationInfo.add {padding-bottom: 25px;border-bottom: 1px solid #F5F5F5;}
+
+.infoClassBox{padding: 25px;padding-bottom: 0;border-bottom:2px solid #DDDFE6;}
+.infoClassBox .class{cursor: pointer;padding-bottom: 20px;border-bottom:2px solid #DDDFE6;margin:0 30px;margin-bottom: -2px;}
+.infoClassBox .active{color: #058669;border-bottom:2px solid #058669; }
+
+/* 添加 */
+.inputMain{margin-top: 35px;padding: 0 25px;}
+.inputMain .inputItem{margin-top: 25px;}
+.inputMain .inputItem .inputBox{width: 350px;margin-left: 25px;}
+.inputMain .inputItem .inputText{width: 150px;display: inline-block;text-align: right;}
+.inputMain .inputItem .first{width: 172px;}
+.inputMain .inputItem .layui-table .inputBox{width: 100%;height: 40px;margin-left: 0;}
+.inputMain .inputItem .layui-table-cell{height: auto;}
+.inputMain .inputItem .inputText span{color: #E91126;font-size: 16px;line-height: 40px;margin-right: 4px;}
+.inputMain .inputItem .tips{color: #E91126;font-size: 16px;margin-left: 50px;}
+.inputMain .inputItem .radioBox{padding-top: 5px;margin-left: 25px;}
+.inputMain .inputItem .checkBox{height: auto;padding-top: 5px;margin-left: 25px;}
+.inputMain .inputItem .checkBox p{padding: 8px 0;}
+.inputMain .inputItem .textarea{width: 100%;height: 250px;line-height: normal;margin-left: 0}
+.inputMain .btnBox{padding-top: 30px;}
+.inputMain .btnBox .btn{margin-right: 20px;}

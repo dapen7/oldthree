@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>登录</title>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-control" content="no-cache">
+  <meta http-equiv="Cache" content="no-cache">
+
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/login.second.css">
+  <!-- 大于等于IE8小于等于IE10 -->
+  <!--[if (gte IE 8)&(lte IE 10)]>
+  <script src="/js/patch/ie7.js"></script>
+  <script src="/js/patch/json3.min.js"></script>
+  <script src="/js/patch/promise.js"></script>
+  <![endif]-->
+  <script src="/js/lib/avalon/avalon.js"></script>
+</head>
+
+<body class="secondTheme">
+  <div class="login">
+    <div class="main right">
+      <div class="appLogin" ms-controller="appLogin">
+        <h3 class="appName">数通智合快速开发平台</h3>
+        <form :validate="@validate">
+          <div class="iconInput userName">
+            <img src="/img/access/first/login_user_icon.png" alt="">
+            <input type="text" placeholder="请输入登录名" :duplex="@userName" :rules="{ required: true }"/>
+          </div>
+          <div class="iconInput password">
+            <img src="/img/access/first/login_password_icon.png" alt="">
+            <input type="text" placeholder="请输入密码" :duplex="@password" :rules="{ required: true }"/>
+          </div>
+          <div class="rememberMe">
+            <img :if="@rememberMe===false" class="left" src="/img/access/second/checkbox_icon.png" alt="" :click="@rememberMeCall">
+            <img :if="@rememberMe===true" class="left" src="/img/access/second/checkbox_select_icon.png" alt="" :click="@rememberMeCall">
+            <label class="left" :click="@rememberMeCall">记住我（公共场所慎用）</label>
+            <p class="clearFloat"></p>
+          </div>
+          <a href="javascript:void(0)" class="loginBtn" :click="@loginCall">登录</a>
+          <p class="themeSelect" onclick="toggleTheme()">
+            <span>Flat主题</span>
+            <img src="/img/access/second/login_select_icon.png" alt="">
+          </p>
+        </form>
+      </div>
+    </div>
+    <p class="clearFloat"></p>
+  </div>
+  <p class="copyright">Copyright @ 2017-2019 数通智合快速开发平台 - Powered By 北京航天控制仪器研究所 v1.0.0</p>
+  <script>
+    var appLogin = avalon.define({
+      $id: 'appLogin',
+      userName: '',
+      password: '',
+      rememberMe: true,
+      validateAllInSubmit: false,
+      loginCall: function (e) {
+        e.preventDefault();
+        this.validate.onManual();
+        window.location.href = './nav.second.html';
+//        if (this.validateAllInSubmit) {
+//          console.log('登录')
+//        }
+//        console.log(this.validateAllInSubmit)
+      },
+      rememberMeCall: function (e) {
+        e.preventDefault();
+        this.rememberMe = !this.rememberMe;
+      },
+      validate: {
+        onSuccess: function (reasons, event) {
+          console.log('成功', reasons);
+        },
+        onError: function (reasons, event) {
+          console.log('有验证没有通过');
+        },
+        onValidateAll: function (reasons) {
+//          var form = this
+          if (reasons.length) {
+            // 表单有错误
+            console.log('有验证没有通过', reasons);
+            return false;
+          } else {
+            // 验证成功
+            console.log('验证全部通过', reasons);
+            console.log(reasons);
+//            this.validateAllInSubmit = true
+//            form.submit()
+            return true;
+          }
+        }
+      }
+    });
+
+    function toggleTheme () {
+      var url = window.location.href;
+      var themeName = /\.(\w+)\.html/.exec(url)[1];
+      var newTheme = '';
+      switch (themeName) {
+        case 'first':
+          newTheme = 'second';
+          break;
+        case 'second':
+          newTheme = 'third';
+          break;
+        case 'third':
+          newTheme = 'first';
+          break;
+      }
+      url = url.replace(themeName, newTheme);
+      window.location.href = url;
+    }
+  </script>
+</body>
+
+</html>

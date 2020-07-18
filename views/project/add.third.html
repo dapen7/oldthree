@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>我的工作台</title>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-control" content="no-cache">
+  <meta http-equiv="Cache" content="no-cache">
+
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/js/lib/layui/css/layui.css">
+  <link rel="stylesheet" href="/css/layout.third.css">
+  <link rel="stylesheet" href="/css/project/index.third.css">
+  <!-- 大于等于IE8小于等于IE10 -->
+  <!--[if (gte IE 8)&(lte IE 10)]>
+  <script src="/js/patch/ie7.js"></script>
+  <script src="/js/patch/json3.min.js"></script>
+  <script src="/js/patch/promise.js"></script>
+  <![endif]-->
+  <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+  <!--[if lt IE 9]>
+  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script>
+    var __themeName = 'third';
+  </script>
+  <script src="/js/lib/avalon/avalon.js"></script>
+  <script src="/js/lib/layui/layui.js"></script>
+</head>
+<body class="thirdTheme">
+  <div class="layout showMenu" :controller="layout">
+    <div class="topBar">
+      <div class="topBarBox">
+        <!-- 顶部logo -->
+        <div class="topLogo left">
+          <a href="/views/nav.third.html">
+            <img class="logo left" src="/img/access/third/home_logo_icon.png" alt="">
+            <span class="comName left">CASC</span>
+          </a>
+          <p class="clearFloat"></p>
+        </div>
+        <div class="topMenu left">
+          <!-- 菜单 -->
+          <ul class="menus ms-controller" :controller="menus">
+            <!-- 一级菜单 -->
+            <li class="menuItem left" :for="(i, menu) in @menus" :class="{noMarLeft:@i===0}">
+              <div class="menuBox one" :class="[(@menu.url===active ? 'active':'')]">
+                <img class="menuIcon" :if="@menu.icon!==''" :attr="{src:@menu.icon}" alt="">
+                <span :if="@menu.child.length" :click="@clickMenuCall(@menu,1)" class="menuText">{{ @menu.text }}</span>
+                <a :if="!@menu.child.length" class="menuText" :attr="{href:@menu.url}">{{ @menu.text }}</a>
+              </div>
+              <!-- 二级菜单 -->
+              <div class="menuTwoBox" :if="@menu.child.length">
+                <ul class="menuChild">
+                  <li class="menuItem" :for="(chI, chMenu) in @menu.child">
+                    <div class="menuBox two" :class="[(@chMenu.url===active ? 'active':'')]">
+                      <img class="menuIcon" :if="@chMenu.icon!==''" :attr="{src:@chMenu.icon}" alt="">
+                      <span :if="@chMenu.child.length" :click="@clickMenuCall(@chMenu,2)" class="menuText">{{ @chMenu.text }}</span>
+                      <a :if="!@chMenu.child.length" class="menuText" :attr="{href:@chMenu.url}">{{ @chMenu.text }}</a>
+                    </div>
+                    <!-- 三级菜单 -->
+                    <div class="thirdBox" :if="@chMenu.child.length">
+                      <ul class="menuChild">
+                        <li class="menuItem" :for="(sI, sMenu) in @chMenu.child">
+                          <div class="menuBox three" :class="[(@sMenu.url===active ? 'active':'')]">
+                            <a class="menuText" :attr="{href:@sMenu.url}">{{ @sMenu.text }}</a>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="otherBox right">
+          <ul class="fucList left">
+            <li class="fucItem left">
+              <a href="/views/nav.third.html">
+                <img class="left" src="/img/access/third/home_icon.png" alt="">
+              </a>
+            </li>
+            <li class="fucItem left">
+              <img class="left" onclick="toggleTheme()" src="/img/access/third/theme_icon.png" alt="">
+            </li>
+          </ul>
+          <div class="userInfo left">
+            <div class="userInfoBox">
+              <img class="headPic left" src="/img/access/third/home_headpic_icon.png" alt="">
+              <span class="left">系统管理员</span>
+              <img class="loginSelect left" src="/img/access/third/zhankai_icon.png" alt="">
+            </div>
+            <ul class="userInfoTodo">
+              <li class="userInfoTodoItem">个人信息</li>
+              <li class="userInfoTodoItem">修改密码</li>
+              <li class="userInfoTodoItem">我的通知</li>
+              <li class="userInfoTodoItem line"><a href="/views/login.third.html"><span>退出</span></a></li>
+            </ul>
+          </div>
+          <p class="clearFloat"></p>
+        </div>
+        <p class="clearFloat"></p>
+      </div>
+    </div>
+    <div class="body">
+      <div class="main">
+        <div class="homeBody">
+          <!-- 当前位置 -->
+          <ul class="locationInfo add ms-controller" :controller="locationInfo">
+            <li class="inline">当前位置：</li>
+            <li class="inline" :for="(i, menu) in @locationInfo">
+              <span class="text">{{ @menu.text }}</span>
+              <span class="chat" :if="@i!==@locationInfo.length-1">></span>
+            </li>
+          </ul>
+          <div class="homeMainBox">
+            <!-- 分类 -->
+            <div class="layui-row infoClassBox ms-controller" :controller="infoClass">
+              <div class="inline class" ms-for="(k, v) in @infoClass" :class="[(@classActive===@v.classStr ? 'active':'')]" :click="@clickMenuCall(@v)">
+                {{ v.classStr }}
+              </div>
+            </div>
+            <!-- 填写 -->
+            <form class="inputMain" action="">
+              <div class="inputItem">
+                <label class="inputText first"><span>*</span>项目牵头部门承担任务</label>
+                <div class="inputBox textarea">
+                  <textarea autosize="off" cols="30" rows="10" placeholder="请输入项目进展情况"></textarea>
+                </div>
+                <div class="clearFloat"></div>
+              </div>
+              <div class="inputItem">
+                <p class="classTitle">各部门承担任务项目牵头部门</p>
+                <table id="taskTable"></table>
+                <div>
+                  <button class="btn">添加</button>
+                </div>
+              </div>
+              <div class="inputItem">
+                <p class="classTitle">各部门承担任务项目参与部门</p>
+                <table id="taskTable2"></table>
+                <div>
+                  <button class="btn">添加</button>
+                </div>
+              </div>
+
+              <div class="btnBox">
+                <button class="btn">提交</button>
+                <button class="btn">保存</button>
+                <button class="btn text">关联附表</button>
+              </div>
+              <br><br><br>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/html" id="usernameTpl">
+    <div class="inputBox">
+      <input type="text" placeholder="请输入" :input="@d.username">
+    </div>
+  </script>
+  <script type="text/html" id="dutyTpl">
+    <div class="inputBox">
+      <input type="text" placeholder="请输入" :input="@d.duty">
+    </div>
+  </script>
+  <script type="text/html" id="titleTpl">
+    <div class="inputBox">
+      <input type="text" placeholder="请输入" :input="@d.title">
+    </div>
+  </script>
+  <script type="text/html" id="typeTpl">
+    <div class="inputBox">
+      <input type="text" placeholder="请输入" :input="@d.type">
+    </div>
+  </script>
+  <script type="text/html" id="workloadTpl">
+    <div class="inputBox">
+      <input type="text" placeholder="请输入" :input="@d.workload">
+    </div>
+  </script>
+  <script type="text/html" id="todoTpl">
+    <button class="btn primary text" lay-event="del">删除</button>
+  </script>
+  <script src="/js/compose/layout.js"></script>
+  <script src="/js/compose/menus.js"></script>
+  <script>
+    var locationInfo = avalon.define({
+      $id: 'locationInfo',
+      locationInfo: []
+    });
+
+    // 初始化菜单选中
+    menus.$watch('onReady', function () {
+      locationInfo.locationInfo = this.location.$model;
+    });
+
+    var infoClass = avalon.define({
+      $id: 'infoClass',
+      classActive: '基础信息',
+      infoClass: [
+        {classStr: '基础信息'},
+        {classStr: '计划节点'},
+        {classStr: '质量控制和成果'},
+        {classStr: '承担的任务'},
+        {classStr: '全周期成本情况'},
+        {classStr: '全周期收入预算'},
+        {classStr: '全周期支出预算'}
+      ],
+      clickMenuCall: function (menu) {
+        this.classActive = menu.classStr;
+      }
+    });
+
+    layui.use('table', function () {
+      var table = layui.table;
+
+      table.render({
+        elem: '#taskTable'
+        , id: 'taskTable'
+        , filter: 'table'
+        , cols: [
+          [
+            {type: 'numbers'}
+//					{field:'index', title: '序号',align: 'center',style:"height:60px;"} //width 支持：数字、百分比和不填写。你还可以通过 minWidth 参数局部定义当前单元格的最小宽度，layui 2.2.1 新增
+            , {field: 'dep', title: '项目责任部门', align: 'center', style: 'height:60px;'} //width 支持：数字、百分比和不填写。你还可以通过 minWidth 参数局部定义当前单元格的最小宽度，layui 2.2.1 新增
+            , {field: 'username', title: '姓名', align: 'center', templet: '#usernameTpl', style: 'height:60px;'}
+            , {field: 'duty', title: '职责', align: 'center', templet: '#dutyTpl', style: 'height:60px;'}
+            , {field: 'title', title: '职称及学历', align: 'center', templet: '#titleTpl', style: 'height:60px;'}
+            , {field: 'type', title: '类别', align: 'center', templet: '#typeTpl', style: 'height:60px;'} //单元格内容水平居中
+            , {field: 'workload', title: '工作量（人/年）', align: 'center', templet: '#workloadTpl', style: 'height:60px;'} //单元格内容水平居中
+            , {field: 'todo', title: '操作', align: 'center', templet: '#todoTpl'}
+          ]]
+        , data: [
+          {dep: '经营计划处', username: '', duty: '', title: '', type: '', workload: ''},
+          {dep: '经营计划处', username: '', duty: '', title: '', type: '', workload: ''}
+        ]
+      });
+
+      //监听工具条
+      table.on('tool(table)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+        var data = obj.data; //获得当前行数据
+        var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+        var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
+        switch (layEvent) {
+          case 'del':
+            break;
+          case 'edit':
+            break;
+        }
+      });
+    });
+    layui.use('table', function () {
+      var table = layui.table;
+
+      table.render({
+        elem: '#taskTable2'
+        , id: 'taskTable2'
+        , filter: 'table'
+        , cols: [
+          [
+            {type: 'numbers'}
+//					{field:'index', title: '序号',align: 'center',style:"height:60px;"} //width 支持：数字、百分比和不填写。你还可以通过 minWidth 参数局部定义当前单元格的最小宽度，layui 2.2.1 新增
+            , {field: 'dep', title: '项目责任部门', align: 'center', style: 'height:60px;'} //width 支持：数字、百分比和不填写。你还可以通过 minWidth 参数局部定义当前单元格的最小宽度，layui 2.2.1 新增
+            , {field: 'username', title: '姓名', align: 'center', templet: '#usernameTpl', style: 'height:60px;'}
+            , {field: 'duty', title: '职责', align: 'center', templet: '#dutyTpl', style: 'height:60px;'}
+            , {field: 'title', title: '职称及学历', align: 'center', templet: '#titleTpl', style: 'height:60px;'}
+            , {field: 'type', title: '类别', align: 'center', templet: '#typeTpl', style: 'height:60px;'} //单元格内容水平居中
+            , {field: 'workload', title: '工作量（人/年）', align: 'center', templet: '#workloadTpl', style: 'height:60px;'} //单元格内容水平居中
+            , {field: 'todo', title: '操作', align: 'center', templet: '#todoTpl'}
+          ]]
+        , data: [
+          {dep: '经营计划处', username: '', duty: '', title: '', type: '', workload: ''},
+          {dep: '经营计划处', username: '', duty: '', title: '', type: '', workload: ''}
+        ]
+      });
+
+      layout.$watch('menuShow', function observe (a, b) {
+        setTimeout(function () {
+          //执行表格“尺寸结构”的重置，一般写在对应的事件中
+          table.resize('taskTable');
+          table.resize('taskTable2');
+        }, 1000 * 0.6);
+      });
+
+      window.onresize = function () {
+        //执行表格“尺寸结构”的重置，一般写在对应的事件中
+        table.resize('taskTable');
+        table.resize('taskTable2');
+      };
+
+      //监听工具条
+      table.on('tool(table)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+        var data = obj.data; //获得当前行数据
+        var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+        var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
+        switch (layEvent) {
+          case 'del':
+            break;
+          case 'edit':
+            break;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

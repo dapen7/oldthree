@@ -1,0 +1,41 @@
+.main{
+    overflow: auto;
+}
+.contentBody{
+    height: 100%;
+    background: #262C4E;
+    overflow: auto;
+}
+
+.infoClassBox{width: 100%;height: 40px;overflow: hidden;line-height: 40px;
+    background: #2C345B;margin:0 -15px 15px -15px;padding:0 15px;border-bottom:2px solid #DDDFE6;}
+.infoClassBox .class{cursor: pointer;padding-bottom: 0px;margin-left: 15px;border-bottom:2px solid #DDDFE6;margin-right:10px;margin-bottom: -2px;color: #ccc;}
+.infoClassBox .active{color: #2A7FDA;border-bottom:2px solid #2A7FDA; }
+
+.inputMain .btnBox{width:100%;box-shadow: 0px 0px 5px #262C4E;padding: 10px 25px;margin:-25px;margin-top: 15px;background: #2C345B;text-align: center;}
+.inputMain .btnBox .btn{margin: 0 10px;}
+/* 添加 */
+.inputMain{padding: 10px;background: #2C345B;margin: 15px;}
+.inputMain .inputItem{margin-top: 12px;}
+.inputMain .classTitle{color: #ccc;}
+.inputMain .inputItem.noMargin{margin-top: 0;}
+.inputMain .inputItem .inputBox{width: 350px;margin-left: 25px;}
+.inputMain .inputItem .inputText{width: 150px;display: inline-block;text-align: right;}
+.inputMain .inputItem .first{width: 172px;text-align: left;}
+.inputMain .inputItem .layui-table .inputBox{width: 80%;height: 40px;}
+.inputMain .inputItem .layui-table-cell{height: auto;}
+.inputMain .inputItem .inputText span{color: #E91126;font-size: 16px;line-height: 40px;margin-right: 4px;}
+.inputMain .inputItem .tips{color: #E91126;font-size: 16px;margin-left: 50px;}
+.inputMain .inputItem .radioBox{padding-top: 5px;margin-left: 25px;}
+.inputMain .inputItem .checkBox{height: auto;padding-top: 5px;margin-left: 25px;}
+.inputMain .inputItem .checkBox p{padding: 8px 0;}
+.inputMain .inputItem .textarea{width: 100%;height: 130px;line-height: normal;margin-left: 0}
+.inputTableBox {}
+.inputTableItem {border:1px solid rgba(221,223,230,1);padding-bottom: 15px}
+.inputTableItem .topInfo{line-height: 38px;border-bottom:1px solid rgba(221,223,230,1); background: #DDDFE6;}
+.inputTableItem .index{width: 30%;text-align: center;}
+.inputTableItem .type{width: 60%;}
+.inputTableItem .icon{width: 10%;}
+.inputTableItem .icon img{width: 14px;height: 14px;}
+.inputTableItem .inputItem .inputText{width: 38%;}
+.inputTableItem .inputItem .inputBox{width: 52%;margin-left: 0;}

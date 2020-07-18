@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>我的工作台</title>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-control" content="no-cache">
+  <meta http-equiv="Cache" content="no-cache">
+
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/js/lib/layui/css/layui.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/home.first.css">
+  <!-- 大于等于IE8小于等于IE10 -->
+  <!--[if (gte IE 8)&(lte IE 10)]>
+  <script src="/js/patch/ie7.js"></script>
+  <script src="/js/patch/json3.min.js"></script>
+  <script src="/js/patch/promise.js"></script>
+  <![endif]-->
+  <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+  <!--[if lt IE 9]>
+  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script>
+    var __themeName = 'first';
+  </script>
+  <script src="/js/lib/avalon/avalon.js"></script>
+  <script src="/js/lib/layui/layui.js"></script>
+  <script src="/js/lib/tool/echarts.js"></script>
+</head>
+
+<body class="firstTheme">
+  <div class="layout showMenu" :controller="layout">
+    <div class="menu">
+      <!-- 顶部logo -->
+      <div class="topLogo">
+        <a href="/views/nav.first.html">
+          <img class="logo left" src="/img/access/first/home_logo_icon.png" alt="">
+          <span class="comName left">CASC</span>
+        </a>
+        <p class="clearFloat"></p>
+      </div>
+      <ul class="menus ms-controller" :controller="menus">
+        <!-- 一级菜单 -->
+        <li class="menuItem" :for="(i, menu) in @menus">
+          <div class="menuBox" :class="[(@menu.url===active ? 'active':'')]">
+            <img class="menuIcon" :if="@menu.icon!==''" :attr="{src:@menu.icon}" alt="">
+            <p :if="@menu.child.length" :click="@clickMenuCall(@menu,1)" class="menuText">{{ @menu.text }}</p>
+            <a :if="!@menu.child.length" class="menuText" :attr="{href:@menu.url}">{{ @menu.text }}</a>
+            <div :if="@menu.child.length" class="menuStates">
+              <img :if="@menu.open" src="/img/access/first/home_open_icon.png" alt="">
+              <img :if="!@menu.open" src="/img/access/first/home_close_icon.png" alt="">
+            </div>
+          </div>
+          <!-- 二级菜单 -->
+          <ul class="menuChild" :for="(chI, chMenu) in @menu.child" :visible="@menu.open">
+            <li class="menuItem">
+              <div class="menuBox" :class="[(@chMenu.url===active ? 'active':'')]">
+                <img class="menuIcon" :if="@chMenu.icon!==''" :attr="{src:@chMenu.icon}" alt="">
+                <p :if="@chMenu.child.length" :click="@clickMenuCall(@chMenu,2)" class="menuText">{{ @chMenu.text }}</p>
+                <a :if="!@chMenu.child.length" class="menuText" :attr="{href:@chMenu.url}">{{ @chMenu.text }}</a>
+                <div :if="@chMenu.child.length" class="menuStates">
+                  <img :if="@chMenu.open" src="/img/access/first/home_open_icon.png" alt="">
+                  <img :if="!@chMenu.open" src="/img/access/first/home_close_icon.png" alt="">
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="body">
+      <div class="topBar">
+        <div class="tbHello left">
+          <img onclick="menuToggleShow()" class="left" src="/img/access/first/home_list_icon.png" alt="">
+          <span class="left">您好，电机电源精细化管理系统！</span>
+        </div>
+        <div class="otherBox right">
+          <ul class="fucList left">
+            <li class="fucItem left">
+              <a href="/views/nav.first.html">
+                <img class="left" src="/img/access/first/home_icon.png" alt="">
+                <span class="left">首页</span>
+              </a>
+            </li>
+            <li class="fucItem left" onclick="toggleTheme()">
+              <img class="left" src="/img/access/first/theme_icon.png" alt="">
+              <span class="left">主题</span>
+            </li>
+          </ul>
+          <div class="userInfo left">
+            <div class="userInfoBox">
+              <span class="left">您好！系统管理员</span>
+              <img class="headPic left" src="/img/access/first/home_headpic_icon.png" alt="">
+              <img class="loginSelect left" src="/img/access/first/login_select_icon.png" alt="">
+            </div>
+            <ul class="userInfoTodo">
+              <li class="userInfoTodoItem">个人信息</li>
+              <li class="userInfoTodoItem">修改密码</li>
+              <li class="userInfoTodoItem">我的通知</li>
+              <li class="userInfoTodoItem line"><a href="/views/login.first.html"><span>退出</span></a></li>
+            </ul>
+          </div>
+          <p class="clearFloat"></p>
+        </div>
+        <p class="clearFloat"></p>
+      </div>
+      <div class="main">
+        <div class="homeBody">
+          <ul class="bodyFuncList" :controller="secondMenus" :if="@secondMenus.length">
+            <li class="bodyFuncItem left" ms-for="(index, menu) in @secondMenus"
+              :class="[(@active===@menu.text ? 'active':''),(@index===0 ? 'first':'')]">
+              <a class="menuText" :attr="{href:@menu.url}">{{ @menu.text }}</a>
+            </li>
+            <li class="clearFloat"></li>
+          </ul>
+          <!-- 栅格化 -->
+          <div class="layui-row layui-col-space30">
+            <div class="layui-col-md8">
+              <div class="layui-row layui-col-space30">
+                <div class="layui-col-md6">
+                  <div class="homeBodyContent">
+                    <div class="topInfo">
+                      <span class="topClass left"></span>
+                      <span class="topClassText left">待办事项</span>
+                      <span class="topClassMore right">●●●</span>
+                    </div>
+                    <ul class="contentBox ms-controller" :controller="matter">
+                      <li class="layui-row contentItem" ms-for="(k, v) in @matter">
+                        <div class="layui-col-xs3 class">{{ v.classStr }}</div>
+                        <div class="layui-col-xs6 describe">{{ v.describe }}</div>
+                        <div class="layui-col-xs3 date">{{ v.date }}</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="layui-col-md6">
+                  <div class="homeBodyContent notice ms-controller" :controller="notice">
+                    <div class="topInfo">
+                      <span class="topClass left"></span>
+                      <span class="topClassText left">通知公告</span>
+                      <span class="topClassMore right">●●●</span>
+                      <div class="layui-row noticeClassBox">
+                        <div class="layui-col-xs4 class" ms-for="(k, v) in @noticeClass"
+                          :class="[(@classActive===@v.classStr ? 'active':'')]" :click="@clickMenuCall(@v)">
+                          {{ v.classStr }}
+                        </div>
+                      </div>
+                    </div>
+                    <ul class="contentContentBox">
+                      <li class="layui-row contentItem" ms-for="(k, v) in @noticeContent">
+                        <div class="layui-col-xs3 class">{{ v.classStr }}</div>
+                        <div class="layui-col-xs6 describe">{{ v.describe }}</div>
+                        <div class="layui-col-xs3 date">{{ v.date }}</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="layui-col-md12">
+                  <div class="homeBodyContent dataView ms-controller" :controller="notice">
+                    <div class="topInfo">
+                      <span class="topClass left"></span>
+                      <span class="topClassText left">数据概览：<b>近一周新增用户量</b></span>
+                      <span class="topClassMore right">●●●</span>
+                    </div>
+                    <div class="contentContentBox">
+                      <div id="dataViewMain"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="layui-col-md4">
+              <div class="homeBodyContent link">
+                <div class="topInfo">
+                  <span class="topClassText left">快捷方式</span>
+                  <span class="topClassMore right">●●●</span>
+                </div>
+                <ul class="layui-row contentBox ms-controller" :controller="link">
+                  <li class="layui-col-xs3 class" ms-for="(k, v) in @link">
+                    <div class="linkBox">
+                      <img :attr="{src:@v.img}" alt="">
+                    </div>
+                    <p>{{ v.classStr }}</p>
+                  </li>
+                </ul>
+              </div>
+              <div class="homeBodyContent taskCount">
+                <div class="topInfo">
+                  <span class="topClassText left">任务统计</span>
+                </div>
+                <ul class="layui-row contentBox ms-controller" :controller="taskCount">
+                  <li class="class" ms-for="(k, v) in @taskCount">
+                    <div class="layui-col-xs9">
+                      <span class="title">{{ v.classStr }}</span>
+                      <span class="des">（日同比{{ v.contrast }}%
+                        <img :if="v.type==='down'" src="/img/access/first/home_task_icon.png" alt="" />
+                        <img :if="v.type==='up'" src="/img/access/first/home_task2_icon.png" alt="" />）</span>
+                    </div>
+                    <div class="layui-col-xs3" align="right">
+                      <span class="percentage">{{ v.percentage }}%</span>
+                    </div>
+                    <div class="layui-col-xs12">
+                      <div class="bar" :css="{background:@v.bkcolor}"></div>
+                      <p :css="{width:@v.percentage+'%',background:@v.color}"></p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="homeBodyContent total">
+                <div class="topInfo">
+                  <span class="topClassText left">综合统计</span>
+                  <span class="topClassMore right">2019年12月
+                    <img src="/img/access/first/home_date_icon.png" alt="">
+                  </span>
+                </div>
+                <ul class="layui-row contentBox ms-controller" :controller="total">
+                  <li class="layui-row class" ms-for="(k, v) in @total" :class="{noBorder:@k===@total.length-1}">
+                    <div class="layui-col-xs9">
+                      <img class="img" :attr="{src:@v.img}" alt="">
+                      <span class="percentage">{{ v.percentage }}%</span>
+                      <span class="title">{{ v.classStr }}</span>
+                      <span class="des">{{ v.text }}</span>
+                    </div>
+                    <div class="layui-col-xs3" align="right">
+                      <span class="more">...</span>
+                    </div>
+                    <div class="layui-col-xs12">
+                      <div class="bar" :css="{background:@v.bkcolor}"></div>
+                      <p :css="{width:@v.percentage+'%',background:@v.color}"></p>
+                      <div class="layui-col-xs9">
+                        <span class="start">{{ v.start }}</span>
+                      </div>
+                      <div class="layui-col-xs3" align="right">
+                        <span class="end">{{ v.end }}</span>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/js/compose/layout.js"></script>
+  <script src="/js/compose/menus.js"></script>
+  <script>
+    //      var bodyFuncItem = avalon.define({
+    //        $id: 'bodyFuncItem',
+    //        active: '用户列表',
+    //        menus: [
+    //          {text: '用户列表'},
+    //          {text: '用户添加'},
+    //          {text: '用户管理'},
+    //          {text: '用户操作'}
+    //        ],
+    //        clickMenuCall: function (menu) {
+    //          this.active = menu.text
+    //        }
+    //      })
+    var matter = avalon.define({
+      $id: 'matter',
+      matter: [
+        { classStr: '审批类型', describe: '此处输入公告内容', date: '2019-12-06' },
+        { classStr: '待确认', describe: '此处输入公告内容', date: '2019-12-06' },
+        { classStr: '审批类型', describe: '此处输入公告内容', date: '2019-12-06' },
+        { classStr: '审批类型', describe: '此处输入公告内容', date: '2019-12-06' },
+        { classStr: '审批类型', describe: '此处输入公告内容', date: '2019-12-06' },
+        { classStr: '审批类型', describe: '此处输入公告内容', date: '2019-12-06' }
+      ]
+    });
+    var notice = avalon.define({
+      $id: 'notice',
+      classActive: '招聘公告',
+      noticeClass: [
+        { classStr: '招聘公告' },
+        { classStr: '近期通知' },
+        { classStr: '要点新闻' }
+      ],
+      noticeContent: [
+        { classStr: 'UI设计', describe: '此处输入公告内容', date: '2019-12-06' },
+        { classStr: '岗位名称', describe: '此处输入公告内容', date: '2019-12-06' },
+        { classStr: '岗位名称', describe: '此处输入公告内容', date: '2019-12-06' },
+        { classStr: '岗位名称', describe: '此处输入公告内容', date: '2019-12-06' },
+        { classStr: '岗位名称', describe: '此处输入公告内容', date: '2019-12-06' }
+      ],
+      clickMenuCall: function (menu) {
+        this.classActive = menu.classStr;
+      }
+    });
+    var link = avalon.define({
+      $id: 'link',
+      link: [
+        { classStr: '昨日访问量', img: '/img/access/first/home_kuaijie1_icon.png', color: '#FFC527' },
+        { classStr: '今日访问量', img: '/img/access/first/home_kuaijie2_icon.png', color: '#FF7C8C' },
+        { classStr: '添加内容', img: '/img/access/first/home_kuaijie3_icon.png', color: '#84D787' },
+        { classStr: '数据备份', img: '/img/access/first/home_kuaijie4_icon.png', color: '#4DA3FF' },
+        { classStr: '后台管理', img: '/img/access/first/home_kuaijie5_icon.png', color: '#5EDAB8' },
+        { classStr: '后台管理', img: '/img/access/first/home_kuaijie6_icon.png', color: '#797EF6' },
+        { classStr: '后台管理', img: '/img/access/first/home_kuaijie7_icon.png', color: '#FEA482' },
+        { classStr: '后台管理', img: '/img/access/first/home_kuaijie8_icon.png', color: '#FF7DAF' }
+      ]
+    });
+    var taskCount = avalon.define({
+      $id: 'taskCount',
+      taskCount: [
+        { classStr: '任务名称', percentage: 68, contrast: 28, type: 'down', color: '#4F82F9',bkcolor:'#a7c1fc' },
+        { classStr: '任务名称', percentage: 38, contrast: 28, type: 'up', color: '#4F82F9' ,bkcolor:'#a7c1fc'}
+      ]
+    });
+    var total = avalon.define({
+      $id: 'total',
+      total: [
+        { classStr: '访问总次数', percentage: 24, text: '8370', start: '0', end: '9000', color: '#29CB97',bkcolor:'#94e5cb', img: '/img/access/first/home_data1_icon.png' },
+        { classStr: '在线人数', percentage: 43, text: '3128', start: '0', end: '3500', color: '#4072EE',bkcolor:'#a0b9f7', img: '/img/access/first/home_data2_icon.png' },
+        { classStr: 'CPU使用', percentage: 78, text: '高', start: '低', end: '高', color: '#B558F6',bkcolor:'#daacfb', img: '/img/access/first/home_data3_icon.png' }
+      ]
+    });
+
+    window.onload = function () {
+      // 指定图表的配置项和数据
+      var option = {
+        title: {
+          text: ''
+        },
+        toolbox: {
+          feature: {
+            saveAsImage: {}
+          }
+        },
+        color: ['#2A7FDA'],
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'line',
+            label: {
+              formatter: '',
+              borderColor: '#2A7FDA',
+              backgroundColor: '#2A7FDA',
+              padding: [5, 0, 0, 0]
+            },
+            lineStyle: {
+              color: '#2A7FDA',
+              shadowBlur: {
+                shadowColor: '#2A7FDA',
+                shadowBlur: 100
+              }
+            },
+            shadowBlur: {
+              shadowColor: '#2A7FDA',
+              shadowBlur: 100
+            }
+          },
+          backgroundColor: '#2A7FDA',
+          formatter: '{c0}',
+          padding: [10, 20],
+          extraCssText: 'box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);'
+        },
+        axisPointer: {},
+        xAxis: {
+          type: 'category',
+          data: ['一', '二', '三', '四', '五', '六', '日'],
+          nameLocation: 'start',
+        },
+        yAxis: {
+          type: 'value',
+        },
+        series: [
+          {
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            type: 'line',
+            smooth: true
+          }]
+      };
+      // 基于准备好的dom，初始化echarts实例
+      var dataViewMain = echarts.init(document.getElementById('dataViewMain'),'customed');
+      // 使用刚指定的配置项和数据显示图表。
+      dataViewMain.setOption(option);
+      layout.$watch('menuShow', function observe(a, b) {
+        setTimeout(function () {
+          dataViewMain.resize();
+        }, 1000 * 0.6);
+      });
+
+      window.onresize = function () {
+        dataViewMain.resize();
+      };
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+.top{width: 100%;min-width: 1140px;height: 572px;
+    background: url("/img/access/second/system_bg.png") center no-repeat;}
+.top img{width: 1920px;display: inline-block;}
+
+.title{
+    text-align: center;
+    font-size: 90px;
+    color: #fff;
+    padding-top: 180px;
+    margin: 0;font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+}
+
+.appName{
+    text-align: center;
+    font-size: 30px;
+    color: #fff;
+    padding-top: 40px;font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+}
+
+.apps{
+    width: 1148px;
+    height: 426px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.nav{
+    min-width: 1140px;
+}
+.appItem{
+    width: 257px;
+    height: 100%;
+    background: #fff;
+    margin-right: 40px;
+    text-align: center;
+}
+.appItem.last{margin-right: 0}
+.appItem img{width: 100px;height: 100px;display: block;margin: 0 auto;margin-top: 42px;}
+.appItem h2{margin-top: 18px;font-size: 24px;color: #333;}
+.appItem p{margin-top: 15px;}
+.appItem p.first{margin-top: 20px;}
+.appItem a{font-size: 16px;color: #333;text-decoration: none;}
+.appItem a:hover{color: initial !important;}

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>我的工作台</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/js/lib/layui/css/layui.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/project/index.first.css">
+    <!-- 大于等于IE8小于等于IE10 -->
+    <!--[if (gte IE 8)&(lte IE 10)]>
+  <script src="/js/patch/ie7.js"></script>
+  <script src="/js/patch/json3.min.js"></script>
+  <script src="/js/patch/promise.js"></script>
+  <![endif]-->
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+    <script>
+        var __themeName = 'first';
+    </script>
+    <script src="/js/lib/avalon/avalon.js"></script>
+    <script src="/js/lib/layui/layui.js"></script>
+</head>
+
+<body class="firstTheme">
+    <div class="layout showMenu ms-controller" :controller="layout">
+        <div class="menu">
+            <!-- 顶部logo -->
+            <div class="topLogo">
+                <a href="/views/nav.first.html">
+                    <img class="logo left" src="/img/access/first/home_logo_icon.png" alt="">
+                    <span class="comName left">CASC</span>
+                </a>
+                <div class="clearFloat"></div>
+            </div>
+            <ul class="menus ms-controller" :controller="menus">
+                <!-- 一级菜单 -->
+                <li class="menuItem" :for="(i, menu) in @menus">
+                    <div class="menuBox" :class="[(@menu.url===active ? 'active':'')]">
+                        <img class="menuIcon" :if="@menu.icon!==''" :attr="{src:@menu.icon}" alt="">
+                        <p :if="@menu.child.length" :click="@clickMenuCall(@menu)" class="menuText">{{ @menu.text }}</p>
+                        <a :if="!@menu.child.length" class="menuText" :attr="{href:@menu.url}">{{ @menu.text }}</a>
+                        <div :if="@menu.child.length" class="menuStates">
+                            <img :if="@menu.open" src="/img/access/first/home_open_icon.png" alt="">
+                            <img :if="!@menu.open" src="/img/access/first/home_close_icon.png" alt="">
+                        </div>
+                    </div>
+                    <!-- 二级菜单 -->
+                    <ul class="menuChild" :for="(chI, chMenu) in @menu.child" :visible="@menu.open">
+                        <li class="menuItem">
+                            <div class="menuBox" :class="[(@chMenu.url===active ? 'active':'')]">
+                                <img class="menuIcon" :if="@chMenu.icon!==''" :attr="{src:@chMenu.icon}" alt="">
+                                <p :if="@chMenu.child.length" :click="@clickMenuCall(@chMenu)" class="menuText">
+                                    {{ @chMenu.text }}</p>
+                                <a :if="!@chMenu.child.length" class="menuText"
+                                    :attr="{href:@chMenu.url}">{{ @chMenu.text }}</a>
+                                <div :if="@chMenu.child.length" class="menuStates">
+                                    <img :if="@chMenu.open" src="/img/access/first/home_open_icon.png" alt="">
+                                    <img :if="!@chMenu.open" src="/img/access/first/home_close_icon.png" alt="">
+                                </div>
+                            </div>
+                            <!-- 三级菜单 -->
+                            <ul class="menuChild" :for="(sI, sMenu) in @chMenu.child" :visible="@chMenu.open">
+                                <li class="menuItem">
+                                    <div class="menuBox" :class="[(@sMenu.url===active ? 'active':'')]">
+                                        <img class="menuIcon" :if="@sMenu.icon!==''" :attr="{src:@sMenu.icon}" alt="">
+                                        <a class="menuText" :attr="{href:@sMenu.url}">{{ @sMenu.text }}</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="body">
+            <div class="topBar">
+                <div class="tbHello left">
+                    <img onclick="menuToggleShow()" class="left" src="/img/access/first/home_list_icon.png" alt="">
+                    <span class="left">您好，电机电源精细化管理系统！</span>
+                </div>
+                <div class="otherBox right">
+                    <ul class="fucList left">
+                        <li class="fucItem left">
+                            <a href="/views/nav.first.html">
+                                <img class="left" src="/img/access/first/home_icon.png" alt="">
+                                <span class="left">首页</span>
+                            </a>
+                        </li>
+                        <li class="fucItem left" onclick="toggleTheme()">
+                            <img class="left" src="/img/access/first/theme_icon.png" alt="">
+                            <span class="left">主题</span>
+                        </li>
+                    </ul>
+                    <div class="userInfo left">
+                        <div class="userInfoBox">
+                            <span class="left">您好！系统管理员</span>
+                            <img class="headPic left" src="/img/access/first/home_headpic_icon.png" alt="">
+                            <img class="loginSelect left" src="/img/access/first/login_select_icon.png" alt="">
+                        </div>
+                        <ul class="userInfoTodo">
+                            <li class="userInfoTodoItem">个人信息</li>
+                            <li class="userInfoTodoItem">修改密码</li>
+                            <li class="userInfoTodoItem">我的通知</li>
+                            <li class="userInfoTodoItem line"><a href="/views/login.first.html"><span>退出</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="clearFloat"></div>
+                </div>
+                <div class="clearFloat"></div>
+            </div>
+            <div class="main">
+                <div class="contentBody">
+                    <!-- 当前位置 -->
+                    <ul class="locationInfo add ms-controller" :controller="locationInfo">
+                        <li class="inline">当前位置：</li>
+                        <li class="inline" :for="(i, menu) in @locationInfo">
+                            <span class="text">{{ @menu.text }}</span>
+                            <span class="chat" :if="@i!==@locationInfo.length-1">></span>
+                        </li>
+                    </ul>
+                    <!-- 分类 -->
+                    <div class="layui-row infoClassBox ms-controller" :controller="infoClass">
+                        <div class="inline class" ms-for="(k, v) in @infoClass"
+                            :class="[(@classActive===@v.classStr ? 'active':'')]" :click="@clickMenuCall(@v)">
+                            {{ v.classStr }}
+                        </div>
+                    </div>
+                    <!-- 填写 -->
+                    <div class="pd30 beartaskDiv">
+                        <form class="layui-form notinline isPc" action="" lay-filter="bearTaskForm">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"><span class="danger">*</span>项目牵头部门承担任务
+                                </label>
+                                <div class="layui-input-block">
+                                    <textarea placeholder="请输入项目牵头部门承担任务" lay-verify="required"
+                                        lay-reqtext="请输入项目牵头部门承担任务" name="mainTask" class="layui-textarea"></textarea>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">各部门承担任务项目牵头部门</label>
+                                <div class="layui-input-block radiusHighTable">
+                                    <table class="layui-table" lay-data="{data:bearTableData,id:'table1'}"
+                                        lay-filter="beartasktable1">
+                                        <thead>
+                                            <tr>
+                                                <th lay-data="{field:'index',width:90}">序号</th>
+                                                <th lay-data="{field:'dept', width:160}">项目责任部门</th>
+                                                <th lay-data="{field:'name',templet:'#tempBearname'}">姓名</th>
+                                                <th lay-data="{field:'duty',templet:'#tempBearduty'}">职责</th>
+                                                <th lay-data="{field:'education', width:200,templet: '#tempBearEdu'}">
+                                                    职称及学历</th>
+                                                <th lay-data="{field:'type', width:200,templet: '#tempBearType'}">类别
+                                                </th>
+                                                <th lay-data="{field:'workCount', width:130,templet: '#tempBearduty'}">
+                                                    工作量(人/年)</th>
+                                                <th lay-data="{width:120, align:'center', toolbar: '#tempBearCtl'}">操作
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                    <div class="addDiv">
+                                        <button class="layui-btn layui-btn-sm layui-btn-normal">添加</button>
+                                    </div>
+                                    <script type="text/html" id="tempBearname">
+                                        <input type="text" class="layui-input"/>
+                                    </script>
+                                    <script type="text/html" id="tempBearduty">
+                                        <input type="text" class="layui-input"/>
+                                    </script>
+                                    <script type="text/html" id="tempBearEdu">
+                                        <select class="de">
+                                            <option value=""></option>
+                                            <option value="0">选项1</option>
+                                            <option value="1">选项2</option>
+                                        </select>
+                                    </script>
+                                    <script type="text/html" id="tempBearType">
+                                        <select>
+                                            <option value=""></option>
+                                            <option value="0">选项1</option>
+                                            <option value="1">选项2</option>
+                                        </select>
+                                    </script>
+                                    <script type="text/html" id="tempBearCtl">
+                                        <a class="primary cursor button" lay-event="del">删除</a>
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">各部门承担任务项目参与部门</label>
+                                <div class="layui-input-block radiusHighTable">
+                                    <table class="layui-table " lay-data="{data:bearTableData,id:'table2'}"
+                                        lay-filter="beartasktable2">
+                                        <thead>
+                                            <tr>
+                                                <th lay-data="{field:'index',width:90}">序号</th>
+                                                <th lay-data="{field:'dept', width:160}">项目责任部门</th>
+                                                <th lay-data="{field:'name', templet: '#tempBearname2'}">姓名</th>
+                                                <th lay-data="{field:'duty',templet: '#tempBearduty'}">职责</th>
+                                                <th lay-data="{field:'education', width:200,templet: '#tempBearEdu'}">
+                                                    职称及学历</th>
+                                                <th lay-data="{field:'type', width:200,templet: '#tempBearType'}">类别
+                                                </th>
+                                                <th lay-data="{field:'workCount', width:130,templet: '#tempBearduty'}">
+                                                    工作量(人/年)</th>
+                                                <th lay-data="{width:120, align:'center', toolbar: '#tempBearCtl'}">操作
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                    <div class="addDiv">
+                                        <button class="layui-btn layui-btn-sm layui-btn-normal">添加</button>
+                                    </div>
+                                    <script type="text/html" id="tempBearname2">
+                                        <div class="iconInput">
+                                            <input type="text" class="layui-input"/>
+                                            <i class="iconfont iconhome_sousuo_icon1"></i>
+                                        </div>
+                                    </script>
+                                </div>
+                            </div>
+                            <div style="padding-top:35px;">
+                                <button type="submit" class="layui-btn layui-btn-normal" lay-submit=""
+                                    lay-filter="submit" id="breadsubmitBtn">提交</button>
+                                <button class="layui-btn layui-btn-normal" id="plansaveBtn">保存</button>
+                                <button class="layui-btn plain">关联附表</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/html" id="usernameTpl">
+    <div class="inputBox">
+      <input type="text" placeholder="请输入" :input="@d.username">
+    </div>
+  </script>
+    <script type="text/html" id="dutyTpl">
+    <div class="inputBox">
+      <input type="text" placeholder="请输入" :input="@d.duty">
+    </div>
+  </script>
+    <script type="text/html" id="titleTpl">
+    <div class="inputBox">
+      <input type="text" placeholder="请输入" :input="@d.title">
+    </div>
+  </script>
+    <script type="text/html" id="typeTpl">
+    <div class="inputBox">
+      <input type="text" placeholder="请输入" :input="@d.type">
+    </div>
+  </script>
+    <script type="text/html" id="workloadTpl">
+    <div class="inputBox">
+      <input type="text" placeholder="请输入" :input="@d.workload">
+    </div>
+  </script>
+    <script type="text/html" id="todoTpl">
+    <button class="btn primary text" lay-event="del">删除</button>
+  </script>
+    <script src="/js/compose/layout.js"></script>
+    <script src="/js/compose/menus.js"></script>
+    <script>
+        var locationInfo = avalon.define({
+            $id: 'locationInfo',
+            locationInfo: []
+        });
+        // 初始化菜单选中
+        menus.$watch('onReady', function () {
+            locationInfo.locationInfo = this.location.$model;
+        });
+
+        var infoClass = avalon.define({
+            $id: 'infoClass',
+            classActive: '基础信息',
+            infoClass: [
+                { classStr: '基础信息' },
+                { classStr: '计划节点' },
+                { classStr: '质量控制和成果' },
+                { classStr: '承担的任务' },
+                { classStr: '全周期成本情况' },
+                { classStr: '全周期收入预算' },
+                { classStr: '全周期支出预算' }
+            ],
+            clickMenuCall: function (menu) {
+                this.classActive = menu.classStr;
+            }
+        });
+        var bearTableData = [{
+            index: 1,
+            dept: "经营计划处",
+            name: "",
+            duty: "",
+            education: "",
+            type: "",
+            workCount: "",
+        },
+        {
+            index: 2,
+            dept: "经营计划处",
+            name: "",
+            duty: "",
+            education: "",
+            type: "",
+            workCount: "",
+        }
+        ];
+        //表格
+        layui.use(['table', 'jquery'], function () {
+            var table = layui.table;
+            var $ = layui.jquery;
+
+            $("div.layui-form-select").click(function () {
+                var width = $(this).width();
+                var top = $(this).offset().top;
+                var left = $(this).offset().left;
+                $(this).find("dl").css({ "min-width": width + "px", top: top + 40 + "px", left: left + "px" });
+            });
+
+            window.onresize = function () {
+                //执行表格“尺寸结构”的重置，一般写在对应的事件中
+                table.resize('table1');
+                table.resize('table2');
+            };
+        });
+    </script>
+</body>
+
+</html>

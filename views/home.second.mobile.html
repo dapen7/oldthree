@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>我的工作台</title>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-control" content="no-cache">
+  <meta http-equiv="Cache" content="no-cache">
+
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/js/lib/layui/css/layui.css">
+  <link rel="stylesheet" href="/css/layout.second.mobile.css">
+  <link rel="stylesheet" href="/css/home.second.mobile.css">
+  <script>
+    var __themeName = 'second';
+  </script>
+  <script src="/js/lib/avalon/avalon.js"></script>
+  <script src="/js/lib/layui/layui.js"></script>
+  <script src="/js/lib/tool/echarts.js"></script>
+</head>
+<body class="secondTheme">
+  <div class="layout" :controller="layout">
+    <div class="topBar">
+      <div class="topBarBox">
+        <!-- 顶部logo -->
+        <div class="topMenu left">
+          <img onclick="menuToggleShow()" class="menuSHBtn left" src="/img/access/second/home_list_icon.png" alt="">
+          <!--        <ul class="secondMenus" :controller="secondMenus">-->
+          <!--          <li class="menuItem" :for="(i, menu) in @secondMenus">-->
+          <!--            <span :if="@menu.child.length">{{ @menu.text }}</span>-->
+          <!--            <a :if="@menu.child.length===0" class="menuLink" :class="[(@menu.url===@active ? 'active':'')]" :attr="{href:@menu.url}">{{ @menu.text }}</a>-->
+          <!--            <img :if="@menu.child.length" class="more" src="/img/access/second/zhankai_icon.png" alt="">-->
+          <!--            <ul class="moreMenu" :for="(mi, moreMenu) in @menu.child">-->
+          <!--              <li class="moreMItem" :class="[(@menu.url===@active ? 'active':'')]">-->
+          <!--                <a :attr="{href:@moreMenu.url}">{{ @moreMenu.text }}</a>-->
+          <!--              </li>-->
+          <!--            </ul>-->
+          <!--          </li>-->
+          <!--        </ul>-->
+        </div>
+        <div class="otherBox left">
+          <div class="topSearch left">
+            <div class="inputItem">
+              <div class="inputBox icon inline">
+                <input type="text" placeholder="输入关键词搜索…">
+                <img src="/img/access/second/search_icon.png" alt="">
+              </div>
+            </div>
+          </div>
+          <ul class="fucList left">
+            <li class="fucItem left">
+              <a href="/views/nav.second.mobile.html">
+                <img class="left" src="/img/access/second/home_icon.png" alt="">
+              </a>
+            </li>
+            <li class="fucItem left">
+              <img class="left" onclick="toggleTheme()" src="/img/access/second/theme_icon.png" alt="">
+            </li>
+          </ul>
+          <div class="userInfo left">
+            <div class="userInfoBox">
+              <a href="/views/login.second.mobile.html">
+                <img class="headPic left" src="/img/access/second/home_headpic_icon.png" alt="">
+              </a>
+              <img class="loginSelect left" src="/img/access/second/zhankai_icon.png" alt="">
+            </div>
+          </div>
+          <p class="clearFloat"></p>
+        </div>
+        <p class="clearFloat"></p>
+      </div>
+    </div>
+    <!-- 菜单 -->
+    <div class="menu">
+      <ul class="menus" :controller="menus" :css="{width:@width}">
+        <li class="menuItem" :for="(i, menu) in @menus">
+          <div class="menuBox" :class="[(@menu.open && @menu.url===@active ? 'active':'')]">
+            <p :if="@menu.child.length" :click="@clickMenuCall(@menu,2)" class="menuText hadChild">{{ @menu.text }}</p>
+            <a :if="!@menu.child.length" class="menuText" :attr="{href:@menu.url}">{{ @menu.text }}</a>
+            <span class="menuIcon" :if="@menu.child.length"></span>
+          </div>
+          <!-- 二级菜单 -->
+          <ul class="menuChild" :visible="@menu.open">
+            <li class="menuItem" :for="(chI, chMenu) in @menu.child">
+              <div class="menuBox" :class="[(@chMenu.url===active ? 'active':'')]">
+                <p :if="@chMenu.child.length" :click="@clickMenuCall(@chMenu,2)" class="menuText">{{ @chMenu.text }}</p>
+                <a :if="!@chMenu.child.length" class="menuText" :attr="{href:@chMenu.url}">{{ @chMenu.text }}</a>
+                <span class="menuIcon" :if="@chMenu.child.length"></span>
+              </div>
+              <!-- 三级菜单 -->
+              <ul class="menuChild" :for="(sI, sMenu) in @chMenu.child" :class="[(@chMenu.url===active ? 'active':'')]" :visible="@chMenu.open">
+                <li class="menuItem">
+                  <div class="menuBox" :class="[(@sMenu.url===active ? 'active':'')]">
+                    <span class="menuIcon" :if="@sMenu.child.length"></span>
+                    <a class="menuText" :attr="{href:@sMenu.url}">{{ @sMenu.text }}</a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="body">
+      <div class="main">
+        <div class="homeBody">
+          <!--栅格化-->
+          <div class="layui-row layui-col-space25">
+            <div class="layui-col-md8">
+              <!--顶部信息-->
+              <div class="info layui-row layui-col-space25" :controller="info">
+                <div class="layui-col-sm6 layui-col-xs6" :for="(i, info) in @infos">
+                  <div class="infoItem" :class="[(@info.id === @activeId ? 'active':'')]" :click="selectCall(@info)">
+                    <div class="infoBox">
+                      <img class="left" :attr="{src:@info.img}" alt="">
+                      <div class="infoText left">
+                        <p>{{ @info.text }}</p>
+                        <p class="num">{{ @info.num }}</p>
+                      </div>
+                      <div class="clearFloat"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--图表-->
+              <div class="homeBodyContent dataView ms-controller" :controller="notice">
+                <div class="topInfo">
+                  <span class="topClassText left">数据概览：<b>近一周新增用户量</b></span>
+                  <span class="topClassMore right">●●●</span>
+                </div>
+                <div class="contentContentBox">
+                  <div id="dataViewMain"></div>
+                </div>
+              </div>
+            </div>
+            <div class="layui-col-md4">
+              <!--日历-->
+              <div class="calendar" :controller="calendar">
+                <div class="top">
+                  <ul class="topMain">
+                    <li class="iBtn pre"><img :click="preMonth" src="/img/access/second/last_icon.png" alt=""></li>
+                    <li class="item"><p>{{ @year + ' 年 ' + @month + ' 月' }}</p></li>
+                    <li class="iBtn next"><img :click="nextMonth" src="/img/access/second/next_icon.png" alt=""></li>
+                  </ul>
+                </div>
+                <ul class="weeks">
+                  <li class="item left" :for="(i, week) in @weeks"><span>{{ @week }}</span></li>
+                  <li class="clearFloat"></li>
+                </ul>
+                <ul class="days">
+                  <li class="item left" :for="(i, d) in @days" :class="[(@d==='' ? 'noDay':'')]">
+                    <div class="day" :class="[(@d===@day && @d!=='' ? 'active':'')]" :click="selectDay(@d)">{{ @d }}</div>
+                  </li>
+                  <li class="clearFloat"></li>
+                </ul>
+              </div>
+
+              <div class="homeBodyContent matter">
+                <div class="topInfo">
+                  <span class="topClassText left">待办事项</span>
+                  <span class="topClassMore right">●●●</span>
+                </div>
+                <ul class="contentBox ms-controller" :controller="matter">
+                  <li class="layui-row contentItem" ms-for="(k, v) in @matter">
+                    <div class="layui-col-xs3 class">{{ v.classStr }}</div>
+                    <div class="layui-col-xs6 describe">{{ v.describe }}</div>
+                    <div class="layui-col-xs3 date">{{ v.date }}</div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="layui-row layui-col-space25">
+            <div class="layui-col-md5">
+              <div class="homeBodyContent taskCount">
+                <div class="topInfo">
+                  <span class="topClass left"></span>
+                  <span class="topClassText left">任务统计</span>
+                  <span class="topClassMore right">●●●</span>
+                </div>
+                <ul class="layui-row layui-col-space25 contentBox ms-controller" :controller="taskCount">
+                  <li class="class layui-col-xs6" ms-for="(k, v) in @taskCount">
+                    <div class="taskCountMain">
+                      <div class="svg">
+                        <p class="percentage" :css="{color:@v.color}">{{ v.percentage }}%</p>
+                        <svg width="100px" height="100px">
+                          <circle r="45" cy="50" cx="50" stroke-width="6" stroke="#EAEFF4" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+                          <circle class="progress" r="45" cy="50" cx="50" stroke-width="6" :attr="{stroke:@v.color}"
+                                  :css="{strokeDashoffset:(((100-@v.percentage)/100)*(Math.PI*(70*2))) + 'px'}" stroke-linejoin="round" stroke-linecap="round" fill="none"
+                                  stroke-dasharray="471px"/>
+                        </svg>
+                      </div>
+                      <div class="infoBox">
+                        <p class="title">{{ @v.classStr }}</p>
+                        <span class="des">（日同比{{ v.contrast }}%
+												<img :if="v.type==='down'" src="/img/access/first/home_task_icon.png" alt=""/>
+												<img :if="v.type==='up'" src="/img/access/first/home_task2_icon.png" alt=""/>）</span>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="layui-col-md7">
+              <div class="homeBodyContent notice ms-controller" :controller="notice">
+                <div class="topInfo">
+                  <span class="topClass left"></span>
+                  <span class="topClassText left">通知公告</span>
+                  <span class="topClassMore right">●●●</span>
+                  <div class="layui-row noticeClassBox">
+                    <div class="layui-col-xs4 class" ms-for="(k, v) in @noticeClass" :class="[(@classActive===@v.classStr ? 'active':'')]" :click="@clickMenuCall(@v)">
+                      {{ v.classStr }}
+                    </div>
+                  </div>
+                </div>
+                <ul class="contentContentBox">
+                  <li class="layui-row contentItem" ms-for="(k, v) in @noticeContent">
+                    <div class="layui-col-xs3 class">{{ v.classStr }}</div>
+                    <div class="layui-col-xs6 describe">{{ v.describe }}</div>
+                    <div class="layui-col-xs3 date">{{ v.date }}</div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/js/compose/layout.js"></script>
+  <script src="/js/compose/menus.js"></script>
+  <script>
+    var info = avalon.define({
+      $id: 'info',
+      activeId: 1,
+      infos: [
+        {id: 1, text: '昨日访问量', num: 3230, img: '/img/access/second/home_visitor_icon.png'},
+        {id: 2, text: '今日访问量', num: 3430, img: '/img/access/second/home_visitor2_icon.png'},
+        {id: 3, text: '昨日访问量', num: 3280, img: '/img/access/second/home_visitor_icon.png'},
+        {id: 4, text: '今日访问量', num: 3630, img: '/img/access/second/home_visitor2_icon.png'}
+      ],
+      selectCall: function (info) {
+        this.activeId = info.id;
+      }
+    });
+
+    var calendar = avalon.define({
+      $id: 'calendar',
+      now: new Date(),
+      day: '',
+      weeks: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+      year: '',
+      month: '',
+      days: [],
+      $computed: {
+        start: function () {
+          this.initView();
+          this.day = this.now.getDate();
+          return true;
+        }
+      },
+      selectDay: function (day) {
+        this.day = day;
+      },
+      preMonth: function () {
+        var cloneNow = this.now;
+        var nextYear = this.now.getFullYear();
+        var nextMonth = this.now.getMonth();
+        if (nextMonth < 1) {
+          nextYear -= 1;
+          nextMonth = 11;
+        } else {
+          nextMonth -= 1;
+        }
+        this.now = new Date(nextYear, nextMonth, 1);
+        this.initView();
+      },
+      nextMonth: function () {
+        var cloneNow = this.now;
+        var nextYear = this.now.getFullYear();
+        var nextMonth = this.now.getMonth();
+        if (nextMonth > 11) {
+          nextYear += 1;
+          nextMonth = 0;
+        } else {
+          nextMonth += 1;
+        }
+        this.now = new Date(nextYear, nextMonth, 1);
+        this.initView();
+      },
+      initView: function () {
+        this.getYear();
+        this.getMonth();
+        this.getDays();
+      },
+      getYear: function () {
+        this.year = this.now.getFullYear();
+      },
+      getMonth: function () {
+        this.month = this.now.getMonth() + 1;
+      },
+      getDays: function () {
+        var days = [];
+        var nextYear = this.now.getFullYear();
+        var nextMonth = this.now.getMonth() + 1;
+        if (nextMonth > 11) {
+          nextYear += 1;
+          nextMonth = 1;
+        }
+        var monthLastDay = new Date(nextYear, nextMonth, 0).getDate();
+        var firstDayWeekIndex = new Date(this.now.getFullYear(), this.now.getMonth(), 1).getDay(); // 0星期天|6星期六
+        for (var n = 0; n < firstDayWeekIndex; n++) {
+          days.push(''); // 占位
+        }
+        for (var i = 1; i <= monthLastDay; i++) {
+          days.push(i);
+        }
+        this.days = days;
+      }
+    });
+
+    var matter = avalon.define({
+      $id: 'matter',
+      matter: [
+        {classStr: '审批类型', describe: '此处输入公告内容', date: '2019-12-06'},
+        {classStr: '待确认', describe: '此处输入公告内容', date: '2019-12-06'},
+        {classStr: '审批类型', describe: '此处输入公告内容', date: '2019-12-06'},
+        {classStr: '审批类型', describe: '此处输入公告内容', date: '2019-12-06'}
+      ]
+    });
+
+    var notice = avalon.define({
+      $id: 'notice',
+      classActive: '招聘公告',
+      noticeClass: [
+        {classStr: '招聘公告'},
+        {classStr: '近期通知'},
+        {classStr: '要点新闻'}
+      ],
+      noticeContent: [
+        {classStr: 'UI设计', describe: '此处输入公告内容', date: '2019-12-06'},
+        {classStr: '岗位名称', describe: '此处输入公告内容', date: '2019-12-06'},
+        {classStr: '岗位名称', describe: '此处输入公告内容', date: '2019-12-06'},
+        {classStr: '岗位名称', describe: '此处输入公告内容', date: '2019-12-06'},
+        {classStr: '岗位名称', describe: '此处输入公告内容', date: '2019-12-06'}
+      ],
+      clickMenuCall: function (menu) {
+        this.classActive = menu.classStr;
+      }
+    });
+
+    var taskCount = avalon.define({
+      $id: 'taskCount',
+      taskCount: [
+        {classStr: '任务名称', percentage: 68, contrast: 28, type: 'down', color: '#18A283'},
+        {classStr: '任务名称', percentage: 38, contrast: 28, type: 'up', color: '#4F82F9'}
+      ]
+    });
+
+    // 基于准备好的dom，初始化echarts实例
+    var dataViewMain = echarts.init(document.getElementById('dataViewMain'));
+
+    // 指定图表的配置项和数据
+    var option = {
+      title: {
+        text: ''
+      },
+      toolbox: {
+        feature: {
+          saveAsImage: {}
+        }
+      },
+      color: ['#18A283'],
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'line',
+          label: {
+            formatter: '',
+            borderColor: '#18A283',
+            backgroundColor: '#18A283',
+            padding: [5, 0, 0, 0]
+          },
+          lineStyle: {
+            color: '#18A283',
+            shadowBlur: {
+              shadowColor: '#18A283',
+              shadowBlur: 100
+            }
+          },
+          shadowBlur: {
+            shadowColor: '#18A283',
+            shadowBlur: 100
+          }
+        },
+        backgroundColor: '#18A283',
+        formatter: '{c0}',
+        padding: [10, 20],
+        extraCssText: 'box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);'
+      },
+      axisPointer: {},
+      xAxis: {
+        type: 'category',
+        data: ['一', '二', '三', '四', '五', '六', '日'],
+        nameLocation: 'start',
+        axisLine: {
+          lineStyle: {
+            width: 1,
+            color: '#D3D3D3'
+          }
+        }
+      },
+      yAxis: {
+        type: 'value',
+        axisLine: {
+          lineStyle: {
+            width: 1,
+            color: '#D3D3D3'
+          }
+        }
+      },
+      series: [
+        {
+          data: [820, 932, 901, 934, 1290, 1330, 1320],
+          type: 'line',
+          smooth: true
+        }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    dataViewMain.setOption(option);
+
+    layout.$watch('menuShow', function observe (a, b) {
+      setTimeout(function () {
+        dataViewMain.resize();
+      }, 1000 * 0.6);
+    });
+
+    window.onresize = function () {
+      dataViewMain.resize();
+    };
+  </script>
+</body>
+</html>

@@ -5,7 +5,7 @@ var secondMenus = avalon.define({
 
 var mobile = window.location.href.indexOf('mobile') > -1 ? '.mobile' : '';
 var githublocation  = "";
-if(window.location.indexOf("github")!=-1){
+if(window.location.href.indexOf("github")!=-1){
     githublocation = "https://dapen7.github.io/oldthree"
 }
 var menus = avalon.define({

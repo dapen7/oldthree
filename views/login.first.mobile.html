@@ -13,38 +13,38 @@
   <meta http-equiv="Cache-control" content="no-cache">
   <meta http-equiv="Cache" content="no-cache">
 
-  <link rel="stylesheet" href="../../css/normalize.css">
-  <link rel="stylesheet" href="../../css/login.first.mobile.css">
-  <script src="../../js/lib/avalon/avalon.js"></script>
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/login.first.mobile.css">
+  <script src="../js/lib/avalon/avalon.js"></script>
 </head>
 
 <body class="blueTheme">
   <div class="login">
     <div class="main">
       <div class="logo">
-        <img src="../../img/access/first/mobile/login_logo_icon.png" class="logoImg" alt="">
+        <img src="../img/access/first/mobile/login_logo_icon.png" class="logoImg" alt="">
       </div>
       <div class="appLogin" ms-controller="appLogin">
         <h3 class="appName">数通智合快速开发平台</h3>
         <form :validate="@validate">
           <div class="iconInput userName">
-            <img src="../../img/access/first/login_user_icon.png" alt="">
+            <img src="../img/access/first/login_user_icon.png" alt="">
             <input type="text" placeholder="请输入登录名" :duplex="@userName" :rules="{ required: true }"/>
           </div>
           <div class="iconInput password">
-            <img src="../../img/access/first/login_password_icon.png" alt="">
+            <img src="../img/access/first/login_password_icon.png" alt="">
             <input type="text" placeholder="请输入密码" :duplex="@password" :rules="{ required: true }"/>
           </div>
           <div class="rememberMe">
-            <img :if="@rememberMe===false" class="left" src="../../img/access/first/checkbox_icon.png" alt="" :click="@rememberMeCall">
-            <img :if="@rememberMe===true" class="left" src="../../img/access/first/checkbox_select_icon.png" alt="" :click="@rememberMeCall">
+            <img :if="@rememberMe===false" class="left" src="../img/access/first/checkbox_icon.png" alt="" :click="@rememberMeCall">
+            <img :if="@rememberMe===true" class="left" src="../img/access/first/checkbox_select_icon.png" alt="" :click="@rememberMeCall">
             <label class="left" :click="@rememberMeCall">记住我（公共场所慎用）</label>
             <p class="clearFloat"></p>
           </div>
           <a href="javascript:void(0)" class="loginBtn" :click="@loginCall">登录</a>
           <p class="themeSelect" onclick="toggleTheme()">
             <span>Flat主题</span>
-            <img src="../../img/access/first/login_select_icon.png" alt="">
+            <img src="../img/access/first/login_select_icon.png" alt="">
           </p>
         </form>
       </div>

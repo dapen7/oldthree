@@ -212,6 +212,9 @@
                     // brush:{},
                 }
             },
+            grid:{
+                top:30
+            },
             color: ['#6084FD', '#60AEFD', '#8EE7FD', '#8FFDF1', '#D4D4D4', '#B7FBA1', '#85DE68', '#5EBD3E'],
             tooltip: {
                 trigger: 'item',
@@ -220,14 +223,16 @@
             legend: {
                 bottom: 10,
                 width: 300,
-                data: ['操作', '器材', '软件', '设计', '管理', '设备', '工艺', '其它']
+                data: ['操作', '器材', '软件', '设计', '管理', '设备', '工艺', '其它'],
+                itemGap:30,
+                width:350
             },
             series: [
                 {
                     name: '占比',
                     type: 'pie',
                     hoverOffset: 30,
-                    radius: ['60%', '70%'],
+                    radius: ['30%', '40%'],
                     avoidLabelOverlap: false,
                     label: {
                         show: false,

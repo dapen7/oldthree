@@ -1,17 +1,14 @@
 .login {
     height: 100%;
     min-width: 1140px;
-    width:100%;
-    background-image: url("../img/access/first/login_bg.png");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-image: url("/img/access/first/login_bg.png");
     background-size: cover;
 }
 
 .main {
     width: 1140px;
     height: 660px;
-    background-image: url("../img/access/first/login_bg2.png");
+    background-image: url("/img/access/first/login_bg2.png");
     background-size: cover;
 }
 

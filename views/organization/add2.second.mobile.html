@@ -12,15 +12,15 @@
   <meta http-equiv="Cache-control" content="no-cache">
   <meta http-equiv="Cache" content="no-cache">
 
-  <link rel="stylesheet" href="../../css/normalize.css">
-  <link rel="stylesheet" href="../../js/lib/layui/css/layui.css">
-  <link rel="stylesheet" href="../../css/layout.second.mobile.css">
-  <link rel="stylesheet" href="../../css/organization/index.second.mobile.css">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/js/lib/layui/css/layui.css">
+  <link rel="stylesheet" href="/css/layout.second.mobile.css">
+  <link rel="stylesheet" href="/css/organization/index.second.mobile.css">
   <script>
     var __themeName = 'second';
   </script>
-  <script src="../../js/lib/avalon/avalon.js"></script>
-  <script src="../../js/lib/layui/layui.js"></script>
+  <script src="/js/lib/avalon/avalon.js"></script>
+  <script src="/js/lib/layui/layui.js"></script>
 </head>
 <body class="secondTheme">
   <div class="layout" :controller="layout">
@@ -28,12 +28,12 @@
       <div class="topBarBox">
         <!-- 顶部logo -->
         <div class="topMenu left">
-          <img onclick="menuToggleShow()" class="menuSHBtn left" src="../../img/access/second/home_list_icon.png" alt="">
+          <img onclick="menuToggleShow()" class="menuSHBtn left" src="/img/access/second/home_list_icon.png" alt="">
           <!--        <ul class="secondMenus" :controller="secondMenus">-->
           <!--          <li class="menuItem" :for="(i, menu) in @secondMenus">-->
           <!--            <span :if="@menu.child.length">{{ @menu.text }}</span>-->
           <!--            <a :if="@menu.child.length===0" class="menuLink" :class="[(@menu.url===@active ? 'active':'')]" :attr="{href:@menu.url}">{{ @menu.text }}</a>-->
-          <!--            <img :if="@menu.child.length" class="more" src="../../img/access/second/zhankai_icon.png" alt="">-->
+          <!--            <img :if="@menu.child.length" class="more" src="/img/access/second/zhankai_icon.png" alt="">-->
           <!--            <ul class="moreMenu" :for="(mi, moreMenu) in @menu.child">-->
           <!--              <li class="moreMItem" :class="[(@menu.url===@active ? 'active':'')]">-->
           <!--                <a :attr="{href:@moreMenu.url}">{{ @moreMenu.text }}</a>-->
@@ -47,26 +47,26 @@
             <div class="inputItem">
               <div class="inputBox icon inline">
                 <input type="text" placeholder="输入关键词搜索…">
-                <img src="../../img/access/second/search_icon.png" alt="">
+                <img src="/img/access/second/search_icon.png" alt="">
               </div>
             </div>
           </div>
           <ul class="fucList left">
             <li class="fucItem left">
               <a href="/views/nav.second.mobile.html">
-                <img class="left" src="../../img/access/second/home_icon.png" alt="">
+                <img class="left" src="/img/access/second/home_icon.png" alt="">
               </a>
             </li>
             <li class="fucItem left">
-              <img class="left" onclick="toggleTheme()" src="../../img/access/second/theme_icon.png" alt="">
+              <img class="left" onclick="toggleTheme()" src="/img/access/second/theme_icon.png" alt="">
             </li>
           </ul>
           <div class="userInfo left">
             <div class="userInfoBox">
               <a href="/views/login.second.mobile.html">
-                <img class="headPic left" src="../../img/access/second/home_headpic_icon.png" alt="">
+                <img class="headPic left" src="/img/access/second/home_headpic_icon.png" alt="">
               </a>
-              <img class="loginSelect left" src="../../img/access/second/zhankai_icon.png" alt="">
+              <img class="loginSelect left" src="/img/access/second/zhankai_icon.png" alt="">
             </div>
           </div>
           <p class="clearFloat"></p>
@@ -186,8 +186,8 @@
       <input type="text" placeholder="请输入" :input="@d.val">
     </div>
   </script>
-  <script src="../../js/compose/layout.js"></script>
-  <script src="../../js/compose/menus.js"></script>
+  <script src="/js/compose/layout.js"></script>
+  <script src="/js/compose/menus.js"></script>
   <script>
     var locationInfo = avalon.define({
       $id: 'locationInfo',

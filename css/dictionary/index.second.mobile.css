@@ -8,6 +8,6 @@
 .table{height: 75%;padding:0 15px;}
 .table a{color: #058669;}
 .table .icon{width: 20px;height: 20px;cursor: pointer;margin:0 5px;display: inline-block;background-size: 100%;}
-.table .editIcon{background-image: url("../../img/access/second/edit_icon.png");}
-.table .delIcon{background-image: url("../../img/access/second/delete_icon.png");}
-.table .addIcon{background-image: url("../../img/access/second/add_icon.png");}
+.table .editIcon{background-image: url("/img/access/second/edit_icon.png");}
+.table .delIcon{background-image: url("/img/access/second/delete_icon.png");}
+.table .addIcon{background-image: url("/img/access/second/add_icon.png");}

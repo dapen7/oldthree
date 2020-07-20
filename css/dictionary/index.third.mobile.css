@@ -11,6 +11,6 @@
 .table{background: #2C345B;height: 50%;padding:0 15px;}
 .table a{color: #2A7FDA;}
 .table .icon{width: 20px;height: 20px;cursor: pointer;margin:0 5px;display: inline-block;background-size: 100%;}
-.table .editIcon{background-image: url("../../img/access/first/edit_icon.png");}
-.table .delIcon{background-image: url("../../img/access/first/delete_icon.png");}
-.table .addIcon{background-image: url("../../img/access/first/add_icon.png");}
+.table .editIcon{background-image: url("/img/access/first/edit_icon.png");}
+.table .delIcon{background-image: url("/img/access/first/delete_icon.png");}
+.table .addIcon{background-image: url("/img/access/first/add_icon.png");}

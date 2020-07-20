@@ -1,17 +1,12 @@
-.inline {
-    display: inline-block;
-    margin-right:1px;
+.inline{
+ display: inline-block;
 }
 
 /* 填充高度 */
-.fillHeight {
-    height: 100%;
-}
+.fillHeight{height: 100%;}
 
 /* 影藏花括号 */
-.ms-controller {
-    visibility: hidden !important;
-}
+.ms-controller{visibility: hidden !important;}
 
 /* 布局 */
 .layout {
@@ -32,12 +27,9 @@
     background-color: #2A7FDA;
     z-index: 2;
     transition: left 0.5s;
-    -moz-transition: left 0.5s;
-    /* Firefox 4 */
-    -webkit-transition: left 0.5s;
-    /* Safari 和 Chrome */
-    -o-transition: left 0.5s;
-    /* Opera */
+    -moz-transition: left 0.5s; /* Firefox 4 */
+    -webkit-transition: left 0.5s; /* Safari 和 Chrome */
+    -o-transition: left 0.5s; /* Opera */
 }
 
 .body {
@@ -49,15 +41,12 @@
     background: #F6F6F6;
     z-index: 1;
     transition: left 0.5s;
-    -moz-transition: left 0.5s;
-    /* Firefox 4 */
-    -webkit-transition: left 0.5s;
-    /* Safari 和 Chrome */
-    -o-transition: left 0.5s;
-    /* Opera */
+    -moz-transition: left 0.5s; /* Firefox 4 */
+    -webkit-transition: left 0.5s; /* Safari 和 Chrome */
+    -o-transition: left 0.5s; /* Opera */
 }
 
-.topBar {
+.topBar{
     height: 75px;
     position: absolute;
     left: 0;
@@ -67,7 +56,7 @@
     box-shadow: 0px 0px 5px #ccc;
 }
 
-.main {
+.main{
     position: absolute;
     top: 75px;
     left: 0;
@@ -75,16 +64,12 @@
     bottom: 0;
 }
 
-.showMenu .menu {
-    left: 0
-}
+.showMenu .menu{left: 0}
+.showMenu .body{left: 210px}
 
-.showMenu .body {
-    left: 210px
-}
 
 /* 菜单 */
-.topLogo {
+.topLogo{
     height: 52px;
     padding: 12px 25px;
     background: #0A56A5;
@@ -94,567 +79,84 @@
     left: 0;
     right: 0;
 }
+.topLogo .logo{width: 52px;height: 52px;}
+.topLogo .comName{line-height: 52px;font-size:30px;font-weight: bold;color: #fff;margin-left: 10px;}
 
-.topLogo .logo {
-    width: 52px;
-    height: 52px;
-}
-
-.topLogo .comName {
-    line-height: 52px;
-    font-size: 30px;
-    font-weight: bold;
-    color: #fff;
-    margin-left: 10px;
-}
-
-.menus {
-    position: absolute;
-    top: 76px;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    overflow: auto;
-}
-
-.menuItem,.menuChild {
-    position: relative;
-}
-
-.menuBox {
-    border-left: 4px solid #2A7FDA;
-    height: 74px;
-    padding-left: 70px;
-    padding-right: 45px;
-    position: relative;
-}
-
-.menuBox.active {
-    background-color: #176AC3;
-    border-left: 4px solid #fff;
-}
-
-.menuItem .menuItem .menuItem .menuBox {
-    padding-right: 10px;
-    padding-left: 90px;
-}
-
-.menuIcon {
-    width: 28px;
-    height: 28px;
-    position: absolute;
-    top: 23px;
-    left: 25px;
-}
-
-.menuStates img {
-    width: 15px;
-    height: 10px;
-    position: absolute;
-    top: 30px;
-    right: 15px;
-}
-
-.menuText {
-    width: 100%;
-    height: 100%;
-    text-decoration: none;
-    overflow: hidden;
-    line-height: 74px;
-    font-size: 18px;
-    color: #fff;
-    cursor: pointer;
-}
-
-.menuText:hover {
-    color: #fff;
-}
+.menus{position: absolute;top: 76px;bottom: 0;left: 0;width: 100%;overflow: auto;}
+.menuItem,.menuChild{position: relative;}
+.menuBox{border-left: 4px solid #2A7FDA;height: 74px;padding-left: 70px;padding-right: 45px;position: relative;}
+.menuBox.active{background-color: #176AC3;border-left: 4px solid #fff;}
+.menuItem .menuItem .menuItem .menuBox{padding-right: 10px;padding-left: 90px;}
+.menuIcon{width: 28px;height: 28px;position: absolute;top: 23px;left: 25px;}
+.menuStates img{width: 15px;height: 10px;position: absolute;top: 30px;right: 15px;}
+.menuText{width: 100%;height: 100%;text-decoration: none;overflow:hidden;line-height: 74px;font-size: 18px;color: #fff;cursor: pointer;}
+.menuText:hover{color: #fff;}
 
 /* 顶部 */
-.tbHello {
-    height: 24px;
-    line-height: 24px;
-    margin: 25px;
-}
-
-.tbHello span {
-    margin-left: 14px;
-    font-size: 18px;
-}
-
-.tbHello img {
-    height: 16px;
-    width: 22px;
-    margin-top: 3px;
-    cursor: pointer;
-}
-
-.otherBox {
-    height: 42px;
-    margin-top: 16px;
-}
-
-.fucList {
-    margin-top: 10px;
-}
-
-.fucItem {
-    margin-left: 30px;
-    cursor: pointer;
-}
-
-.fucItem img {
-    width: 20px;
-    height: 20px;
-}
-
-.fucItem span {
-    font-size: 18px;
-    color: #333;
-    margin-left: 10px;
-}
-
-.userInfo {
-    height: 58px;
-    cursor: pointer;
-    margin-left: 70px;
-    margin-right: 35px;
-    position: relative;
-}
-
-.userInfo:hover .userInfoTodo {
-    display: block;
-}
-
-.userInfoBox span {
-    font-size: 18px;
-    color: #333;
-    line-height: 42px;
-}
-
-.userInfoBox .headPic {
-    width: 42px;
-    height: 42px;
-    margin-left: 10px;
-}
-
-.userInfoBox .loginSelect {
-    width: 12px;
-    height: 7px;
-    margin-left: 10px;
-    margin-top: 18px;
-}
-
-.userInfoTodo {
-    width: 156px;
-    display: none;
-    z-index: 11;
-    position: absolute;
-    top: 58px;
-    right: 0;
-    background: white;
-    box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.08);
-    border-radius: 4px;
-    border: 1px solid #dddfe6;
-}
-
-.userInfoTodo .userInfoTodoItem {
-    line-height: 52px;
-    text-align: center;
-}
-
-.userInfoTodo .userInfoTodoItem.line {
-    border-top: 1px solid #F5F5F5;
-}
+.tbHello{height: 24px;line-height: 24px;margin: 25px;}
+.tbHello span{margin-left: 14px;font-size: 18px;}
+.tbHello img{height: 16px;width: 22px;margin-top: 3px;cursor: pointer;}
+.otherBox{height: 42px;margin-top: 16px;}
+.fucList{margin-top: 10px;}
+.fucItem{margin-left: 30px;cursor: pointer;}
+.fucItem img{width: 20px;height: 20px;}
+.fucItem span{font-size: 18px;color: #333;margin-left: 10px;}
+.userInfo{height: 58px;cursor: pointer;margin-left: 70px;margin-right: 35px;position: relative;}
+.userInfo:hover .userInfoTodo{display: block;}
+.userInfoBox span{font-size: 18px;color: #333;line-height: 42px;}
+.userInfoBox .headPic{width: 42px;height: 42px;margin-left: 10px;}
+.userInfoBox .loginSelect{width: 12px;height: 7px;margin-left: 10px;margin-top: 18px;}
+.userInfoTodo{width: 156px;display: none;z-index: 11;position: absolute;top: 58px;right: 0;background:rgba(255,255,255,1);box-shadow:0px 2px 10px 0px rgba(0,0,0,0.08);border-radius:4px;border:1px solid rgba(221,223,230,1);}
+.userInfoTodo .userInfoTodoItem{line-height: 52px;text-align: center;}
+.userInfoTodo .userInfoTodoItem.line{border-top:1px solid #F5F5F5;}
 
 /* 当前位置 */
-.locationInfo {
-    line-height: 22px;
-    font-size: 16px;
-    color: #333;
-}
-
-.locationInfo .text,.chat {
-    margin-right: 5px
-}
+.locationInfo{line-height: 22px;font-size: 16px;color: #333;}
+.locationInfo .text,.chat{margin-right: 5px}
 
 /* 输入 */
-.inputItem {
-    line-height: 40px;
-}
-
-.inputItem .inputText {
-    color: #333;
-    font-size: 16px;
-    margin-right: 8px;
-}
-
-.inputBox {
-    width: 200px;
-    border: 1px solid #DDDFE6;
-    padding: 0 5px;
-    border-radius: 5px;
-    position: relative;
-}
-
-.inputBox input,select,textarea {
-    border: none;
-    width: 100%;
-    height: 100%;
-    background: transparent;
-}
-
-.inputItem .inputBox select {
-    border: none;
-    width: 100%;
-    height: 100%;
-}
-
-.inputItem .textarea {
-    padding: 5px;
-}
-
-.inputItem .inputBox textarea {
-    width: 100%;
-    height: 100%;
-    border: none;
-    outline: none;
-}
+.inputItem{line-height: 40px;}
+.inputItem .inputText{color: #333;font-size: 16px;margin-right: 8px;}
+.inputBox{width: 200px;border: 1px solid #DDDFE6;padding: 0 5px;border-radius: 5px;}
+.inputBox input,select,textarea{border: none;width: 100%;height: 100%;background: transparent;}
+.inputItem .inputBox select{border: none;width: 100%;height: 100%;}
+.inputItem .textarea{padding: 5px;}
+.inputItem .inputBox textarea{width: 100%;height: 100%;border: none;outline: none;}
 
 /* 按钮 */
-.btn {
-    line-height: 40px;
-    display: inline-block;
-    *display:inline;
-    *zoom:1;
-    text-decoration: none;
-    font-size: 16px;
-    color: #fff;
-    padding: 0 20px;
-    background: #2A7FDA;
-    border-radius: 4px;
-    outline: none;
-    border: none;
-    cursor: pointer;
-}
-
-.btn.primary {
-    background: #fff;
-    border: 1px solid #DDDFE6;
-    color: #333;
-}
-
-.btn.green {
-    background: #07AD88;
-}
-
-.btn.text.primary {
-    border: none;
-    color: #2A7FDA;
-}
-
-.btn:hover {
-    color: revert;
-}
+.btn{line-height: 40px;display: inline-block;text-decoration: none;font-size: 16px;color: #fff;padding: 0 20px;
+    background: #2A7FDA;border-radius: 4px;outline: none;border: none;cursor: pointer;}
+.btn.primary{background: #fff;border:1px solid #DDDFE6;color: #333;}
+.btn.green{background: #07AD88;}
+.btn.text.primary{border: none;color: #2A7FDA;}
+.btn:hover{color: revert;}
 
 /* 单选 */
-.radioBox {
-    height: auto;
-}
-
-.radioBox p {
-    cursor: pointer;
-    margin-right: 40px;
-}
-
-.radioBox .text {
-    margin-left: 14px;
-    line-height: 24px;
-    font-size: 16px;
-}
+.radioBox{height: auto;}
+.radioBox p{cursor: pointer;margin-right: 40px;}
+.radioBox .text{margin-left: 14px;line-height: 24px;font-size: 16px;}
 
 /* 复选 */
-.checkBox {
-    height: auto;
-}
-
-.checkBox p {
-    cursor: pointer;
-    margin-right: 40px;
-}
-
-.checkBox .text {
-    margin-left: 14px;
-    line-height: 24px;
-    font-size: 16px;
-}
+.checkBox{height: auto;}
+.checkBox p{cursor: pointer;margin-right: 40px;}
+.checkBox .text{margin-left: 14px;line-height: 24px;font-size: 16px;}
 
 /* 左树右内容布局 */
-.treeContentLayout {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-.treeContentLayout .treeMain {
-    width: 310px;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.treeContentLayout .contentMain {
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 330px;
-    right: 0;
-}
-
+.treeContentLayout{width: 100%;height: 100%;position: relative;}
+.treeContentLayout .treeMain{width: 310px;height: 100%;position: absolute;top: 0;left: 0;}
+.treeContentLayout .contentMain{height: 100%;position: absolute;top: 0;left: 330px;right: 0;}
 /* 树 */
-.tree {
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background: #fff;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.05);
-    border-radius: 4px;
-}
-
-.treeItem {
-    padding: 20px;
-}
-
-.tiChild {
-    display: none;
-}
-
-.tiChild.open {
-    display: block;
-}
-
-.tiChild .treeItem {
-    position: relative;
-    padding-right: 0;
-    padding-bottom: 0;
-    padding-left: 40px;
-}
-
-.tiInfo {
-    height: 22px;
-    cursor: pointer;
-    overflow: hidden;
-    z-index: 2;
-    background-color: #fff;
-}
-
-.tiOpenStatus {
-    width: 18px;
-    height: 18px;
-    z-index: 2;
-    float: left;
-    margin-top: 2px;
-    display: inline-block;
-    *display:inline;
-    *zoom:1;
-}
-
-.tiIcon {
-    width: 18px;
-    height: 18px;
-    float: left;
-    margin-top: 2px;
-    display: inline-block;
-    *display:inline;
-    *zoom:1;
-    background: url("../../img/access/first/file2_icon.png") no-repeat;
-}
-
-.tiIcon.hadChild {
-    background: url("../../img/access/first/file_icon.png") no-repeat;
-}
-
-.tiInfo.hadChild .tiOpenStatus {
-    z-index: 2;
-    background-image: url("../../img/access/first/suo_icon.png");
-}
-
-.tiHLine {
-    width: 10px;
-    height: 1px;
-    float: left;
-    margin: 5px;
-    margin-top: 10.5px;
-    background: #DDDFE6;
-}
-
-.tiChild .tiVLine {
-    width: 1px;
-    height: 42px;
-    z-index: 1;
-    position: absolute;
-    left: 48px;
-    top: 0;
-    background: #DDDFE6;
-}
-
-.tiChild .tiVLine.hadChild {
-    height: 20px;
-}
-
-.tiText {
-    line-height: 22px;
-    margin-left: 8px;
-    float: left;
-    font-size: 16px;
-}
-/* 公用样式 */
-.wd200{
-    width:200px;
-}
-.wd400{
-    width:400px;
-}
-.wd600{
-    width:600px;
-}
-.wd650{
-    width:650px;
-}
-.wd950{
-    width:950px;
-}
-.wd30p{
-    width:30%;float: left;margin-right:10px;
-}
-.ht40{
-    height:40px;
-}
-.danger{
-    color:red;
-}
-.primary{
-    color:#2A7FDA;
-}
-.mr10{
-    margin-right:13px;
-}
-.mr25{
-    margin-right:25px;
-}
-.mb25{
-    margin-bottom:25px;
-}
-.mt30{
-    margin-top:30px;
-}
-.pd30{
-    padding:30px;
-}
-.pd25{
-    padding:25px;
-}
-.bgwhite{
-    background-color: white;
-}
-.blockTitle{
-    color:#333333;
-    font-size: 18px;
-}
-.blockTitle2{
-    color:#BBBBBB;
-    font-size:16px;
-    margin-left:10px;
-}
-.chart{
-    width:100%;
-    height:100%;
-}
-.blockDiv4{
-    width: 790px;
-    height: 470px;
-    float: left;
-    box-sizing: border-box;
-}
-/* 第一套主题修改 */
-.locationInfo li:nth-child(2) span:nth-child(1){
-    color:#2A7FDA;
-}
-.firstTheme .odd{
-    /* background-color: #F9FBFF!important; */
-}
-
-.firstTheme .layui-table-header tr{
-    /* background-color:#f2f2f2!important; */
-}
-.firstTheme .layui-table-header th{
-    padding:16px 0;
-}
-.firstTheme .layui-form-select dl dd.layui-this{
-    background-color:#2A7FDA;
-}
-.firstTheme .contentDiv{
-    padding:35px;
-}
-.firstTheme .layui-btn-primary:hover{
-    border-color: #2A7FDA;
-}
-.firstTheme .layui-form-radio>i:hover, .layui-form-radioed>i{
-    color:#2A7FDA;
-}
-.firstTheme .layui-form-checked[lay-skin=primary] i{
-    border-color: #2A7FDA!important;
-    background-color: #2A7FDA;
-    color: #fff;
-}
-.firstTheme .layui-form-checkbox[lay-skin=primary]:hover i{
-    border-color: #2A7FDA!important;
-}
-/* 圆角table样式 */
-.radiusHighTable .formTableDiv {
-    padding: 15px 20px;
-    border-radius: 0px 0px 8px 8px;
-    border: 1px solid #EBEEF5;
-    border-top: 0;
-}
-.radiusHighTable .layui-table-view{
-    border-radius: 8px;
-}
-.radiusHighTable .layui-table-box{
-    border-radius: 8px;
-}
-.radiusHighTable .layui-table th {
-    height:55px;
-}
-.radiusHighTable .layui-table-view .layui-table td, .layui-table-view .layui-table th{
-    padding:10px 0;
-}
-.radiusHighTable .layui-table-cell{
-    height: auto;
-    overflow: auto;
-}
-/* table嵌套selectbug */
-.layui-table-view dl.layui-anim {
-    position : fixed;
-}
-/* 承担的任务 */
-.beartaskDiv {
-}
-.beartaskDiv .addDiv{
-    border: 1px solid #DDDFE6;
-    border-radius: 0 0 8px 8px;
-    margin-top: -10px;
-    border-top: 0;
-    padding: 15px 20px;
-}
-.beartaskDiv .card{
-    width:100%;
-    border:1px solid #DDDFE6;
-}
-.radiusHighTable .layui-table-view{
-    border-radius: 8px 8px 0 0;
-}
-.radiusHighTable .layui-table-box{
-    border-radius: 8px 8px 0 0;
-}
+.tree{width: 100%;height: 100%;overflow: auto;background: #fff;box-shadow:0px 0px 10px 0px rgba(0,0,0,0.05);border-radius:4px;}
+.treeItem{padding: 20px;}
+.tiChild{display: none;}
+.tiChild.open{display: block;}
+.tiChild .treeItem{position: relative;padding-right: 0;padding-bottom: 0;padding-left: 40px;}
+.tiInfo{height: 22px;cursor: pointer;overflow: hidden;z-index: 2;background-color: #fff;}
+.tiOpenStatus{width: 18px;height: 18px;z-index: 2;float:left;margin-top: 2px;display: inline-block;}
+.tiIcon{width: 18px;height: 18px;float:left;margin-top: 2px;display: inline-block;background: url("/img/access/first/file2_icon.png") no-repeat;}
+.tiIcon.hadChild{background: url("/img/access/first/file_icon.png") no-repeat;}
+.tiInfo.hadChild .tiOpenStatus{z-index: 2;background-image: url("/img/access/first/suo_icon.png");}
+.tiHLine{width: 10px;height: 1px;float:left;margin: 5px;margin-top: 10.5px;background: #DDDFE6;}
+.tiChild .tiVLine{width: 1px;height: 42px;z-index: 1;position: absolute;left: 48px;top: 0;background: #DDDFE6;}
+.tiChild .tiVLine.hadChild{height: 20px;}
+.tiText{line-height: 22px;margin-left:8px;float:left;font-size: 16px;}

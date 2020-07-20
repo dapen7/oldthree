@@ -12,9 +12,9 @@
 }
 .locationInfo.add {padding-bottom: 25px;border-bottom: 1px solid #F5F5F5;}
 
-.infoClassBox{padding: 25px;padding-bottom: 0;border-bottom:1px solid #DDDFE6;}
-.infoClassBox .class{cursor: pointer;padding-bottom: 20px;border-bottom:1px solid transparent;margin:0 30px;}
-.infoClassBox .active{color: #2A7FDA;border-bottom:2px solid #2A7FDA;font-weight: bold; }
+.infoClassBox{padding: 25px;padding-bottom: 0;border-bottom:2px solid #DDDFE6;}
+.infoClassBox .class{cursor: pointer;padding-bottom: 20px;border-bottom:2px solid #DDDFE6;margin:0 30px;margin-bottom: -2px;}
+.infoClassBox .active{color: #2A7FDA;border-bottom:2px solid #2A7FDA; }
 
 /* 添加 */
 .inputMain{margin-top: 35px;padding: 0 25px;}

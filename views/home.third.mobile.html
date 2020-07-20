@@ -12,16 +12,16 @@
   <meta http-equiv="Cache-control" content="no-cache">
   <meta http-equiv="Cache" content="no-cache">
 
-  <link rel="stylesheet" href="../css/normalize.css">
-  <link rel="stylesheet" href="../js/lib/layui/css/layui.css">
-  <link rel="stylesheet" href="../css/layout.third.mobile.css">
-  <link rel="stylesheet" href="../css/home.third.mobile.css">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/js/lib/layui/css/layui.css">
+  <link rel="stylesheet" href="/css/layout.third.mobile.css">
+  <link rel="stylesheet" href="/css/home.third.mobile.css">
   <script>
     var __themeName = 'third';
   </script>
-  <script src="../js/lib/avalon/avalon.js"></script>
-  <script src="../js/lib/layui/layui.js"></script>
-  <script src="../js/lib/tool/echarts.js"></script>
+  <script src="/js/lib/avalon/avalon.js"></script>
+  <script src="/js/lib/layui/layui.js"></script>
+  <script src="/js/lib/tool/echarts.js"></script>
 </head>
 <body class="firstTheme">
   <div class="layout" :controller="layout">
@@ -30,7 +30,7 @@
         <!-- 顶部logo -->
         <div class="topLogo">
           <a href="/views/nav.first.mobile.html">
-            <img class="logo left" src="../img/access/third/home_logo_icon.png" alt="">
+            <img class="logo left" src="/img/access/third/home_logo_icon.png" alt="">
             <span class="comName left">CASC</span>
           </a>
           <p class="clearFloat"></p>
@@ -43,8 +43,8 @@
               <p :if="@menu.child.length" :click="@clickMenuCall(@menu,1)" class="menuText">{{ @menu.text }}</p>
               <a :if="!@menu.child.length" class="menuText" :attr="{href:@menu.url}">{{ @menu.text }}</a>
               <div :if="@menu.child.length" class="menuStates">
-                <img :if="@menu.open" src="../img/access/first/home_open_icon.png" alt="">
-                <img :if="!@menu.open" src="../img/access/first/home_close_icon.png" alt="">
+                <img :if="@menu.open" src="/img/access/first/home_open_icon.png" alt="">
+                <img :if="!@menu.open" src="/img/access/first/home_close_icon.png" alt="">
               </div>
             </div>
             <!-- 二级菜单 -->
@@ -55,8 +55,8 @@
                   <p :if="@chMenu.child.length" :click="@clickMenuCall(@chMenu,2)" class="menuText">{{ @chMenu.text }}</p>
                   <a :if="!@chMenu.child.length" class="menuText" :attr="{href:@chMenu.url}">{{ @chMenu.text }}</a>
                   <div :if="@chMenu.child.length" class="menuStates">
-                    <img :if="@chMenu.open" src="../img/access/first/home_open_icon.png" alt="">
-                    <img :if="!@chMenu.open" src="../img/access/first/home_close_icon.png" alt="">
+                    <img :if="@chMenu.open" src="/img/access/first/home_open_icon.png" alt="">
+                    <img :if="!@chMenu.open" src="/img/access/first/home_close_icon.png" alt="">
                   </div>
                 </div>
                 <!-- 三级菜单 -->
@@ -78,24 +78,24 @@
     <div class="body">
       <div class="topBar">
         <div class="tbHello left">
-          <img onclick="menuToggleShow()" class="left" src="../img/access/third/mobile/home_list_icon.png" alt="">
+          <img onclick="menuToggleShow()" class="left" src="/img/access/third/mobile/home_list_icon.png" alt="">
           <span class="left">您好，电机电源精细化管理系统</span>
         </div>
         <div class="otherBox right">
           <ul class="fucList left">
             <li class="fucItem left">
               <a href="/views/nav.first.mobile.html">
-                <img class="left" src="../img/access/third/mobile/home_icon.png" alt="">
+                <img class="left" src="/img/access/third/mobile/home_icon.png" alt="">
               </a>
             </li>
             <li class="fucItem left" onclick="toggleTheme()">
-              <img class="left" src="../img/access/third/theme_icon.png" alt="">
+              <img class="left" src="/img/access/third/theme_icon.png" alt="">
             </li>
           </ul>
           <div class="userInfo left">
             <a href="/views/login.first.mobile.html">
-              <img class="headPic left" src="../img/access/third/mobile/home_headpic_icon.png" alt="">
-              <img class="loginSelect left" src="../img/access/third/mobile/home_select_icon1.png" alt="">
+              <img class="headPic left" src="/img/access/third/mobile/home_headpic_icon.png" alt="">
+              <img class="loginSelect left" src="/img/access/third/mobile/home_select_icon1.png" alt="">
             </a>
           </div>
           <p class="clearFloat"></p>
@@ -177,8 +177,8 @@
       </div>
     </div>
   </div>
-  <script src="../js/compose/layout.js"></script>
-  <script src="../js/compose/menus.js"></script>
+  <script src="/js/compose/layout.js"></script>
+  <script src="/js/compose/menus.js"></script>
   <script>
     //      var bodyFuncItem = avalon.define({
     //        $id: 'bodyFuncItem',
@@ -197,10 +197,10 @@
       $id: 'info',
       activeId: 1,
       infos: [
-        {id: 1, text: '昨日访问量', num: 3230, img: '../img/access/third/home_visitor_icon.png'},
-        {id: 2, text: '今日访问量', num: 3430, img: '../img/access/third/home_visitor2_icon.png'},
-        {id: 3, text: '昨日访问量', num: 3280, img: '../img/access/third/home_visitor_icon.png'},
-        {id: 4, text: '今日访问量', num: 3630, img: '../img/access/third/home_visitor2_icon.png'}
+        {id: 1, text: '昨日访问量', num: 3230, img: '/img/access/third/home_visitor_icon.png'},
+        {id: 2, text: '今日访问量', num: 3430, img: '/img/access/third/home_visitor2_icon.png'},
+        {id: 3, text: '昨日访问量', num: 3280, img: '/img/access/third/home_visitor_icon.png'},
+        {id: 4, text: '今日访问量', num: 3630, img: '/img/access/third/home_visitor2_icon.png'}
       ],
       selectCall: function (info) {
         this.activeId = info.id;
@@ -240,14 +240,14 @@
     var link = avalon.define({
       $id: 'link',
       link: [
-        {classStr: '昨日访问量', img: '../img/access/first/home_kuaijie1_icon.png', color: '#FFC527'},
-        {classStr: '今日访问量', img: '../img/access/first/home_kuaijie2_icon.png', color: '#FF7C8C'},
-        {classStr: '添加内容', img: '../img/access/first/home_kuaijie3_icon.png', color: '#84D787'},
-        {classStr: '数据备份', img: '../img/access/first/home_kuaijie4_icon.png', color: '#4DA3FF'},
-        {classStr: '后台管理', img: '../img/access/first/home_kuaijie5_icon.png', color: '#5EDAB8'},
-        {classStr: '后台管理', img: '../img/access/first/home_kuaijie6_icon.png', color: '#797EF6'},
-        {classStr: '后台管理', img: '../img/access/first/home_kuaijie7_icon.png', color: '#FEA482'},
-        {classStr: '后台管理', img: '../img/access/first/home_kuaijie8_icon.png', color: '#FF7DAF'}
+        {classStr: '昨日访问量', img: '/img/access/first/home_kuaijie1_icon.png', color: '#FFC527'},
+        {classStr: '今日访问量', img: '/img/access/first/home_kuaijie2_icon.png', color: '#FF7C8C'},
+        {classStr: '添加内容', img: '/img/access/first/home_kuaijie3_icon.png', color: '#84D787'},
+        {classStr: '数据备份', img: '/img/access/first/home_kuaijie4_icon.png', color: '#4DA3FF'},
+        {classStr: '后台管理', img: '/img/access/first/home_kuaijie5_icon.png', color: '#5EDAB8'},
+        {classStr: '后台管理', img: '/img/access/first/home_kuaijie6_icon.png', color: '#797EF6'},
+        {classStr: '后台管理', img: '/img/access/first/home_kuaijie7_icon.png', color: '#FEA482'},
+        {classStr: '后台管理', img: '/img/access/first/home_kuaijie8_icon.png', color: '#FF7DAF'}
       ]
     });
     var taskCount = avalon.define({
@@ -260,9 +260,9 @@
     var total = avalon.define({
       $id: 'total',
       total: [
-        {classStr: '访问总次数', percentage: 24, text: '8370', start: '0', end: '9000', color: '#29CB97', img: '../img/access/first/home_data1_icon.png'},
-        {classStr: '在线人数', percentage: 43, text: '3128', start: '0', end: '3500', color: '#4072EE', img: '../img/access/first/home_data2_icon.png'},
-        {classStr: 'CPU使用', percentage: 78, text: '高', start: '低', end: '高', color: '#B558F6', img: '../img/access/first/home_data3_icon.png'}
+        {classStr: '访问总次数', percentage: 24, text: '8370', start: '0', end: '9000', color: '#29CB97', img: '/img/access/first/home_data1_icon.png'},
+        {classStr: '在线人数', percentage: 43, text: '3128', start: '0', end: '3500', color: '#4072EE', img: '/img/access/first/home_data2_icon.png'},
+        {classStr: 'CPU使用', percentage: 78, text: '高', start: '低', end: '高', color: '#B558F6', img: '/img/access/first/home_data3_icon.png'}
       ]
     });
 

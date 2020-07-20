@@ -1,0 +1,304 @@
+/* 公用样式 */
+.wd200{
+    width:200px;
+}
+.wd400{
+    width:400px;
+}
+.wd600{
+    width:600px;
+}
+.wd650{
+    width:650px;
+}
+.wd950{
+    width:950px;
+}
+.wd30p{
+    width:30%;float: left;margin-right:10px;
+}
+.ht40{
+    height:40px;
+}
+.danger{
+    color:red;
+}
+.secondTheme .primary{
+    color:#058669;
+}
+.mr10{
+    margin-right:13px;
+}
+.mr25{
+    margin-right:25px;
+}
+.mb25{
+    margin-bottom:25px;
+}
+.mt30{
+    margin-top:30px;
+}
+.pd30{
+    padding:30px;
+}
+.pd25{
+    padding:25px;
+}
+.bgwhite{
+    background-color: white;
+}
+.blockTitle{
+    color:#333333;
+    font-size: 18px;
+}
+.blockTitle2{
+    color:#BBBBBB;
+    font-size:16px;
+    margin-left:10px;
+}
+.chart{
+    width:100%;
+    height:100%;
+}
+.blockDiv4{
+    width: 790px;
+    height: 470px;
+    float: left;
+    box-sizing: border-box;
+}
+.centerTable{
+    display: table;
+    width:100%;
+    height:100%;
+    z-index: 2;
+}
+.centerCell{
+    vertical-align:middle;
+    display:table-cell;
+    *position:absolute;
+    *top:50%;
+    *position:relative;
+}
+.center8{
+    *position:relative;
+    *top:-50%;
+    margin:auto;
+}
+.mr5{
+    margin-right: 5px;
+}
+/* 第一套主题修改 */
+.firstTheme .homeBodyContent .topClassText{font-size: 18px;line-height: 30px;margin-left:10px;color: #333;font-weight: bold;}
+.firstTheme .bodyFuncItem{
+    cursor: pointer;
+    margin-left: 64px;
+    height: 59px;
+    border-bottom:3px solid white;
+}
+.firstTheme .menuThird{
+    width:100%;
+    height:62px;
+    background:rgba(255,255,255,1);
+    box-shadow:0px 0px 10px 0px rgba(0,0,0,0.05);
+    border-radius:4px;
+}
+.firstTheme .homeBodyContent .topClassText{
+    font-weight: bold;
+}
+.notice .noticeClassBox .class{
+    top: -2px;
+}
+.firstTheme .taskDiv {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    font-size: var(--font-size-primary);
+}
+.firstTheme .taskDiv .title {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.firstTheme .taskDiv .chartDiv {
+    width: 100%;
+    height: 100%;
+}
+
+.firstTheme .taskDiv .taskItem {
+    margin-bottom: 35px;
+}
+
+.firstTheme .taskDiv .infoBox {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+.firstTheme .taskDiv .name {
+    color: #A9B2C2;
+    font-size: 12px;
+}
+
+.firstTheme .taskDiv .des {
+    color: #A9B2C2;
+    font-size: 12px;
+}
+
+.firstTheme .taskDiv .des i {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.firstTheme .taskDiv .value {
+    color: #3D3A59;
+    font-size: 20px;
+}
+
+.firstTheme #taskChart0 {
+    width: 210px;
+    height: 210px;
+}
+
+.firstTheme #taskChart1 {
+    width: 210px;
+    height: 210px;
+}
+.firstTheme #taskChart2 {
+    width: 210px;
+    height: 210px;
+}
+.firstTheme .taskCountMain0{
+ background-color:#EBF7F7;
+}
+.firstTheme .taskCountMain1{
+    background-color:#EAF5FF;
+}
+.firstTheme .inline {
+    margin-right:1px;
+}
+.firstTheme .infoClassBox .active{color: #2A7FDA;border-bottom:2px solid #2A7FDA; }
+.firstTheme .bodyFuncItem:hover{
+    border-bottom: 3px solid #2A7FDA;
+    color: #2A7FDA;
+}
+.firstTheme .locationInfo li:nth-child(2) span:nth-child(1){
+    color:#2A7FDA;
+}
+.firstTheme .primary{
+    color:#2A7FDA;
+}
+.firstTheme .odd{
+    /* background-color: #F9FBFF!important; */
+}
+
+.firstTheme .layui-table-header tr{
+    /* background-color:#f2f2f2!important; */
+}
+.firstTheme .layui-table-header th{
+    padding:16px 0;
+}
+.firstTheme .layui-form-select dl dd.layui-this{
+    background-color:#2A7FDA;
+}
+.firstTheme .contentDiv{
+    padding:35px;
+}
+.firstTheme .layui-btn-primary:hover{
+    border-color: #2A7FDA;
+}
+.firstTheme .layui-form-radio>i:hover, .layui-form-radioed>i{
+    color:#2A7FDA;
+}
+.firstTheme .layui-form-checked[lay-skin=primary] i{
+    border-color: #2A7FDA!important;
+    background-color: #2A7FDA;
+    color: #fff;
+}
+.firstTheme .layui-form-checkbox[lay-skin=primary]:hover i{
+    border-color: #2A7FDA!important;
+}
+
+.firstTheme .radiusHighTable .formTableDiv {
+    padding: 15px 20px;
+    border-radius: 0px 0px 8px 8px;
+    border: 1px solid #EBEEF5;
+    border-top: 0;
+}
+.firstTheme .radiusHighTable .layui-table-view{
+    border-radius: 8px;
+}
+.firstTheme .radiusHighTable .layui-table-box{
+    border-radius: 8px;
+}
+.firstTheme .radiusHighTable .layui-table th {
+    height:55px;
+}
+.firstTheme .radiusHighTable .layui-table-view .layui-table td, .layui-table-view .layui-table th{
+    padding:10px 0;
+}
+.firstTheme .radiusHighTable .layui-table-cell{
+    height: auto;
+    overflow: auto;
+}
+/* table嵌套selectbug */
+.firstTheme .layui-table-view dl.layui-anim {
+    position : fixed;
+}
+/* 承担的任务 */
+.firstTheme .beartaskDiv {
+}
+.firstTheme .beartaskDiv .addDiv{
+    border: 1px solid #DDDFE6;
+    border-radius: 0 0 8px 8px;
+    margin-top: -10px;
+    border-top: 0;
+    padding: 15px 20px;
+}
+.firstTheme .beartaskDiv .card{
+    width:100%;
+    border:1px solid #DDDFE6;
+}
+.firstTheme .radiusHighTable .layui-table-view{
+    border-radius: 8px 8px 0 0;
+}
+.firstTheme .radiusHighTable .layui-table-box{
+    border-radius: 8px 8px 0 0;
+}
+.firstTheme .userInfoTodo {
+    background: white;
+    border: 1px solid #dddfe6;
+}
+.firstTheme .btn {
+    *display:inline;
+    *zoom:1;
+}
+.firstTheme .tiOpenStatus {
+    *display:inline;
+    *zoom:1;
+}
+.firstTheme .tiIcon {
+    *display:inline;
+    *zoom:1;
+}
+.firstTheme .locationInfo{
+    padding:18px 25px;
+    border-bottom:1px solid #F6F6F6;
+}
+.firstTheme .inputMain2{margin-top: 10px;}
+.firstTheme .inputMain2 .inputItem.inline{width: 290px;}
+.firstTheme .inputMain2 .inputItem.inline .inputBox{margin-left: 15px;}
+.firstTheme .inputMain2 .inputItem .readonly{background: #FCF9FC;}
+.firstTheme .inputMain2 .inputItem .readonly input{background: #FCF9FC;color: #333;}
+.firstTheme .inputMain2 .inputItem .inputText{padding-right:20px;box-sizing: border-box;}
+.firstTheme .infoClassBox{padding: 25px;padding-bottom: 0;border-bottom:2px solid #DDDFE6;}
+.firstTheme .infoClassBox .class{cursor: pointer;padding-bottom: 20px;border-bottom:2px solid #DDDFE6;margin:0 30px;margin-bottom: -2px;}
+
+/* 第二套主题修改 */
+.secondTheme .notice .active{
+    border-bottom: 3px solid #058669;
+    font-weight: bold;
+   
+}

@@ -1,145 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <title>我的工作台</title>
+  <meta charset="UTF-8">
+  <title>我的工作台</title>
 
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
 
-    <meta http-equiv="Expires" content="0">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Cache-control" content="no-cache">
-    <meta http-equiv="Cache" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-control" content="no-cache">
+  <meta http-equiv="Cache" content="no-cache">
 
-    <link rel="stylesheet" href="../../css/normalize.css">
-    <link rel="stylesheet" href="../../js/lib/layui/css/layui.css">
-    <link rel="stylesheet" href="../../css/layout.css">
-    <link rel="stylesheet" href="../../css/project/index.first.css">
-    <!-- 大于等于IE8小于等于IE10 -->
-    <!--[if (gte IE 8)&(lte IE 10)]>
-  <script src="../../js/patch/ie7.js"></script>
-  <script src="../../js/patch/json3.min.js"></script>
-  <script src="../../js/patch/promise.js"></script>
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/js/lib/layui/css/layui.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/project/index.first.css">
+  <link rel="stylesheet" href="/css/ie8path.css">
+  <!-- 大于等于IE8小于等于IE10 -->
+  <!--[if (gte IE 8)&(lte IE 10)]>
+  <script src="/js/patch/ie7.js"></script>
+  <script src="/js/patch/json3.min.js"></script>
+  <script src="/js/patch/promise.js"></script>
   <![endif]-->
-    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+  <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
     <!--[if lt IE 9]>
-  <script src="../js/patch/html5.min.js"></script>
-  <script src="../js/patch/respond.min.js"></script>
+  <script src="/js/patch/html5.min.js"></script>
+  <script src="/js/patch/respond.min.js"></script>
   <![endif]-->
-    <script>
-        var __themeName = 'first';
-    </script>
-    <script src="../../js/lib/avalon/avalon.js"></script>
-    <script src="../../js/lib/layui/layui.js"></script>
+  <script>
+    var __themeName = 'first';
+  </script>
+  <script src="/js/lib/avalon/avalon.js"></script>
+  <script src="/js/lib/layui/layui.js"></script>
 </head>
-
 <body class="firstTheme">
-    <div class="layout showMenu ms-controller" :controller="layout">
-        <div class="menu">
-            <!-- 顶部logo -->
-            <div class="topLogo">
-                <a href="/views/nav.first.html">
-                    <img class="logo left" src="../../img/access/first/home_logo_icon.png" alt="">
-                    <span class="comName left">CASC</span>
-                </a>
-                <div class="clearFloat"></div>
+  <div class="layout showMenu ms-controller" :controller="layout">
+    <div class="menu">
+      <!-- 顶部logo -->
+      <div class="topLogo">
+        <a href="/views/nav.first.html">
+          <img class="logo left" src="/img/access/first/home_logo_icon.png" alt="">
+          <span class="comName left">CASC</span>
+        </a>
+        <div class="clearFloat"></div>
+      </div>
+      <ul class="menus ms-controller" :controller="menus">
+        <!-- 一级菜单 -->
+        <li class="menuItem" :for="(i, menu) in @menus">
+          <div class="menuBox" :class="[(@menu.url===active ? 'active':'')]">
+            <img class="menuIcon" :if="@menu.icon!==''" :attr="{src:@menu.icon}" alt="">
+            <p :if="@menu.child.length" :click="@clickMenuCall(@menu)" class="menuText">{{ @menu.text }}</p>
+            <a :if="!@menu.child.length" class="menuText" :attr="{href:@menu.url}">{{ @menu.text }}</a>
+            <div :if="@menu.child.length" class="menuStates">
+              <img :if="@menu.open" src="/img/access/first/home_open_icon.png" alt="">
+              <img :if="!@menu.open" src="/img/access/first/home_close_icon.png" alt="">
             </div>
-            <ul class="menus ms-controller" :controller="menus">
-                <!-- 一级菜单 -->
-                <li class="menuItem" :for="(i, menu) in @menus">
-                    <div class="menuBox" :class="[(@menu.url===active ? 'active':'')]">
-                        <img class="menuIcon" :if="@menu.icon!==''" :attr="{src:@menu.icon}" alt="">
-                        <p :if="@menu.child.length" :click="@clickMenuCall(@menu)" class="menuText">{{ @menu.text }}</p>
-                        <a :if="!@menu.child.length" class="menuText" :attr="{href:@menu.url}">{{ @menu.text }}</a>
-                        <div :if="@menu.child.length" class="menuStates">
-                            <img :if="@menu.open" src="../../img/access/first/home_open_icon.png" alt="">
-                            <img :if="!@menu.open" src="../../img/access/first/home_close_icon.png" alt="">
-                        </div>
-                    </div>
-                    <!-- 二级菜单 -->
-                    <ul class="menuChild" :for="(chI, chMenu) in @menu.child" :visible="@menu.open">
-                        <li class="menuItem">
-                            <div class="menuBox" :class="[(@chMenu.url===active ? 'active':'')]">
-                                <img class="menuIcon" :if="@chMenu.icon!==''" :attr="{src:@chMenu.icon}" alt="">
-                                <p :if="@chMenu.child.length" :click="@clickMenuCall(@chMenu)" class="menuText">
-                                    {{ @chMenu.text }}</p>
-                                <a :if="!@chMenu.child.length" class="menuText"
-                                    :attr="{href:@chMenu.url}">{{ @chMenu.text }}</a>
-                                <div :if="@chMenu.child.length" class="menuStates">
-                                    <img :if="@chMenu.open" src="../../img/access/first/home_open_icon.png" alt="">
-                                    <img :if="!@chMenu.open" src="../../img/access/first/home_close_icon.png" alt="">
-                                </div>
-                            </div>
-                            <!-- 三级菜单 -->
-                            <ul class="menuChild" :for="(sI, sMenu) in @chMenu.child" :visible="@chMenu.open">
-                                <li class="menuItem">
-                                    <div class="menuBox" :class="[(@sMenu.url===active ? 'active':'')]">
-                                        <img class="menuIcon" :if="@sMenu.icon!==''" :attr="{src:@sMenu.icon}" alt="">
-                                        <a class="menuText" :attr="{href:@sMenu.url}">{{ @sMenu.text }}</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+          </div>
+          <!-- 二级菜单 -->
+          <ul class="menuChild" :for="(chI, chMenu) in @menu.child" :visible="@menu.open">
+            <li class="menuItem">
+              <div class="menuBox" :class="[(@chMenu.url===active ? 'active':'')]">
+                <img class="menuIcon" :if="@chMenu.icon!==''" :attr="{src:@chMenu.icon}" alt="">
+                <p :if="@chMenu.child.length" :click="@clickMenuCall(@chMenu)" class="menuText">{{ @chMenu.text }}</p>
+                <a :if="!@chMenu.child.length" class="menuText" :attr="{href:@chMenu.url}">{{ @chMenu.text }}</a>
+                <div :if="@chMenu.child.length" class="menuStates">
+                  <img :if="@chMenu.open" src="/img/access/first/home_open_icon.png" alt="">
+                  <img :if="!@chMenu.open" src="/img/access/first/home_close_icon.png" alt="">
+                </div>
+              </div>
+              <!-- 三级菜单 -->
+              <ul class="menuChild" :for="(sI, sMenu) in @chMenu.child" :visible="@chMenu.open">
+                <li class="menuItem">
+                  <div class="menuBox" :class="[(@sMenu.url===active ? 'active':'')]">
+                    <img class="menuIcon" :if="@sMenu.icon!==''" :attr="{src:@sMenu.icon}" alt="">
+                    <a class="menuText" :attr="{href:@sMenu.url}">{{ @sMenu.text }}</a>
+                  </div>
                 </li>
-            </ul>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="body">
+      <div class="topBar">
+        <div class="tbHello left">
+          <img onclick="menuToggleShow()" class="left" src="/img/access/first/home_list_icon.png" alt="">
+          <span class="left">您好，电机电源精细化管理系统！</span>
         </div>
-        <div class="body">
-            <div class="topBar">
-                <div class="tbHello left">
-                    <img onclick="menuToggleShow()" class="left" src="../../img/access/first/home_list_icon.png" alt="">
-                    <span class="left">您好，电机电源精细化管理系统！</span>
-                </div>
-                <div class="otherBox right">
-                    <ul class="fucList left">
-                        <li class="fucItem left">
-                            <a href="/views/nav.first.html">
-                                <img class="left" src="../../img/access/first/home_icon.png" alt="">
-                                <span class="left">首页</span>
-                            </a>
-                        </li>
-                        <li class="fucItem left" onclick="toggleTheme()">
-                            <img class="left" src="../../img/access/first/theme_icon.png" alt="">
-                            <span class="left">主题</span>
-                        </li>
-                    </ul>
-                    <div class="userInfo left">
-                        <div class="userInfoBox">
-                            <span class="left">您好！系统管理员</span>
-                            <img class="headPic left" src="../../img/access/first/home_headpic_icon.png" alt="">
-                            <img class="loginSelect left" src="../../img/access/first/login_select_icon.png" alt="">
-                        </div>
-                        <ul class="userInfoTodo">
-                            <li class="userInfoTodoItem">个人信息</li>
-                            <li class="userInfoTodoItem">修改密码</li>
-                            <li class="userInfoTodoItem">我的通知</li>
-                            <li class="userInfoTodoItem line"><a href="/views/login.first.html"><span>退出</span></a></li>
-                        </ul>
-                    </div>
-                    <div class="clearFloat"></div>
-                </div>
-                <div class="clearFloat"></div>
+        <div class="otherBox right">
+          <ul class="fucList left">
+            <li class="fucItem left">
+              <a href="/views/nav.first.html">
+                <img class="left" src="/img/access/first/home_icon.png" alt="">
+                <span class="left">首页</span>
+              </a>
+            </li>
+            <li class="fucItem left" onclick="toggleTheme()">
+              <img class="left" src="/img/access/first/theme_icon.png" alt="">
+              <span class="left">主题</span>
+            </li>
+          </ul>
+          <div class="userInfo left">
+            <div class="userInfoBox">
+              <span class="left">您好！系统管理员</span>
+              <img class="headPic left" src="/img/access/first/home_headpic_icon.png" alt="">
+              <img class="loginSelect left" src="/img/access/first/login_select_icon.png" alt="">
             </div>
-            <div class="main">
-                <div class="contentBody">
-                    <!-- 当前位置 -->
-                    <ul class="locationInfo add ms-controller" :controller="locationInfo">
-                        <li class="inline">当前位置：</li>
-                        <li class="inline" :for="(i, menu) in @locationInfo">
-                            <span class="text">{{ @menu.text }}</span>
-                            <span class="chat" :if="@i!==@locationInfo.length-1">></span>
-                        </li>
-                    </ul>
-                    <!-- 分类 -->
-                    <div class="layui-row infoClassBox ms-controller" :controller="infoClass">
-                        <div class="inline class" ms-for="(k, v) in @infoClass"
-                            :class="[(@classActive===@v.classStr ? 'active':'')]" :click="@clickMenuCall(@v)">
-                            {{ v.classStr }}
-                        </div>
-                    </div>
+            <ul class="userInfoTodo">
+              <li class="userInfoTodoItem">个人信息</li>
+              <li class="userInfoTodoItem">修改密码</li>
+              <li class="userInfoTodoItem">我的通知</li>
+              <li class="userInfoTodoItem line"><a href="/views/login.first.html"><span>退出</span></a></li>
+            </ul>
+          </div>
+          <div class="clearFloat"></div>
+        </div>
+        <div class="clearFloat"></div>
+      </div>
+      <div class="main">
+        <div class="contentBody">
+          <!-- 当前位置 -->
+          <ul class="locationInfo add ms-controller" :controller="locationInfo">
+            <li class="inline">当前位置：</li>
+            <li class="inline" :for="(i, menu) in @locationInfo">
+              <span class="text">{{ @menu.text }}</span>
+              <span class="chat" :if="@i!==@locationInfo.length-1">></span>
+            </li>
+          </ul>
+          <!-- 分类 -->
+          <div class="layui-row infoClassBox ms-controller" :controller="infoClass">
+            <div class="inline class" ms-for="(k, v) in @infoClass" :class="[(@classActive===@v.classStr ? 'active':'')]" :click="@clickMenuCall(@v)">
+              {{ v.classStr }}
+            </div>
+          </div>
                     <!-- 填写 -->
                     <div class="pd30 beartaskDiv">
                         <form class="layui-form notinline isPc" action="" lay-filter="bearTaskForm">
@@ -275,8 +270,8 @@
     <script type="text/html" id="todoTpl">
     <button class="btn primary text" lay-event="del">删除</button>
   </script>
-    <script src="../../js/compose/layout.js"></script>
-    <script src="../../js/compose/menus.js"></script>
+    <script src="/js/compose/layout.js"></script>
+    <script src="/js/compose/menus.js"></script>
     <script>
         var locationInfo = avalon.define({
             $id: 'locationInfo',

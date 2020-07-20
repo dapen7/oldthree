@@ -8,10 +8,9 @@
     overflow: auto;
 }
 .locationInfo{
-    padding:18px 25px;
-    border-bottom:1px solid #F6F6F6;
+    padding:25px 25px 0;
 }
-/* .locationInfo.add {padding-bottom: 25px;border-bottom: 1px solid #F5F5F5;} */
+.locationInfo.add {padding-bottom: 25px;border-bottom: 1px solid #F5F5F5;}
 
 .search{margin-top: 45px;padding:0 25px;}
 .search .inputItem{margin-right: 25px;margin-bottom: 25px;}
@@ -21,8 +20,8 @@
 .table{height: 50%;padding:0 25px;}
 .table a{color: #2A7FDA;}
 .table .icon{width: 28px;height: 28px;cursor: pointer;margin:0 20px;display: inline-block;background-size: 100%;}
-.table .editIcon{background-image: url("../../img/access/first/edit_icon.png");}
-.table .delIcon{background-image: url("../../img/access/first/delete_icon.png");}
+.table .editIcon{background-image: url("/img/access/first/edit_icon.png");}
+.table .delIcon{background-image: url("/img/access/first/delete_icon.png");}
 
 /* 添加 */
 .inputMain{margin-top: 35px;}
@@ -39,13 +38,13 @@
 .inputMain .btnBox .btn{margin-right: 20px;}
 
 /* 添加 */
-.inputMain2{margin-top: 10px;}
+.inputMain2{margin-top: 35px;}
 .inputMain2 .inputItem{margin-top: 25px;}
-.inputMain2 .inputItem.inline{width: 290px;}
-.inputMain2 .inputItem.inline .inputBox{width: 100px;margin-left: 15px;}
+.inputMain2 .inputItem.inline{width: 300px;}
+.inputMain2 .inputItem.inline .inputBox{width: 100px;margin-left: 25px;}
 .inputMain2 .inputItem.btnBox .btn{margin-right: 25px;}
-.inputMain2 .inputItem .readonly{background: #FCF9FC;width: 660px;}
-.inputMain2 .inputItem .readonly input{background: #FCF9FC;color: #333;}
+.inputMain2 .inputItem .readonly{background: #DDDFE6;width: 660px;}
+.inputMain2 .inputItem .readonly input{background: #DDDFE6;color: #333;}
 .inputMain2 .thSelect{width: 694px;height: 42px;}
 .inputMain2 .thSelect .inputBox{width: 30%;margin-right: 1%;}
 .inputMain2 .showText{border: none;}
@@ -53,7 +52,7 @@
 .inputMain2 .result .inputBox{width: 90%;height: 40px;}
 .inputMain2 .result .layui-table-cell{height: auto;}
 .inputMain2 .showText span{color: #2A7FDA;}
-.inputMain2 .inputItem .inputText{width: 150px;display: inline-block;text-align: right;padding-right:20px;box-sizing: border-box;}
+.inputMain2 .inputItem .inputText{width: 150px;display: inline-block;text-align: right;}
 .inputMain2 .inputItem .inputText span{color: #E91126;font-size: 16px;line-height: 40px;margin-right: 4px;}
 .inputMain2 .inputItem .tips{color: #E91126;font-size: 16px;margin-left: 50px;}
 .inputMain2 .inputItem .radioBox{padding-top: 5px;margin-left: 25px;}

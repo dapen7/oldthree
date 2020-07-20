@@ -73,7 +73,7 @@
 .menus .menuBox{height: 44px;padding:0 10px;position: relative;}
 .menus .menuBox.active .menuText{color: #058669;}
 .menus .menuIcon{width: 10px;height: 10px;
-    background: url("../../img/access/second/zhankai_icon.png") no-repeat;position: absolute;top: 17px;right: 10px;}
+    background: url("/img/access/second/zhankai_icon.png") no-repeat;position: absolute;top: 17px;right: 10px;}
 .menus .menuStates img{width: 15px;height: 10px;position: absolute;top: 30px;right: 15px;}
 .menus .menuText{text-decoration: none;line-height: 44px;font-size: 14px;color: #fff;cursor: pointer;}
 .menus .menuText.hadChild{padding-right: 14px;}

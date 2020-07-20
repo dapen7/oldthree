@@ -12,15 +12,15 @@
   <meta http-equiv="Cache-control" content="no-cache">
   <meta http-equiv="Cache" content="no-cache">
 
-  <link rel="stylesheet" href="../../css/normalize.css">
-  <link rel="stylesheet" href="../../js/lib/layui/css/layui.css">
-  <link rel="stylesheet" href="../../css/layout.first.mobile.css">
-  <link rel="stylesheet" href="../../css/dictionary/index.first.mobile.css">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/js/lib/layui/css/layui.css">
+  <link rel="stylesheet" href="/css/layout.first.mobile.css">
+  <link rel="stylesheet" href="/css/dictionary/index.first.mobile.css">
   <script>
     var __themeName = 'first';
   </script>
-  <script src="../../js/lib/avalon/avalon.js"></script>
-  <script src="../../js/lib/layui/layui.js"></script>
+  <script src="/js/lib/avalon/avalon.js"></script>
+  <script src="/js/lib/layui/layui.js"></script>
 </head>
 <body class="firstTheme">
   <div class="layout ms-controller" :controller="layout">
@@ -29,7 +29,7 @@
         <!-- 顶部logo -->
         <div class="topLogo">
           <a href="/views/nav.first.mobile.html">
-            <img class="logo left" src="../../img/access/first/home_logo_icon.png" alt="">
+            <img class="logo left" src="/img/access/first/home_logo_icon.png" alt="">
             <span class="comName left">CASC</span>
           </a>
           <p class="clearFloat"></p>
@@ -42,8 +42,8 @@
               <p :if="@menu.child.length" :click="@clickMenuCall(@menu,1)" class="menuText">{{ @menu.text }}</p>
               <a :if="!@menu.child.length" class="menuText" :attr="{href:@menu.url}">{{ @menu.text }}</a>
               <div :if="@menu.child.length" class="menuStates">
-                <img :if="@menu.open" src="../../img/access/first/home_open_icon.png" alt="">
-                <img :if="!@menu.open" src="../../img/access/first/home_close_icon.png" alt="">
+                <img :if="@menu.open" src="/img/access/first/home_open_icon.png" alt="">
+                <img :if="!@menu.open" src="/img/access/first/home_close_icon.png" alt="">
               </div>
             </div>
             <!-- 二级菜单 -->
@@ -54,8 +54,8 @@
                   <p :if="@chMenu.child.length" :click="@clickMenuCall(@chMenu,2)" class="menuText">{{ @chMenu.text }}</p>
                   <a :if="!@chMenu.child.length" class="menuText" :attr="{href:@chMenu.url}">{{ @chMenu.text }}</a>
                   <div :if="@chMenu.child.length" class="menuStates">
-                    <img :if="@chMenu.open" src="../../img/access/first/home_open_icon.png" alt="">
-                    <img :if="!@chMenu.open" src="../../img/access/first/home_close_icon.png" alt="">
+                    <img :if="@chMenu.open" src="/img/access/first/home_open_icon.png" alt="">
+                    <img :if="!@chMenu.open" src="/img/access/first/home_close_icon.png" alt="">
                   </div>
                 </div>
                 <!-- 三级菜单 -->
@@ -77,24 +77,24 @@
     <div class="body">
       <div class="topBar">
         <div class="tbHello left">
-          <img onclick="menuToggleShow()" class="left" src="../../img/access/first/home_list_icon.png" alt="">
+          <img onclick="menuToggleShow()" class="left" src="/img/access/first/home_list_icon.png" alt="">
           <span class="left">您好，电机电源精细化管理系统</span>
         </div>
         <div class="otherBox right">
           <ul class="fucList left">
             <li class="fucItem left">
               <a href="/views/nav.first.mobile.html">
-                <img class="left" src="../../img/access/first/home_icon.png" alt="">
+                <img class="left" src="/img/access/first/home_icon.png" alt="">
               </a>
             </li>
             <li class="fucItem left" onclick="toggleTheme()">
-              <img class="left" src="../../img/access/first/theme_icon.png" alt="">
+              <img class="left" src="/img/access/first/theme_icon.png" alt="">
             </li>
           </ul>
           <div class="userInfo left">
             <a href="/views/login.first.mobile.html">
-              <img class="headPic left" src="../../img/access/first/home_headpic_icon.png" alt="">
-              <img class="loginSelect left" src="../../img/access/first/login_select_icon.png" alt="">
+              <img class="headPic left" src="/img/access/first/home_headpic_icon.png" alt="">
+              <img class="loginSelect left" src="/img/access/first/login_select_icon.png" alt="">
             </a>
           </div>
           <p class="clearFloat"></p>
@@ -141,8 +141,8 @@
     <a class="icon delIcon" lay-event="del"></a>
     <a class="icon addIcon" lay-event="add"></a>
   </script>
-  <script src="../../js/compose/layout.js"></script>
-  <script src="../../js/compose/menus.js"></script>
+  <script src="/js/compose/layout.js"></script>
+  <script src="/js/compose/menus.js"></script>
   <script>
     var locationInfo = avalon.define({
       $id: 'locationInfo',

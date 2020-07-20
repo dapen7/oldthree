@@ -12,26 +12,27 @@
   <meta http-equiv="Cache-control" content="no-cache">
   <meta http-equiv="Cache" content="no-cache">
 
-  <link rel="stylesheet" href="../../css/normalize.css">
-  <link rel="stylesheet" href="../../js/lib/layui/css/layui.css">
-  <link rel="stylesheet" href="../../css/layout.third.css">
-  <link rel="stylesheet" href="../../css/organization/index.third.css">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/js/lib/layui/css/layui.css">
+  <link rel="stylesheet" href="/css/layout.third.css">
+  <link rel="stylesheet" href="/css/organization/index.third.css">
+  <link rel="stylesheet" href="/css/ie8path.css">
   <!-- 大于等于IE8小于等于IE10 -->
   <!--[if (gte IE 8)&(lte IE 10)]>
-  <script src="../../js/patch/ie7.js"></script>
-  <script src="../../js/patch/json3.min.js"></script>
-  <script src="../../js/patch/promise.js"></script>
+  <script src="/js/patch/ie7.js"></script>
+  <script src="/js/patch/json3.min.js"></script>
+  <script src="/js/patch/promise.js"></script>
   <![endif]-->
   <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
   <!--[if lt IE 9]>
-  <script src="../js/patch/html5.min.js"></script>
-  <script src="../js/patch/respond.min.js"></script>
+  <script src="/js/patch/html5.min.js"></script>
+  <script src="/js/patch/respond.min.js"></script>
   <![endif]-->
   <script>
     var __themeName = 'third';
   </script>
-  <script src="../../js/lib/avalon/avalon.js"></script>
-  <script src="../../js/lib/layui/layui.js"></script>
+  <script src="/js/lib/avalon/avalon.js"></script>
+  <script src="/js/lib/layui/layui.js"></script>
 </head>
 <body class="thirdTheme">
   <div class="layout showMenu" :controller="layout">
@@ -40,7 +41,7 @@
         <!-- 顶部logo -->
         <div class="topLogo left">
           <a href="/views/nav.third.html">
-            <img class="logo left" src="../../img/access/third/home_logo_icon.png" alt="">
+            <img class="logo left" src="/img/access/third/home_logo_icon.png" alt="">
             <span class="comName left">CASC</span>
           </a>
           <p class="clearFloat"></p>
@@ -84,18 +85,18 @@
           <ul class="fucList left">
             <li class="fucItem left">
               <a href="/views/nav.third.html">
-                <img class="left" src="../../img/access/third/home_icon.png" alt="">
+                <img class="left" src="/img/access/third/home_icon.png" alt="">
               </a>
             </li>
             <li class="fucItem left">
-              <img class="left" onclick="toggleTheme()" src="../../img/access/third/theme_icon.png" alt="">
+              <img class="left" onclick="toggleTheme()" src="/img/access/third/theme_icon.png" alt="">
             </li>
           </ul>
           <div class="userInfo left">
             <div class="userInfoBox">
-              <img class="headPic left" src="../../img/access/third/home_headpic_icon.png" alt="">
+              <img class="headPic left" src="/img/access/third/home_headpic_icon.png" alt="">
               <span class="left">系统管理员</span>
-              <img class="loginSelect left" src="../../img/access/third/zhankai_icon.png" alt="">
+              <img class="loginSelect left" src="/img/access/third/zhankai_icon.png" alt="">
             </div>
             <ul class="userInfoTodo">
               <li class="userInfoTodoItem">个人信息</li>
@@ -199,8 +200,8 @@
       <input type="text" placeholder="请输入" :input="@d.val">
     </div>
   </script>
-  <script src="../../js/compose/layout.js"></script>
-  <script src="../../js/compose/menus.js"></script>
+  <script src="/js/compose/layout.js"></script>
+  <script src="/js/compose/menus.js"></script>
   <script>
     var locationInfo = avalon.define({
       $id: 'locationInfo',

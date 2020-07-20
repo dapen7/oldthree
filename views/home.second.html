@@ -7,17 +7,18 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
 
     <meta http-equiv="Expires" content="0">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
 
-    <link rel="stylesheet" href="../css/normalize.css">
-    <link rel="stylesheet" href="../js/lib/layui/css/layui.css">
-    <link rel="stylesheet" href="../css/layout.second.css">
-    <link rel="stylesheet" href="../css/home.second.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/js/lib/layui/css/layui.css">
+    <link rel="stylesheet" href="/css/layout.second.css">
+    <link rel="stylesheet" href="/css/home.second.css">
+    <link rel="stylesheet" href="/css/ie8path.css">
     <!-- 大于等于IE8小于等于IE10 -->
     <!--[if lte IE 8]>
     <script type="text/javascript">
@@ -32,186 +33,182 @@
     </script>
     <![endif]-->
     <!--[if (gte IE 8)&(lte IE 10)]>
-    <script src="../js/patch/ie7.js"></script>
-    <script src="../js/patch/json3.min.js"></script>
-    <script src="../js/patch/promise.js"></script>
+    <script src="/js/patch/ie7.js"></script>
+    <script src="/js/patch/json3.min.js"></script>
+    <script src="/js/patch/promise.js"></script>
     <![endif]-->
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
     <!--[if lt IE 9]>
-    <script src="../js/patch/html5.min.js"></script>
-    <script src="../js/patch/respond.min.js"></script>
+    <script src="/js/patch/html5.min.js"></script>
+    <script src="/js/patch/respond.min.js"></script>
     <![endif]-->
     <script>
         var __themeName = 'second';
     </script>
-    <script src="../js/lib/avalon/avalon.js"></script>
-    <script src="../js/lib/layui/layui.js"></script>
-    <script src="../js/lib/tool/echarts.js"></script>
+    <script src="/js/lib/avalon/avalon.js"></script>
+    <script src="/js/lib/layui/layui.js"></script>
+    <script src="/js/lib/tool/echarts.js"></script>
 </head>
 
 <body class="secondTheme">
-    <div class="layout showMenu" :controller="layout">
-        <div class="topBar">
-            <!-- 顶部logo -->
-            <div class="topLogo left">
-                <a href="/views/nav.second.html">
-                    <img class="logo left" src="../img/access/second/home_logo_icon.png" alt="">
-                    <span class="comName left">CASC</span>
-                </a>
-                <p class="clearFloat"></p>
-            </div>
-            <div class="topMenu left">
-                <img onclick="menuToggleShow()" class="menuSHBtn left" src="../img/access/second/home_list_icon.png"
-                    alt="">
-                <ul class="secondMenus" :controller="secondMenus">
-                    <li class="menuItem" :for="(i, menu) in @secondMenus">
-                        <span :if="@menu.child.length">{{ @menu.text }}</span>
-                        <a :if="@menu.child.length===0" class="menuLink" :class="[(@menu.url===@active ? 'active':'')]"
-                            :attr="{href:@menu.url}">{{ @menu.text }}</a>
-                        <img :if="@menu.child.length" class="more" src="../img/access/second/zhankai_icon.png" alt="">
-                        <ul class="moreMenu" :for="(mi, moreMenu) in @menu.child">
-                            <li class="moreMItem" :class="[(@menu.url===@active ? 'active':'')]">
-                                <a :attr="{href:@moreMenu.url}">{{ @moreMenu.text }}</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <div class="otherBox right">
-                <div class="topSearch left">
-                    <div class="inputItem">
-                        <div class="inputBox icon inline">
-                            <input type="text" placeholder="输入关键词搜索…">
-                            <img src="../img/access/second/search_icon.png" alt="">
-                        </div>
-                    </div>
-                </div>
-                <ul class="fucList left">
-                    <li class="fucItem left">
-                        <a href="/views/nav.second.html">
-                            <img class="left" src="../img/access/second/home_icon.png" alt="">
-                        </a>
-                    </li>
-                    <li class="fucItem left">
-                        <img class="left" onclick="toggleTheme()" src="../img/access/second/theme_icon.png" alt="">
-                    </li>
-                </ul>
-                <div class="userInfo left">
-                    <div class="userInfoBox">
-                        <img class="headPic left" src="../img/access/second/home_headpic_icon.png" alt="">
-                        <span class="left">系统管理员</span>
-                        <img class="loginSelect left" src="../img/access/second/zhankai_icon.png" alt="">
-                    </div>
-                    <ul class="userInfoTodo">
-                        <li class="userInfoTodoItem">个人信息</li>
-                        <li class="userInfoTodoItem">修改密码</li>
-                        <li class="userInfoTodoItem">我的通知</li>
-                        <li class="userInfoTodoItem line"><a href="/views/login.second.html"><span>退出</span></a></li>
+<div class="layout showMenu" :controller="layout">
+    <div class="topBar">
+        <!-- 顶部logo -->
+        <div class="topLogo left">
+            <a href="/views/nav.second.html">
+                <img class="logo left" src="/img/access/second/home_logo_icon.png" alt="">
+                <span class="comName left">CASC</span>
+            </a>
+            <p class="clearFloat"></p>
+        </div>
+        <div class="topMenu left">
+            <img onclick="menuToggleShow()" class="menuSHBtn left" src="/img/access/second/home_list_icon.png" alt="">
+            <ul class="secondMenus" :controller="secondMenus">
+                <li class="menuItem" :for="(i, menu) in @secondMenus">
+                    <span :if="@menu.child.length">{{ @menu.text }}</span>
+                    <a :if="@menu.child.length===0" class="menuLink" :class="[(@menu.url===@active ? 'active':'')]"
+                       :attr="{href:@menu.url}">{{ @menu.text }}</a>
+                    <img :if="@menu.child.length" class="more" src="/img/access/second/zhankai_icon.png" alt="">
+                    <ul class="moreMenu" :for="(mi, moreMenu) in @menu.child">
+                        <li class="moreMItem" :class="[(@menu.url===@active ? 'active':'')]">
+                            <a :attr="{href:@moreMenu.url}">{{ @moreMenu.text }}</a>
+                        </li>
                     </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="otherBox right">
+            <div class="topSearch left">
+                <div class="inputItem">
+                    <div class="inputBox icon inline">
+                        <input type="text" placeholder="输入关键词搜索…">
+                        <img src="/img/access/second/search_icon.png" alt="">
+                    </div>
                 </div>
-                <p class="clearFloat"></p>
+            </div>
+            <ul class="fucList left">
+                <li class="fucItem left">
+                    <a href="/views/nav.second.html">
+                        <img class="left" src="/img/access/second/home_icon.png" alt="">
+                    </a>
+                </li>
+                <li class="fucItem left">
+                    <img class="left" onclick="toggleTheme()" src="/img/access/second/theme_icon.png" alt="">
+                </li>
+            </ul>
+            <div class="userInfo left">
+                <div class="userInfoBox">
+                    <img class="headPic left" src="/img/access/second/home_headpic_icon.png" alt="">
+                    <span class="left">系统管理员</span>
+                    <img class="loginSelect left" src="/img/access/second/zhankai_icon.png" alt="">
+                </div>
+                <ul class="userInfoTodo">
+                    <li class="userInfoTodoItem">个人信息</li>
+                    <li class="userInfoTodoItem">修改密码</li>
+                    <li class="userInfoTodoItem">我的通知</li>
+                    <li class="userInfoTodoItem line"><a href="/views/login.second.html"><span>退出</span></a></li>
+                </ul>
             </div>
             <p class="clearFloat"></p>
         </div>
-        <div class="body">
-            <!-- 菜单 -->
-            <div class="menu">
-                <ul class="menus" :controller="menus">
-                    <li class="menuItem" :for="(i, menu) in @menus">
-                        <div class="menuBox" :class="[(@menu.open && @menu.url===@active ? 'active':'')]">
-                            <img class="menuIcon" :if="@menu.icon!==''" :attr="{src:@menu.icon}" alt="">
-                            <p :if="@menu.child.length" :click="@clickMenuCall(@menu,2)" class="menuText">
-                                {{ @menu.text }}</p>
-                            <a :if="!@menu.child.length" class="menuText" :attr="{href:@menu.url}">{{ @menu.text }}</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="main">
-                <div class="homeBody">
-                    <!--栅格化-->
-                    <div class="layui-row layui-col-space25">
-                        <div class="layui-col-md8">
-                            <!--顶部信息-->
-                            <div class="info layui-row layui-col-space25" :controller="info">
+        <p class="clearFloat"></p>
+    </div>
+    <div class="body">
+        <!-- 菜单 -->
+        <div class="menu">
+            <ul class="menus" :controller="menus">
+                <li class="menuItem" :for="(i, menu) in @menus">
+                    <div class="menuBox" :class="[(@menu.open && @menu.url===@active ? 'active':'')]">
+                        <img class="menuIcon" :if="@menu.icon!==''" :attr="{src:@menu.icon}" alt="">
+                        <p :if="@menu.child.length" :click="@clickMenuCall(@menu,2)" class="menuText">{{ @menu.text }}</p>
+                        <a :if="!@menu.child.length" class="menuText" :attr="{href:@menu.url}">{{ @menu.text }}</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="main">
+            <div class="homeBody">
+                <!--栅格化-->
+                <div class="layui-row layui-col-space25">
+                    <div class="layui-col-md8">
+                        <!--顶部信息-->
+                        <div class="info layui-row layui-col-space25" :controller="info">
                                 <div class="layui-col-sm6 layui-col-md3" :for="(i, info) in @infos">
-                                    <div class="infoItem" :class="[(@info.id === @activeId ? 'active':'')]"
-                                        :click="selectCall(@info)">
-                                        <div class="infoBox">
-                                            <img class="left" :attr="{src:@info.img}" alt="">
-                                            <div class="infoText left">
-                                                <p>{{ @info.text }}</p>
-                                                <p class="num">{{ @info.num }}</p>
-                                            </div>
-                                            <div class="clearFloat"></div>
+                                <div class="infoItem" :class="[(@info.id === @activeId ? 'active':'')]"
+                                     :click="selectCall(@info)">
+                                    <div class="infoBox">
+                                        <img class="left" :attr="{src:@info.img}" alt="">
+                                        <div class="infoText left">
+                                            <p>{{ @info.text }}</p>
+                                            <p class="num">{{ @info.num }}</p>
                                         </div>
+                                        <div class="clearFloat"></div>
                                     </div>
                                 </div>
                             </div>
-                            <!--图表-->
-                            <div class="homeBodyContent dataView ms-controller" :controller="notice">
-                                <div class="topInfo">
-                                    <span class="topClassText left">数据概览：<b>近一周新增用户量</b></span>
-                                    <span class="topClassMore right">●●●</span>
-                                </div>
-                                <div class="contentContentBox">
-                                    <div id="dataViewMain"></div>
-                                </div>
-                            </div>
                         </div>
-                        <div class="layui-col-md4">
-                            <!--日历-->
-                            <div class="calendar" :controller="calendar">
-                                <div class="top">
-                                    <ul class="topMain">
-                                        <li class="iBtn pre"><img :click="preMonth"
-                                                src="../img/access/second/last_icon.png" alt=""></li>
-                                        <li class="item">
-                                            <p>{{ @year + ' 年 ' + @month + ' 月' }}</p>
-                                        </li>
-                                        <li class="iBtn next"><img :click="nextMonth"
-                                                src="../img/access/second/next_icon.png" alt=""></li>
-                                    </ul>
-                                </div>
-                                <ul class="weeks">
-                                    <li class="item left" :for="(i, week) in @weeks"><span>{{ @week }}</span></li>
-                                    <li class="clearFloat"></li>
-                                </ul>
-                                <ul class="days">
-                                    <li class="item left" :for="(i, d) in @days" :class="[(@d==='' ? 'noDay':'')]">
-                                        <div class="day" :class="[(@d===@day && @d!=='' ? 'active':'')]"
-                                            :click="selectDay(@d)">{{ @d }}
-                                        </div>
-                                    </li>
-                                    <li class="clearFloat"></li>
-                                </ul>
+                        <!--图表-->
+                        <div class="homeBodyContent dataView ms-controller" :controller="notice">
+                            <div class="topInfo">
+                                <span class="topClassText left">数据概览：<b>近一周新增用户量</b></span>
+                                <span class="topClassMore right">●●●</span>
                             </div>
-
-                            <div class="homeBodyContent matter">
-                                <div class="topInfo">
-                                    <span class="topClassText left">待办事项</span>
-                                    <span class="topClassMore right">●●●</span>
-                                </div>
-                                <ul class="contentBox ms-controller" :controller="matter">
-                                    <li class="layui-row contentItem" ms-for="(k, v) in @matter">
-                                        <div class="layui-col-xs1 class"><input type="checkbox" name="todo"
-                                                lay-skin="primary" title="" checked=""></div>
-                                        <div class="layui-col-xs2 class">{{ v.classStr }}</div>
-                                        <div class="layui-col-xs6 describe">{{ v.describe }}</div>
-                                        <div class="layui-col-xs3 date">{{ v.date }}</div>
-                                    </li>
-                                </ul>
+                            <div class="contentContentBox">
+                                <div id="dataViewMain"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="layui-row layui-col-space25">
-                        <div class="layui-col-md5">
-                            <div class="homeBodyContent taskCount">
-                                <div class="topInfo">
-                                    <span class="topClass left"></span>
-                                    <span class="topClassText left">任务统计</span>
-                                    <span class="topClassMore right">●●●</span>
-                                </div>
+                    <div class="layui-col-md4">
+                        <!--日历-->
+                        <div class="calendar" :controller="calendar">
+                            <div class="top">
+                                <ul class="topMain">
+                                    <li class="iBtn pre"><img :click="preMonth" src="/img/access/second/last_icon.png"
+                                                              alt=""></li>
+                                    <li class="item"><p>{{ @year + ' 年 ' + @month + ' 月' }}</p></li>
+                                    <li class="iBtn next"><img :click="nextMonth" src="/img/access/second/next_icon.png"
+                                                               alt=""></li>
+                                </ul>
+                            </div>
+                            <ul class="weeks">
+                                <li class="item left" :for="(i, week) in @weeks"><span>{{ @week }}</span></li>
+                                <li class="clearFloat"></li>
+                            </ul>
+                            <ul class="days">
+                                <li class="item left" :for="(i, d) in @days" :class="[(@d==='' ? 'noDay':'')]">
+                                    <div class="day" :class="[(@d===@day && @d!=='' ? 'active':'')]"
+                                         :click="selectDay(@d)">{{ @d }}
+                                    </div>
+                                </li>
+                                <li class="clearFloat"></li>
+                            </ul>
+                        </div>
+
+                        <div class="homeBodyContent matter">
+                            <div class="topInfo">
+                                <span class="topClassText left">待办事项</span>
+                                <span class="topClassMore right">●●●</span>
+                            </div>
+                            <ul class="contentBox ms-controller" :controller="matter">
+                                <li class="layui-row contentItem" ms-for="(k, v) in @matter">
+                                        <div class="layui-col-xs1 class"><input type="checkbox" name="todo"
+                                                lay-skin="primary" title="" checked=""></div>
+                                        <div class="layui-col-xs2 class">{{ v.classStr }}</div>
+                                    <div class="layui-col-xs6 describe">{{ v.describe }}</div>
+                                    <div class="layui-col-xs3 date">{{ v.date }}</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-row layui-col-space25">
+                    <div class="layui-col-md5">
+                        <div class="homeBodyContent taskCount">
+                            <div class="topInfo">
+                                <span class="topClass left"></span>
+                                <span class="topClassText left">任务统计</span>
+                                <span class="topClassMore right">●●●</span>
+                            </div>
                                 <ul class="layui-row layui-col-space25 contentBox ms-controller"
                                     :controller="taskCount">
                                     <li class="class layui-col-md6" ms-for="(k, v) in @taskCount">
@@ -225,9 +222,9 @@
                                                 <p class="title">{{ v.classStr }}</p>
                                                 <span class="des">（日同比{{ v.contrast }}%
                                                     <img :if="v.type==='down'"
-                                                        src="../img/access/first/home_task_icon.png" alt="" />
+                                                        src="/img/access/first/home_task_icon.png" alt="" />
                                                     <img :if="v.type==='up'"
-                                                        src="../img/access/first/home_task2_icon.png" alt="" />）
+                                                        src="/img/access/first/home_task2_icon.png" alt="" />）
                                                 </span>
                                             </div>
                                         </div>
@@ -263,17 +260,17 @@
             </div>
         </div>
     </div>
-    <script src="../js/compose/layout.js"></script>
-    <script src="../js/compose/menus.js"></script>
+<script src="/js/compose/layout.js"></script>
+<script src="/js/compose/menus.js"></script>
     <script>
         var info = avalon.define({
             $id: 'info',
             activeId: 3,
             infos: [
-                { id: 1, text: '昨日访问量', num: 3230, img: '../img/access/second/home_visitor_icon.png' },
-                { id: 2, text: '今日访问量', num: 3430, img: '../img/access/second/home_visitor2_icon.png' },
-                { id: 3, text: '昨日访问量', num: 3280, img: '../img/access/second/home_visitor_icon.png' },
-                { id: 4, text: '今日访问量', num: 3630, img: '../img/access/second/home_visitor2_icon.png' }
+            {id: 1, text: '昨日访问量', num: 3230, img: '/img/access/second/home_visitor_icon.png'},
+            {id: 2, text: '今日访问量', num: 3430, img: '/img/access/second/home_visitor2_icon.png'},
+            {id: 3, text: '昨日访问量', num: 3280, img: '/img/access/second/home_visitor_icon.png'},
+            {id: 4, text: '今日访问量', num: 3630, img: '/img/access/second/home_visitor2_icon.png'}
             ],
             selectCall: function (info) {
                 this.activeId = info.id;

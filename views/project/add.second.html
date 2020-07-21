@@ -126,36 +126,107 @@
             </div>
           </div>
           <!-- 填写 -->
-          <form class="inputMain" action="">
-            <div class="inputItem">
-              <label class="inputText first"><span>*</span>项目牵头部门承担任务</label>
-              <div class="inputBox textarea">
-                <textarea autosize="off" cols="30" rows="10" placeholder="请输入项目进展情况"></textarea>
-              </div>
-              <div class="clearFloat"></div>
-            </div>
-            <div class="inputItem">
-              <p class="classTitle">各部门承担任务项目牵头部门</p>
-              <table id="taskTable"></table>
-              <div>
-                <button class="btn">添加</button>
-              </div>
-            </div>
-            <div class="inputItem">
-              <p class="classTitle">各部门承担任务项目参与部门</p>
-              <table id="taskTable2"></table>
-              <div>
-                <button class="btn">添加</button>
-              </div>
-            </div>
-
-            <div class="btnBox">
-              <button class="btn">提交</button>
-              <button class="btn">保存</button>
-              <button class="btn green">关联附表</button>
-            </div>
-            <br><br><br>
-          </form>
+          <div class="pd30 beartaskDiv">
+            <form class="layui-form notinline isPc" action="" lay-filter="bearTaskForm">
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="danger">*</span>项目牵头部门承担任务
+                    </label>
+                    <div class="layui-input-block">
+                        <textarea placeholder="请输入项目牵头部门承担任务" lay-verify="required"
+                            lay-reqtext="请输入项目牵头部门承担任务" name="mainTask" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">各部门承担任务项目牵头部门</label>
+                    <div class="layui-input-block radiusHighTable">
+                        <table class="layui-table" lay-data="{data:bearTableData,id:'table1'}"
+                            lay-filter="beartasktable1">
+                            <thead>
+                                <tr>
+                                    <th lay-data="{field:'index',width:90}">序号</th>
+                                    <th lay-data="{field:'dept', width:160}">项目责任部门</th>
+                                    <th lay-data="{field:'name',templet:'#tempBearname'}">姓名</th>
+                                    <th lay-data="{field:'duty',templet:'#tempBearduty'}">职责</th>
+                                    <th lay-data="{field:'education', width:200,templet: '#tempBearEdu'}">
+                                        职称及学历</th>
+                                    <th lay-data="{field:'type', width:200,templet: '#tempBearType'}">类别
+                                    </th>
+                                    <th lay-data="{field:'workCount', width:130,templet: '#tempBearduty'}">
+                                        工作量(人/年)</th>
+                                    <th lay-data="{width:120, align:'center', toolbar: '#tempBearCtl'}">操作
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <div class="addDiv">
+                            <button class="layui-btn layui-btn-sm ">添加</button>
+                        </div>
+                        <script type="text/html" id="tempBearname">
+                            <input type="text" class="layui-input"/>
+                        </script>
+                        <script type="text/html" id="tempBearduty">
+                            <input type="text" class="layui-input"/>
+                        </script>
+                        <script type="text/html" id="tempBearEdu">
+                            <select class="de">
+                                <option value=""></option>
+                                <option value="0">选项1</option>
+                                <option value="1">选项2</option>
+                            </select>
+                        </script>
+                        <script type="text/html" id="tempBearType">
+                            <select>
+                                <option value=""></option>
+                                <option value="0">选项1</option>
+                                <option value="1">选项2</option>
+                            </select>
+                        </script>
+                        <script type="text/html" id="tempBearCtl">
+                            <a class="primary cursor button" lay-event="del">删除</a>
+                        </script>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">各部门承担任务项目参与部门</label>
+                    <div class="layui-input-block radiusHighTable">
+                        <table class="layui-table " lay-data="{data:bearTableData,id:'table2'}"
+                            lay-filter="beartasktable2">
+                            <thead>
+                                <tr>
+                                    <th lay-data="{field:'index',width:90}">序号</th>
+                                    <th lay-data="{field:'dept', width:160}">项目责任部门</th>
+                                    <th lay-data="{field:'name', templet: '#tempBearname2'}">姓名</th>
+                                    <th lay-data="{field:'duty',templet: '#tempBearduty'}">职责</th>
+                                    <th lay-data="{field:'education', width:200,templet: '#tempBearEdu'}">
+                                        职称及学历</th>
+                                    <th lay-data="{field:'type', width:200,templet: '#tempBearType'}">类别
+                                    </th>
+                                    <th lay-data="{field:'workCount', width:130,templet: '#tempBearduty'}">
+                                        工作量(人/年)</th>
+                                    <th lay-data="{width:120, align:'center', toolbar: '#tempBearCtl'}">操作
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <div class="addDiv">
+                            <button class="layui-btn layui-btn-sm ">添加</button>
+                        </div>
+                        <script type="text/html" id="tempBearname2">
+                            <div class="iconInput">
+                                <input type="text" class="layui-input"/>
+                                <i class="iconfont iconhome_sousuo_icon1"></i>
+                            </div>
+                        </script>
+                    </div>
+                </div>
+                <div style="padding-top:35px;">
+                    <button type="submit" class="layui-btn " lay-submit=""
+                        lay-filter="submit" id="breadsubmitBtn">提交</button>
+                    <button class="layui-btn " id="plansaveBtn">保存</button>
+                    <button class="layui-btn layui-btn-primary">关联附表</button>
+                </div>
+            </form>
+        </div>
         </div>
       </div>
     </div>
@@ -307,6 +378,45 @@
         }
       });
     });
+
+    //ie8修改start
+    var bearTableData = [{
+            index: 1,
+            dept: "经营计划处",
+            name: "",
+            duty: "",
+            education: "",
+            type: "",
+            workCount: "",
+        },
+        {
+            index: 2,
+            dept: "经营计划处",
+            name: "",
+            duty: "",
+            education: "",
+            type: "",
+            workCount: "",
+        }
+        ];
+        layui.use(['table', 'jquery'], function () {
+            var table = layui.table;
+            var $ = layui.jquery;
+
+            $("div.layui-form-select").click(function () {
+                var width = $(this).width();
+                var top = $(this).offset().top;
+                var left = $(this).offset().left;
+                $(this).find("dl").css({ "min-width": width + "px", top: top + 40 + "px", left: left + "px" });
+            });
+
+            window.onresize = function () {
+                //执行表格“尺寸结构”的重置，一般写在对应的事件中
+                table.resize('table1');
+                table.resize('table2');
+            };
+        });
+        //ie8修改end
   </script>
 </body>
 </html>

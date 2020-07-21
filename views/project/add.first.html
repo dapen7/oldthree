@@ -298,6 +298,7 @@
                 this.classActive = menu.classStr;
             }
         });
+        //ie8修改start
         var bearTableData = [{
             index: 1,
             dept: "经营计划处",
@@ -317,7 +318,6 @@
             workCount: "",
         }
         ];
-        //表格
         layui.use(['table', 'jquery'], function () {
             var table = layui.table;
             var $ = layui.jquery;
@@ -335,6 +335,7 @@
                 table.resize('table2');
             };
         });
+        //ie8修改end
     </script>
 </body>
 

@@ -245,7 +245,7 @@
                         <label class="layui-form-label"></label>
                         <div class="layui-input-block">
                             <button type="submit" class="layui-btn layui-btn-normal" lay-submit="" lay-filter="submit" id="userinfosubmitBtn">保存</button>
-                            <button type="reset" class="layui-btn layui-btn-primary"">取消</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">取消</button>
                         </div>
                     </div>
                 </form>
@@ -286,6 +286,7 @@
             }
         }
     });
+    // ie8修改start
     (function () {
         var treeData = [
             {
@@ -355,6 +356,7 @@
             var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
         });
     })()
+    // ie8修改end
 </script>
 </body>
 </html>

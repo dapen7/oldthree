@@ -1,4 +1,7 @@
 /* 公用样式 */
+.inputBox{
+    padding:0;
+}
 .wd200{
     width:200px;
 }
@@ -10,6 +13,9 @@
 }
 .wd650{
     width:650px;
+}
+.wd660{
+    width:660px;
 }
 .wd950{
     width:950px;
@@ -23,14 +29,20 @@
 .danger{
     color:red;
 }
-.secondTheme .primary{
-    color:#058669;
+.ml0{
+    margin-left:0;
 }
 .mr10{
     margin-right:13px;
 }
+.pr10{
+    padding-right:10px;
+}
 .mr25{
     margin-right:25px;
+}
+.mr60{
+    margin-right:60px;
 }
 .mb25{
     margin-bottom:25px;
@@ -87,7 +99,40 @@
 .mr5{
     margin-right: 5px;
 }
+/* 综合统计 */
+.taskCount .title{color: #333;}
+.taskCount .des{color: #B8C5D3;}
+.taskCount .percentage{color: #4F82F9;}
+.taskCount .layui-col-xs12{position: relative;}
+.taskCount .layui-col-xs12 p{height: 10px;border-radius: 4px;position: absolute;left: 0;top: 15px;bottom: 0;}
+.taskCount .bar{width: 100%;height: 10px;opacity: 0.5;border-radius: 4px;margin-top: 15px;margin-bottom: 20px;}
+
+.total{margin: 25px 0;margin-bottom: 0;font-size: 16px;}
+.total .class{margin-bottom: 15px;padding-bottom:15px;border-bottom: 1px solid #F5F5F5;}
+.total .class.noBorder{border: none;}
+.total .topClassMore{color: #333;}
+.total .topClassMore img{width: 8px;height: 6px;}
+.total .layui-col-xs9{position: relative;}
+.total img{width: 42px;height:42px;margin-right: 15px;}
+.total .percentage{width: 42px;height:42px;text-align: center;line-height: 42px;color: #fff;position: absolute;left: 0;top: 0}
+.total .title{color: #333;margin-right: 15px;}
+.total .des{color: #9B9B9B;}
+.total .more{color: #9B9B9B;}
+.total .layui-col-xs12{position: relative;}
+.total .layui-col-xs12 p{height: 10px;border-radius: 4px;position: absolute;left: 0;top: 15px;bottom: 0;}
+.total .bar{width: 100%;height: 10px;opacity: 0.5;border-radius: 4px;margin-top: 15px;margin-bottom: 10px;}
+.total .start,.total .end{color: #333;}
 /* 第一套主题修改 */
+.firstTheme .primary{
+    color:#2A7FDA;
+}
+.firstTheme .infoClassBox {
+    border-bottom: 1px solid #eeeeee;
+}
+.firstTheme .infoClassBox .class{
+    border-bottom: 2px solid transparent;
+}
+.firstTheme .infoClassBox .active{color: #2A7FDA;border-bottom:2px solid #2A7FDA; }
 .firstTheme .homeBodyContent .topClassText{font-size: 18px;line-height: 30px;margin-left:10px;color: #333;font-weight: bold;}
 .firstTheme .bodyFuncItem{
     cursor: pointer;
@@ -220,7 +265,10 @@
 .firstTheme .layui-form-checkbox[lay-skin=primary]:hover i{
     border-color: #2A7FDA!important;
 }
-
+.firstTheme ul.urp-cascader-child li.active{
+    background-color:#2A7FDA;
+    color:white;
+}
 .firstTheme .radiusHighTable .formTableDiv {
     padding: 15px 20px;
     border-radius: 0px 0px 8px 8px;
@@ -297,8 +345,213 @@
 .firstTheme .infoClassBox .class{cursor: pointer;padding-bottom: 20px;border-bottom:2px solid #DDDFE6;margin:0 30px;margin-bottom: -2px;}
 
 /* 第二套主题修改 */
+.secondTheme .primary{
+    color:#058669;
+}
+.secondTheme .infoClassBox {
+    border-bottom: 1px solid #eeeeee;
+}
+.secondTheme .infoClassBox .class{
+    border-bottom: 2px solid transparent;
+}
+.secondTheme .infoClassBox .active{color: #058669;border-bottom:2px solid #058669; }
+.secondTheme .homeBodyContent .topClassText{font-size: 18px;line-height: 30px;margin-left:10px;color: #333;font-weight: bold;}
+.secondTheme .bodyFuncItem{
+    cursor: pointer;
+    margin-left: 64px;
+    height: 59px;
+    border-bottom:3px solid white;
+}
+.secondTheme .menuThird{
+    width:100%;
+    height:62px;
+    background:rgba(255,255,255,1);
+    box-shadow:0px 0px 10px 0px rgba(0,0,0,0.05);
+    border-radius:4px;
+}
+.secondTheme .homeBodyContent .topClassText{
+    font-weight: bold;
+}
+.notice .noticeClassBox .class{
+    top: -2px;
+}
+.secondTheme .taskDiv {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    font-size: var(--font-size-primary);
+}
+.secondTheme .taskDiv .title {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.secondTheme .taskDiv .chartDiv {
+    width: 100%;
+    height: 100%;
+}
+
+.secondTheme .taskDiv .taskItem {
+    margin-bottom: 35px;
+}
+
+.secondTheme .taskDiv .infoBox {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+.secondTheme .taskDiv .name {
+    color: #A9B2C2;
+    font-size: 12px;
+}
+
+.secondTheme .taskDiv .des {
+    color: #A9B2C2;
+    font-size: 12px;
+}
+
+.secondTheme .taskDiv .des i {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.secondTheme .taskDiv .value {
+    color: #3D3A59;
+    font-size: 20px;
+}
+
+.secondTheme #taskChart0 {
+    width: 210px;
+    height: 210px;
+}
+
+.secondTheme #taskChart1 {
+    width: 210px;
+    height: 210px;
+}
+.secondTheme #taskChart2 {
+    width: 210px;
+    height: 210px;
+}
+.secondTheme .taskCountMain0{
+ background-color:#EBF7F7;
+}
+.secondTheme .taskCountMain1{
+    background-color:#EAF5FF;
+}
+.secondTheme .inline {
+    margin-right:1px;
+}
+.secondTheme .bodyFuncItem:hover{
+    border-bottom: 3px solid #058669;
+    color: #058669;
+}
+.secondTheme .locationInfo li:nth-child(2) span:nth-child(1){
+    color:#058669;
+}
+.secondTheme .primary{
+    color:#058669;
+}
+.secondTheme .odd{
+    /* background-color: #F9FBFF!important; */
+}
+
+.secondTheme .layui-table-header tr{
+    /* background-color:#f2f2f2!important; */
+}
+.secondTheme .layui-table-header th{
+    padding:16px 0;
+}
+.secondTheme .layui-form-select dl dd.layui-this{
+    background-color:#058669;
+}
+.secondTheme .contentDiv{
+    padding:35px;
+}
+.secondTheme .layui-btn-primary:hover{
+    border-color: #058669;
+}
+.secondTheme .layui-form-radio>i:hover, .layui-form-radioed>i{
+    color:#058669;
+}
+.secondTheme .layui-form-checked[lay-skin=primary] i{
+    border-color: #058669!important;
+    background-color: #058669;
+    color: #fff;
+}
+.secondTheme .layui-form-checkbox[lay-skin=primary]:hover i{
+    border-color: #058669!important;
+}
+
+.secondTheme .radiusHighTable .formTableDiv {
+    padding: 15px 20px;
+    border-radius: 0px;
+    border: 1px solid #EBEEF5;
+    border-top: 0;
+}
+.secondTheme .radiusHighTable .layui-table-view{
+    border-radius: 0px;
+}
+.secondTheme .radiusHighTable .layui-table-box{
+    border-radius: 0px;
+}
+.secondTheme .radiusHighTable .layui-table th {
+    height:55px;
+}
+.secondTheme .radiusHighTable .layui-table-view .layui-table td, .layui-table-view .layui-table th{
+    padding:10px 0;
+}
+.secondTheme .radiusHighTable .layui-table-cell{
+    height: auto;
+    overflow: auto;
+}
 .secondTheme .notice .active{
     border-bottom: 3px solid #058669;
     font-weight: bold;
    
+}
+.secondTheme .userInfoTodo {
+    background: white;
+    border: 1px solid #dddfe6;
+}
+.secondTheme .dataView .contentContentBox{
+    height:490px;
+}
+.secondTheme ul.urp-cascader-child li.active{
+    background-color:#058669;
+    color:white;
+}
+/* 左树右内容布局 */
+.secondTheme .treeContentLayout{width: 100%;height: 100%;position: relative;}
+.secondTheme .treeContentLayout .treeMain{width: 310px;height: 100%;position: absolute;top: 0;left: 0;}
+.secondTheme .treeContentLayout .contentMain{height: 100%;position: absolute;top: 0;left: 330px;right: 0;}
+/* 树 */
+.secondTheme .tree{width: 100%;height: 100%;overflow: auto;background: #fff;box-shadow:0px 0px 10px 0px rgba(0,0,0,0.05);border-radius:4px;}
+.secondTheme .treeItem{padding: 20px;}
+.secondTheme .tiChild{display: none;}
+.secondTheme .tiChild.open{display: block;}
+.secondTheme .tiChild .treeItem{position: relative;padding-right: 0;padding-bottom: 0;padding-left: 40px;}
+.secondTheme .tiInfo{height: 22px;cursor: pointer;overflow: hidden;z-index: 2;background-color: #fff;}
+.secondTheme .tiOpenStatus{width: 18px;height: 18px;z-index: 2;float:left;margin-top: 2px;display: inline-block;}
+.secondTheme .tiIcon{width: 18px;height: 18px;float:left;margin-top: 2px;display: inline-block;background: url("/img/access/first/file2_icon.png") no-repeat;}
+.secondTheme .tiIcon.hadChild{background: url("/img/access/first/file_icon.png") no-repeat;}
+.secondTheme .tiInfo.hadChild .tiOpenStatus{z-index: 2;background-image: url("/img/access/first/suo_icon.png");}
+.secondTheme .tiHLine{width: 10px;height: 1px;float:left;margin: 5px;margin-top: 10.5px;background: #DDDFE6;}
+.secondTheme .tiChild .tiVLine{width: 1px;height: 42px;z-index: 1;position: absolute;left: 48px;top: 0;background: #DDDFE6;}
+.secondTheme .tiChild .tiVLine.hadChild{height: 20px;}
+.secondTheme .tiText{line-height: 22px;margin-left:8px;float:left;font-size: 16px;}
+
+.secondTheme .infoClassBox {
+    border-bottom: 1px solid #eeeeee;
+}
+.secondTheme .infoClassBox .class{
+    border-bottom: 2px solid transparent;
+}
+.secondTheme .infoClassBox .active{color: #058669;border-bottom:2px solid #058669; }
+.secondTheme .homeBodyContent .topInfo{
+    border-bottom:none;
 }

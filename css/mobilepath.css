@@ -2,7 +2,6 @@
 .main{
     -webkit-overflow-scrolling: touch;
 }
-.infoClassBox .active{color: #2A7FDA;border-bottom:2px solid #2A7FDA!important; }
 /* 通用样式 */
 .wd200{
     width:200px;
@@ -27,9 +26,6 @@
 }
 .danger{
     color:red;
-}
-.primary{
-    color:#2A7FDA;
 }
 .mr10{
     margin-right:13px;
@@ -101,7 +97,11 @@
     padding-left:0;
 }
 /* 第一套主题修改 */
-.locationInfo li:nth-child(2) span:nth-child(1){
+.firstTheme .primary{
+    color:#2A7FDA;
+}
+.firstTheme .infoClassBox .active{color: #2A7FDA;border-bottom:2px solid #2A7FDA!important; }
+.firstTheme .locationInfo li:nth-child(2) span:nth-child(1){
     color:#2A7FDA;
 }
 .firstTheme .odd{
@@ -134,27 +134,88 @@
 .firstTheme .layui-form-checkbox[lay-skin=primary]:hover i{
     border-color: #2A7FDA!important;
 }
-.taskCount{margin: 25px 0;font-size: 16px;}
-.taskCount .title{color: #333;}
-.taskCount .des{color: #B8C5D3;}
-.taskCount .percentage{color: #4F82F9;}
-.taskCount .layui-col-xs12{position: relative;}
-.taskCount .layui-col-xs12 p{height: 10px;border-radius: 4px;position: absolute;left: 0;top: 15px;bottom: 0;}
-.taskCount .bar{width: 100%;height: 10px;opacity: 0.5;border-radius: 4px;margin-top: 15px;margin-bottom: 20px;}
+.firstTheme .taskCount{margin: 25px 0;font-size: 16px;}
+.firstTheme .taskCount .title{color: #333;}
+.firstTheme .taskCount .des{color: #B8C5D3;}
+.firstTheme .taskCount .percentage{color: #4F82F9;}
+.firstTheme .taskCount .layui-col-xs12{position: relative;}
+.firstTheme .taskCount .layui-col-xs12 p{height: 10px;border-radius: 4px;position: absolute;left: 0;top: 15px;bottom: 0;}
+.firstTheme .taskCount .bar{width: 100%;height: 10px;opacity: 0.5;border-radius: 4px;margin-top: 15px;margin-bottom: 20px;}
 
-.total{margin: 25px 0;margin-bottom: 0;font-size: 16px;}
-.total .class{margin-bottom: 15px;padding-bottom:15px;border-bottom: 1px solid #F5F5F5;}
-.total .class.noBorder{border: none;}
-.total .topClassMore{color: #333;}
-.total .topClassMore img{width: 8px;height: 6px;}
-.total .layui-col-xs9{position: relative;}
-.total img{width: 26px;height:26px;margin-right: 15px;}
-.total .percentage{font-size: 12px;width: 26px;height:26px;text-align: center;line-height: 26px;color: #fff;position: absolute;left: 0;top: 0}
-.total .title{color: #333;margin-right: 15px;}
-.total .des{color: #9B9B9B;}
-.total .more{color: #9B9B9B;}
-.total .layui-col-xs12{position: relative;}
-.total .layui-col-xs12 p{height: 5px;border-radius: 4px;position: absolute;left: 0;top: 15px;bottom: 0;}
-.total .bar{width: 100%;height: 5px;opacity: 0.5;border-radius: 4px;margin-top: 15px;margin-bottom: 10px;}
-.total .start,.total .end{color: #333;}
-/* mobile补丁 end*/
+.firstTheme .total{margin: 25px 0;margin-bottom: 0;font-size: 16px;}
+.firstTheme .total .class{margin-bottom: 15px;padding-bottom:15px;border-bottom: 1px solid #F5F5F5;}
+.firstTheme .total .class.noBorder{border: none;}
+.firstTheme .total .topClassMore{color: #333;}
+.firstTheme .total .topClassMore img{width: 8px;height: 6px;}
+.firstTheme .total .layui-col-xs9{position: relative;}
+.firstTheme .total img{width: 26px;height:26px;margin-right: 15px;}
+.firstTheme .total .percentage{font-size: 12px;width: 26px;height:26px;text-align: center;line-height: 26px;color: #fff;position: absolute;left: 0;top: 0}
+.firstTheme .total .title{color: #333;margin-right: 15px;}
+.firstTheme .total .des{color: #9B9B9B;}
+.firstTheme .total .more{color: #9B9B9B;}
+.firstTheme .total .layui-col-xs12{position: relative;}
+.firstTheme .total .layui-col-xs12 p{height: 5px;border-radius: 4px;position: absolute;left: 0;top: 15px;bottom: 0;}
+.firstTheme .total .bar{width: 100%;height: 5px;opacity: 0.5;border-radius: 4px;margin-top: 15px;margin-bottom: 10px;}
+.firstTheme .total .start,.total .end{color: #333;}
+
+/* 第二套主题修改 */
+.secondTheme .primary{
+    color:#058669;
+}
+.secondTheme .infoClassBox .active{color: #058669;border-bottom:2px solid #058669!important; }
+.secondTheme .locationInfo li:nth-child(2) span:nth-child(1){
+    color:#058669;
+}
+.secondTheme .odd{
+    /* background-color: #F9FBFF!important; */
+}
+
+.secondTheme .layui-table-header tr{
+    /* background-color:#f2f2f2!important; */
+}
+.secondTheme .layui-table-header th{
+    padding:16px 0;
+}
+.secondTheme .layui-form-select dl dd.layui-this{
+    background-color:#058669;
+}
+.secondTheme .contentDiv{
+    padding:35px;
+}
+.secondTheme .layui-btn-primary:hover{
+    border-color: #058669;
+}
+.secondTheme .layui-form-radio>i:hover, .layui-form-radioed>i{
+    color:#058669;
+}
+.secondTheme .layui-form-checked[lay-skin=primary] i{
+    border-color: #058669!important;
+    background-color: #058669;
+    color: #fff;
+}
+.secondTheme .layui-form-checkbox[lay-skin=primary]:hover i{
+    border-color: #058669!important;
+}
+.secondTheme .taskCount{margin: 25px 0;font-size: 16px;}
+.secondTheme .taskCount .title{color: #333;}
+.secondTheme .taskCount .des{color: #B8C5D3;}
+.secondTheme .taskCount .percentage{color: #4F82F9;}
+.secondTheme .taskCount .layui-col-xs12{position: relative;}
+.secondTheme .taskCount .layui-col-xs12 p{height: 10px;border-radius: 4px;position: absolute;left: 0;top: 15px;bottom: 0;}
+.secondTheme .taskCount .bar{width: 100%;height: 10px;opacity: 0.5;border-radius: 4px;margin-top: 15px;margin-bottom: 20px;}
+
+.secondTheme .total{margin: 25px 0;margin-bottom: 0;font-size: 16px;}
+.secondTheme .total .class{margin-bottom: 15px;padding-bottom:15px;border-bottom: 1px solid #F5F5F5;}
+.secondTheme .total .class.noBorder{border: none;}
+.secondTheme .total .topClassMore{color: #333;}
+.secondTheme .total .topClassMore img{width: 8px;height: 6px;}
+.secondTheme .total .layui-col-xs9{position: relative;}
+.secondTheme .total img{width: 26px;height:26px;margin-right: 15px;}
+.secondTheme .total .percentage{font-size: 12px;width: 26px;height:26px;text-align: center;line-height: 26px;color: #fff;position: absolute;left: 0;top: 0}
+.secondTheme .total .title{color: #333;margin-right: 15px;}
+.secondTheme .total .des{color: #9B9B9B;}
+.secondTheme .total .more{color: #9B9B9B;}
+.secondTheme .total .layui-col-xs12{position: relative;}
+.secondTheme .total .layui-col-xs12 p{height: 5px;border-radius: 4px;position: absolute;left: 0;top: 15px;bottom: 0;}
+.secondTheme .total .bar{width: 100%;height: 5px;opacity: 0.5;border-radius: 4px;margin-top: 15px;margin-bottom: 10px;}
+.secondTheme .total .start,.total .end{color: #333;}

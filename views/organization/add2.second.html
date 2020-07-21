@@ -120,81 +120,66 @@
             </li>
           </ul>
           <!-- 填写 -->
-          <form class="inputMain2" action="">
-            <div class="inputItem inline">
-              <label class="inputText">报工状态</label>
-              <div class="inputBox showText inline">
-                <span>未报工</span>
+          <form class="layui-form wd950 notinline2 mt30" action="">
+            <div class="layui-form-item">
+              <label class="layui-form-label">报工状态</label>
+              <div class="layui-input-block">
+                <span class="primary mr60">未报工</span>
+                <span class="mr25">检验状态</span>
+                <span class="primary mr60">互检中</span>
+                <button class="layui-btn">互检完成</button>
+                <button class="layui-btn">快速报工</button>
               </div>
             </div>
-            <div class="inputItem inline">
-              <label class="inputText">检验状态</label>
-              <div class="inputBox showText inline">
-                <span>互检中</span>
+            <div class="layui-form-item">
+              <label class="layui-form-label">技术要求</label>
+              <div class="layui-input-block">
+                <div class="inline" style="width:32%;box-sizing: border-box;">
+                  <select name="interest" lay-filter="aihao1" class="inline">
+                      <option value="0">工序1</option>
+                  </select>
               </div>
-            </div>
-            <div class="inputItem btnBox inline">
-              <button class="btn">互检完成</button>
-              <button class="btn">快速报工</button>
-            </div>
-            <div class="inputItem">
-              <label class="inputText left">技术要求</label>
-              <div class="thSelect left">
-                <div class="inputBox inline">
-                  <select name="interest" lay-filter="aihao" class="inline">
-                    <option value="0">工序1</option>
+              <div class="inline" style="width:33%;box-sizing: border-box;">
+                  <select name="interest" lay-filter="aihao2" class="inline">
+                      <option value="0">请选择</option>
                   </select>
-                </div>
-                <div class="inputBox inline">
-                  <select name="interest" lay-filter="aihao" class="inline">
-                    <option value="0">请选择</option>
-                  </select>
-                </div>
-                <div class="inputBox inline">
-                  <select name="interest" lay-filter="aihao" class="inline">
-                    <option value="0">请选择</option>
-                  </select>
-                </div>
               </div>
-              <div class="clearFloat"></div>
+              <div class="inline" style="width:33%;box-sizing: border-box;">
+                  <select name="interest" lay-filter="aihao3" class="inline">
+                      <option value="0">请选择</option>
+                  </select>
+              </div>
+              </div>
             </div>
 
-            <div class="inputItem">
-              <label class="inputText left"><span>*</span>检查结果</label>
-              <div class="inputBox result left">
+            <div class="layui-form-item">
+              <label class="layui-form-label"><span class="danger">*</span>检查结果</label>
+              <div class="layui-input-block radiusHighTable">
                 <table id="table"></table>
               </div>
-              <div class="clearFloat"></div>
             </div>
-            <div class="inputItem">
-              <label class="inputText">执行状态</label>
-              <div class="inputBox readonly inline">
-                <input type="text" readonly value="填报完成">
+            <div class="layui-form-item">
+              <label class="layui-form-label">执行状态</label>
+              <div class="layui-input-block">
+                <input type="text" class="layui-input" readonly value="填报完成">
               </div>
             </div>
-
-            <div class="inputItem">
-              <label class="inputText left">备注</label>
-              <div class="inputBox textarea left">
-                <textarea autosize="off" cols="30" rows="10" placeholder="请输入备注"></textarea>
+            <div class="layui-form-item">
+              <label class="layui-form-label">备注</label>
+              <div class="layui-input-block">
+                <textarea autosize="off" class="layui-textarea" cols="30" rows="10" placeholder="请输入备注"></textarea>
               </div>
-              <div class="clearFloat"></div>
             </div>
-            <br><br><br>
           </form>
         </div>
       </div>
     </div>
   </div>
   <script type="text/html" id="nameTpl">
-    <div class="inputBox inline">
-      <input type="text" placeholder="请输入" :input="@d.name">
-    </div>
+      <input type="text" class="layui-input" placeholder="请输入" readonly value="{{ d.name }}">
   </script>
   <script type="text/html" id="valTpl">
-    <div class="inputBox inline">
-      <input type="text" placeholder="请输入" :input="@d.val">
-    </div>
+      <input type="text" class="layui-input" placeholder="请输入" value="{{ d.val }}">
   </script>
   <script src="/js/compose/layout.js"></script>
   <script src="/js/compose/menus.js"></script>
@@ -237,6 +222,15 @@
         }
       });
     });
+
+    // ie8修改start
+    (function(){
+        //表单
+        layui.use(['form', 'layedit', 'laydate'], function () {
+            var form = layui.form;
+        });
+    })()
+    // ie8修改end
   </script>
 </body>
 </html>

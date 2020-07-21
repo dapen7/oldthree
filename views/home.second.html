@@ -456,20 +456,6 @@
                         smooth: true
                     }]
             };
-            // 基于准备好的dom，初始化echarts实例
-            var dataViewMain = echarts.init(document.getElementById('dataViewMain'), 'customed');
-            // 使用刚指定的配置项和数据显示图表。
-            dataViewMain.setOption(option);
-            layout.$watch('menuShow', function observe(a, b) {
-                setTimeout(function () {
-                    dataViewMain.resize();
-                }, 1000 * 0.6);
-            });
-
-            window.onresize = function () {
-                dataViewMain.resize();
-            };
-
             /////////////////////////////////////////////
             var option1 = {
                 color: ['#18A283', '#EFEEF1'],
@@ -518,10 +504,32 @@
                 ]
             };
 
+            // 基于准备好的dom，初始化echarts实例
+            var dataViewMain = echarts.init(document.getElementById('dataViewMain'), 'customed');
+            // 使用刚指定的配置项和数据显示图表。
+            dataViewMain.setOption(option);
+            
             var chart1 = echarts.init(document.getElementById('taskChart1'), 'customed');
             chart1.setOption(option1);
             var chart2 = echarts.init(document.getElementById('taskChart2'),'customed');
             chart2.setOption(option2);
+
+            //监控页面变化
+            layout.$watch('menuShow', function observe(a, b) {
+                setTimeout(function () {
+                    dataViewMain.resize();
+                }, 1000 * 0.6);
+            });
+            window.onresize = function () {
+                dataViewMain.resize();
+                chart1.resize();
+                chart2.resize();
+            };
+            setTimeout(function(){
+                dataViewMain.resize();
+                chart1.resize();
+                chart2.resize();
+            },500);
         }
 
     </script>

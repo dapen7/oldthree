@@ -253,106 +253,9 @@
       $id: 'locationInfo',
       locationInfo: []
     });
-
-    var tree = avalon.define({
-      $id: 'tree',
-      tree: [
-        {
-          id: 1, text: '山东省总公司', open: true, child: [
-            {
-              id: 2, text: '公司领导', open: false, child: []
-            }, {
-              id: 3, text: '综合部', open: false, child: []
-            }, {
-              id: 4, text: '市场部', open: false, child: []
-            }, {
-              id: 5, text: '技术部', open: false, child: []
-            }, {
-              id: 6, text: '研发部', open: false, child: []
-            }, {
-              id: 7, text: '济南市分公司', open: false, child: [
-                {
-                  id: 8, text: '公司领导', open: false, child: []
-                }, {
-                  id: 9, text: '综合部', open: false, child: []
-                }, {
-                  id: 10, text: '市场部', open: false, child: []
-                }, {
-                  id: 11, text: '技术部', open: false, child: []
-                }, {
-                  id: 12, text: '历城分公司', open: false, child: [
-                    {
-                      id: 13, text: '公司领导', open: false, child: []
-                    }, {
-                      id: 14, text: '综合部', open: false, child: []
-                    }, {
-                      id: 15, text: '市场部', open: false, child: []
-                    }, {
-                      id: 16, text: '技术部', open: false, child: []
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      ocTree: function (tree) {
-        tree.open = !tree.open;
-      },
-      selectTree: function (tree) {
-        console.log('选择tree：', tree);
-      }
-    });
-    //
-    var locationInfo = avalon.define({
-      $id: 'locationInfo',
-      locationInfo: []
-    });
     // 初始化菜单选中
     menus.$watch('onReady', function () {
       locationInfo.locationInfo = this.location.$model;
-    });
-    //归属公司
-    var treeData = [
-            {
-                value: '山东省总公司',
-                label: '山东省总公司',
-                children: [
-                    {
-                        label: '济南市分公司',
-                        value: '济南市分公司',
-                        children: [
-                            {
-                                label: '历城区分公司',
-                                value: '历城区分公司'
-                            },
-                            {
-                                label: '市中区分公司',
-                                value: '市中区分公司'
-                            },
-                            {
-                                label: '历下区分公司',
-                                value: '历下区分公司'
-                            }
-                        ]
-                    }
-                ]
-            }];
-    layui.config({
-        base: "/js/lib/layui/lay/mymodules/"
-    }).use(['form', "jquery", "cascader", "form"], function () {
-        var $ = layui.jquery;
-        var cascader = layui.cascader;
-
-        var cas = cascader({
-            elem: "#companySelect",
-            data: treeData,
-            value: [],
-            success: function (valData, labelData) {
-                console.log(valData, labelData);
-            }
-        });
     });
     layui.use(['form'], function(){
       var form = layui.form
@@ -491,6 +394,99 @@
         //执行表格“尺寸结构”的重置，一般写在对应的事件中
         table.resize('table');
       };
+    });
+
+    //ie8修改start
+    //归属公司
+    var treeData = [
+            {
+                value: '山东省总公司',
+                label: '山东省总公司',
+                children: [
+                    {
+                        label: '济南市分公司',
+                        value: '济南市分公司',
+                        children: [
+                            {
+                                label: '历城区分公司',
+                                value: '历城区分公司'
+                            },
+                            {
+                                label: '市中区分公司',
+                                value: '市中区分公司'
+                            },
+                            {
+                                label: '历下区分公司',
+                                value: '历下区分公司'
+                            }
+                        ]
+                    }
+                ]
+            }];
+    layui.config({
+        base: "/js/lib/layui/lay/mymodules/"
+    }).use(['form', "jquery", "cascader", "form"], function () {
+        var $ = layui.jquery;
+        var cascader = layui.cascader;
+
+        var cas = cascader({
+            elem: "#companySelect",
+            data: treeData,
+            value: [],
+            success: function (valData, labelData) {
+                console.log(valData, labelData);
+            }
+        });
+    });
+    var tree = avalon.define({
+      $id: 'tree',
+      tree: [
+        {
+          id: 1, text: '山东省总公司', open: true, child: [
+            {
+              id: 2, text: '公司领导', open: false, child: []
+            }, {
+              id: 3, text: '综合部', open: false, child: []
+            }, {
+              id: 4, text: '市场部', open: false, child: []
+            }, {
+              id: 5, text: '技术部', open: false, child: []
+            }, {
+              id: 6, text: '研发部', open: false, child: []
+            }, {
+              id: 7, text: '济南市分公司', open: false, child: [
+                {
+                  id: 8, text: '公司领导', open: false, child: []
+                }, {
+                  id: 9, text: '综合部', open: false, child: []
+                }, {
+                  id: 10, text: '市场部', open: false, child: []
+                }, {
+                  id: 11, text: '技术部', open: false, child: []
+                }, {
+                  id: 12, text: '历城分公司', open: false, child: [
+                    {
+                      id: 13, text: '公司领导', open: false, child: []
+                    }, {
+                      id: 14, text: '综合部', open: false, child: []
+                    }, {
+                      id: 15, text: '市场部', open: false, child: []
+                    }, {
+                      id: 16, text: '技术部', open: false, child: []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      ocTree: function (tree) {
+        tree.open = !tree.open;
+      },
+      selectTree: function (tree) {
+        console.log('选择tree：', tree);
+      }
     });
   </script>
 </body>

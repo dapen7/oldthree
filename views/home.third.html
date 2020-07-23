@@ -338,88 +338,90 @@
       ]
     });
 
-    // 基于准备好的dom，初始化echarts实例
-    var dataViewMain = echarts.init(document.getElementById('dataViewMain'));
+    window.onload = function(){
+      // 基于准备好的dom，初始化echarts实例
+      var dataViewMain = echarts.init(document.getElementById('dataViewMain'));
 
-    // 指定图表的配置项和数据
-    var option = {
-      title: {
-        text: ''
-      },
-      toolbox: {
-        feature: {
-          saveAsImage: {}
-        }
-      },
-      color: ['#3884F8'],
-      tooltip: {
-        trigger: 'axis',
-        axisPointer: {
-          type: 'line',
-          label: {
-            formatter: '',
-            borderColor: '#3884F8',
-            backgroundColor: '#3884F8',
-            padding: [5, 0, 0, 0]
-          },
-          lineStyle: {
-            color: '#3884F8',
+      // 指定图表的配置项和数据
+      var option = {
+        title: {
+          text: ''
+        },
+        toolbox: {
+          feature: {
+            saveAsImage: {}
+          }
+        },
+        color: ['#3884F8'],
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'line',
+            label: {
+              formatter: '',
+              borderColor: '#3884F8',
+              backgroundColor: '#3884F8',
+              padding: [5, 0, 0, 0]
+            },
+            lineStyle: {
+              color: '#3884F8',
+              shadowBlur: {
+                shadowColor: '#3884F8',
+                shadowBlur: 100
+              }
+            },
             shadowBlur: {
               shadowColor: '#3884F8',
               shadowBlur: 100
             }
           },
-          shadowBlur: {
-            shadowColor: '#3884F8',
-            shadowBlur: 100
+          backgroundColor: '#3884F8',
+          formatter: '{c0}',
+          padding: [10, 20],
+          extraCssText: 'box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);'
+        },
+        axisPointer: {},
+        xAxis: {
+          type: 'category',
+          data: ['一', '二', '三', '四', '五', '六', '日'],
+          nameLocation: 'start',
+          axisLine: {
+            lineStyle: {
+              width: 1,
+              color: '#D3D3D3'
+            }
           }
         },
-        backgroundColor: '#3884F8',
-        formatter: '{c0}',
-        padding: [10, 20],
-        extraCssText: 'box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);'
-      },
-      axisPointer: {},
-      xAxis: {
-        type: 'category',
-        data: ['一', '二', '三', '四', '五', '六', '日'],
-        nameLocation: 'start',
-        axisLine: {
-          lineStyle: {
-            width: 1,
-            color: '#D3D3D3'
+        yAxis: {
+          type: 'value',
+          axisLine: {
+            lineStyle: {
+              width: 1,
+              color: '#D3D3D3'
+            }
           }
-        }
-      },
-      yAxis: {
-        type: 'value',
-        axisLine: {
-          lineStyle: {
-            width: 1,
-            color: '#D3D3D3'
-          }
-        }
-      },
-      series: [
-        {
-          data: [820, 932, 901, 934, 1290, 1330, 1320],
-          type: 'line',
-          smooth: true
-        }]
-    };
+        },
+        series: [
+          {
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            type: 'line',
+            smooth: true
+          }]
+      };
 
-    // 使用刚指定的配置项和数据显示图表。
-    dataViewMain.setOption(option);
+      // 使用刚指定的配置项和数据显示图表。
+      dataViewMain.setOption(option);
 
-    layout.$watch('menuShow', function observe (a, b) {
-      setTimeout(function () {
+      layout.$watch('menuShow', function observe (a, b) {
+        setTimeout(function () {
+          dataViewMain.resize();
+        }, 1000 * 0.6);
+      });
+
+      window.onresize = function () {
         dataViewMain.resize();
-      }, 1000 * 0.6);
-    });
-
-    window.onresize = function () {
-      dataViewMain.resize();
-    };
+      };
+    }
   </script>
 </body>
 </html>

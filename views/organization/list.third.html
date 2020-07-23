@@ -112,57 +112,118 @@
     </div>
     <div class="body">
       <div class="main">
-        <div class="homeBody">
-          <!-- 当前位置 -->
-          <ul class="locationInfo add ms-controller" :controller="locationInfo">
-            <li class="inline">当前位置：</li>
-            <li class="inline" :for="(i, menu) in @locationInfo">
-              <span class="text">{{ @menu.text }}</span>
-              <span class="chat" :if="@i!==@locationInfo.length-1">></span>
-            </li>
-          </ul>
-          <div class="homeMainBox">
-            <!-- 搜索 -->
-            <div class="search">
-              <div class="inputItem inline">
-                <label class="inputText inline">归属公司</label>
-                <div class="inputBox inline">
-                  <select name="interest" lay-filter="aihao">
-                    <option value="0">山东省总公司</option>
-                  </select>
+        <div class="treeContentLayout">
+          <!-- 左侧树 -->
+          <div class="treeMain">
+            <!-- 树 -->
+            <div class="tree" :controller="tree">
+              <div class="treeItem" :for="(index,item) in tree">
+                <div class="tiInfo" :class="[@item.child.length?'hadChild':'']">
+                  <span class="tiOpenStatus" :class="[@item.open?'open':'']" :click="ocTree(@item)"></span>
+                  <span class="tiHLine"></span>
+                  <span class="tiVLine" :class="[@item.child.length?'hadChild':'']"></span>
+                  <span class="tiIcon" :class="[@item.child.length?'hadChild':'']"></span>
+                  <span class="tiText" :click="selectTree(@item)">{{ @item.text }}</span>
+                </div>
+                <!-- 一级 -->
+                <div class="tiChild" :if="@item.child.length" :class="[@item.open?'open':'']">
+                  <div class="treeItem" :for="(cIndex,cItem) in @item.child">
+                    <div class="tiInfo" :class="[@cItem.child.length?'hadChild':'']">
+                      <span class="tiOpenStatus" :class="[@cItem.open?'open':'']" :click="ocTree(@cItem)"></span>
+                      <span class="tiHLine"></span>
+                      <span class="tiVLine" :class="[@cItem.child.length?'hadChild':'']"></span>
+                      <span class="tiIcon" :class="[@cItem.child.length?'hadChild':'']"></span>
+                      <span class="tiText" :click="selectTree(@cItem)">{{ @cItem.text }}</span>
+                    </div>
+                    <!-- 二级 -->
+                    <div class="tiChild" :if="@cItem.child.length" :class="[@cItem.open?'open':'']">
+                      <div class="treeItem" :for="(sIndex,sItem) in @cItem.child">
+                        <div class="tiInfo" :class="[@sItem.child.length?'hadChild':'']">
+                          <span class="tiOpenStatus" :class="[@sItem.open?'open':'']" :click="ocTree(@sItem)"></span>
+                          <span class="tiHLine"></span>
+                          <span class="tiVLine" :class="[@sItem.child.length?'hadChild':'']"></span>
+                          <span class="tiIcon" :class="[@sItem.child.length?'hadChild':'']"></span>
+                          <span class="tiText" :click="selectTree(@sItem)">{{ @sItem.text }}</span>
+                        </div>
+                        <!-- 三级 -->
+                        <div class="tiChild" :if="@sItem.child.length" :class="[@sItem.open?'open':'']">
+                          <div class="treeItem" :for="(tIndex,tItem) in @sItem.child">
+                            <div class="tiInfo" :class="[@tItem.child.length?'hadChild':'']">
+                              <span class="tiOpenStatus" :class="[@tItem.open?'open':'']" :click="ocTree(@tItem)"></span>
+                              <span class="tiHLine"></span>
+                              <span class="tiVLine" :class="[@tItem.child.length?'hadChild':'']"></span>
+                              <span class="tiIcon" :class="[@tItem.child.length?'hadChild':'']"></span>
+                              <span class="tiText" :click="selectTree(@tItem)">{{ @tItem.text }}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="inputItem inline">
-                <label class="inputText inline">归属部门</label>
-                <div class="inputBox inline">
-                  <select name="interest" lay-filter="aihao">
-                    <option value="0">公司领导</option>
-                  </select>
-                </div>
-              </div>
-              <div class="inputItem inline">
-                <label class="inputText inline">登录名</label>
-                <div class="inputBox inline">
-                  <input type="text" placeholder="请输入登录名">
-                </div>
-              </div>
-              <div class="inputItem inline">
-                <label class="inputText inline">姓名</label>
-                <div class="inputBox inline">
-                  <input type="text" placeholder="请输入姓名">
-                </div>
-              </div>
-              <button class="btn">编辑</button>
-              <button class="btn">导出</button>
-              <button class="btn">导入</button>
-              <a href="add.third.html">
-                <button class="btn right">添加用户</button>
-              </a>
-              <div class="clearFloat"></div>
             </div>
-            <!-- 表格 -->
-            <div class="table">
-              <table id="table"></table>
+          </div>
+          <!-- 右侧内容 -->
+          <div class="contentMain">
+            <div class="contentBody">
+              <!-- 当前位置 -->
+              <ul class="locationInfo ms-controller" :controller="locationInfo">
+                <li class="inline">当前位置：</li>
+                <li class="inline" :for="(i, menu) in @locationInfo">
+                  <span class="text">{{ @menu.text }}</span>
+                  <span class="chat" :if="@i!==@locationInfo.length-1">></span>
+                </li>
+              </ul>
+              <!-- 搜索 -->
+              <div class="search">
+                <form class="layui-form" action="">
+                  <div class="layui-form-item">
+                      <label class="layui-form-label">归属公司</label>
+                      <div class="layui-input-block">
+                          <input type="text" placeholder="请选择" id="companySelect" class="layui-input" readonly="readonly" />
+                      </div>
+                  </div>
+                  <div class="layui-form-item w400">
+                      <label class="layui-form-label">归属部门</label>
+                      <div class="layui-input-block">
+                          <select name="dept">
+                              <option value=""></option>
+                              <option value="0">公司领导</option>
+                              <option value="1">综合部</option>
+                              <option value="2">市场部</option>
+                              <option value="3">技术部</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="layui-form-item">
+                      <label class="layui-form-label">登录名</label>
+                      <div class="layui-input-block">
+                          <input type="text" name="loginName" placeholder="请输入登录名" autocomplete="off"
+                              class="layui-input">
+                      </div>
+                  </div>
+                  <div class="layui-form-item">
+                      <label class="layui-form-label">姓名</label>
+                      <div class="layui-input-block">
+                          <input type="text" name="name" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+                      </div>
+                  </div>
+                  <div class="layui-form-item">
+                      <div style="margin-left:20px;">
+                          <button class="layui-btn layui-btn-normal">编辑</button>
+                          <button class="layui-btn layui-btn-normal">导出</button>
+                          <button class="layui-btn layui-btn-normal">导入</button>
+                          <button class="layui-btn layui-btn-normal">添加用户</button>
+                      </div>
+                  </div>
+              </form>
+              </div>
+              <!-- 表格 -->
+              <div class="table">
+                <table id="table"></table>
+              </div>
+              <!-- 分页 -->
             </div>
           </div>
         </div>
@@ -316,6 +377,99 @@
         //执行表格“尺寸结构”的重置，一般写在对应的事件中
         table.resize('table');
       };
+    });
+
+    //ie8修改start
+    //归属公司
+    var treeData = [
+            {
+                value: '山东省总公司',
+                label: '山东省总公司',
+                children: [
+                    {
+                        label: '济南市分公司',
+                        value: '济南市分公司',
+                        children: [
+                            {
+                                label: '历城区分公司',
+                                value: '历城区分公司'
+                            },
+                            {
+                                label: '市中区分公司',
+                                value: '市中区分公司'
+                            },
+                            {
+                                label: '历下区分公司',
+                                value: '历下区分公司'
+                            }
+                        ]
+                    }
+                ]
+            }];
+    layui.config({
+        base: "/js/lib/layui/lay/mymodules/"
+    }).use(['form', "jquery", "cascader", "form"], function () {
+        var $ = layui.jquery;
+        var cascader = layui.cascader;
+
+        var cas = cascader({
+            elem: "#companySelect",
+            data: treeData,
+            value: [],
+            success: function (valData, labelData) {
+                console.log(valData, labelData);
+            }
+        });
+    });
+    var tree = avalon.define({
+      $id: 'tree',
+      tree: [
+        {
+          id: 1, text: '山东省总公司', open: true, child: [
+            {
+              id: 2, text: '公司领导', open: false, child: []
+            }, {
+              id: 3, text: '综合部', open: false, child: []
+            }, {
+              id: 4, text: '市场部', open: false, child: []
+            }, {
+              id: 5, text: '技术部', open: false, child: []
+            }, {
+              id: 6, text: '研发部', open: false, child: []
+            }, {
+              id: 7, text: '济南市分公司', open: false, child: [
+                {
+                  id: 8, text: '公司领导', open: false, child: []
+                }, {
+                  id: 9, text: '综合部', open: false, child: []
+                }, {
+                  id: 10, text: '市场部', open: false, child: []
+                }, {
+                  id: 11, text: '技术部', open: false, child: []
+                }, {
+                  id: 12, text: '历城分公司', open: false, child: [
+                    {
+                      id: 13, text: '公司领导', open: false, child: []
+                    }, {
+                      id: 14, text: '综合部', open: false, child: []
+                    }, {
+                      id: 15, text: '市场部', open: false, child: []
+                    }, {
+                      id: 16, text: '技术部', open: false, child: []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      ocTree: function (tree) {
+        tree.open = !tree.open;
+      },
+      selectTree: function (tree) {
+        console.log('选择tree：', tree);
+      }
     });
   </script>
 </body>

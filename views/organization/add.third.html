@@ -123,115 +123,122 @@
           </ul>
           <div class="homeMainBox">
             <!-- 填写 -->
-            <form class="inputMain" action="">
-              <div class="inputItem">
-                <label class="inputText">归属公司</label>
-                <div class="inputBox inline">
-                  <select name="interest" lay-filter="aihao">
-                    <option value="0">山东省总公司</option>
-                  </select>
-                </div>
+            <form class="layui-form notinline2 contentDiv wd650" action="" lay-filter="userinfoForm">
+              <div class="layui-form-item">
+                  <label class="layui-form-label">归属公司</label>
+                  <div class="layui-input-block">
+                      <input type="text" name="company" placeholder="请选择" id="companySelect" value="山东省总公司" class="layui-input"
+                          readonly="readonly" />
+                  </div>
               </div>
-              <div class="inputItem">
-                <label class="inputText">归属部门</label>
-                <div class="inputBox inline">
-                  <select name="interest" lay-filter="aihao">
-                    <option value="0">公司领导</option>
-                  </select>
-                </div>
+              <div class="layui-form-item">
+                  <label class="layui-form-label">归属部门</label>
+                  <div class="layui-input-block">
+                      <select name="dept">
+                          <option value="1">综合部</option>
+                          <option value="2">市场部</option>
+                          <option value="3">技术部</option>
+                      </select>
+                  </div>
               </div>
-              <div class="inputItem">
-                <label class="inputText"><span>*</span>工号</label>
-                <div class="inputBox inline">
-                  <input type="text" placeholder="请输入工号">
-                </div>
+              <div class="layui-form-item">
+                  <label class="layui-form-label"><span class="danger">*</span>工号</label>
+                  <div class="layui-input-block">
+                      <input placeholder="请输入工号" lay-verify="required" lay-reqtext="请输入工号" name="code" type="text"
+                          autocomplete="off" class="layui-input">
+                  </div>
               </div>
-              <div class="inputItem">
-                <label class="inputText"><span>*</span>姓名</label>
-                <div class="inputBox inline">
-                  <input type="text" autocomplete="off" placeholder="请输入姓名">
-                </div>
+              <div class="layui-form-item">
+                  <label class="layui-form-label"><span class="danger">*</span>姓名</label>
+                  <div class="layui-input-block">
+                      <input placeholder="请输入姓名" lay-verify="required" lay-reqtext="请输入姓名" name="name" type="text"
+                          autocomplete="off" class="layui-input">
+                  </div>
               </div>
-              <div class="inputItem">
-                <label class="inputText"><span>*</span>密码</label>
-                <div class="inputBox inline">
-                  <input type="password" autocomplete="new-password" placeholder="请输入密码">
-                </div>
+              <div class="layui-form-item">
+                  <label class="layui-form-label"><span class="danger">*</span>登录名</label>
+                  <div class="layui-input-block">
+                      <input placeholder="请输入登录名" lay-verify="required" lay-reqtext="请输入登录名" name="loginName"
+                          type="text" autocomplete="off" class="layui-input">
+                  </div>
               </div>
-              <div class="inputItem">
-                <label class="inputText"><span>*</span>确认密码</label>
-                <div class="inputBox inline">
-                  <input type="password" placeholder="请再次确认密码">
-                </div>
+              <div class="layui-form-item">
+                  <label class="layui-form-label"><span class="danger">*</span>密码</label>
+                  <div class="layui-input-block">
+                      <input placeholder="请输入密码" lay-verify="required|pass" lay-reqtext="请输入密码" name="password"
+                          type="text" autocomplete="off" class="layui-input">
+                  </div>
               </div>
-              <div class="inputItem">
-                <label class="inputText">邮箱</label>
-                <div class="inputBox inline">
-                  <input type="text" placeholder="请输入邮箱">
-                </div>
+              <div class="layui-form-item">
+                  <label class="layui-form-label"><span class="danger">*</span>确认密码</label>
+                  <div class="layui-input-block">
+                      <input placeholder="请确认密码" lay-verify="required|pass2" lay-reqtext="请确认密码" name="password2"
+                          type="text" autocomplete="off" class="layui-input">
+                  </div>
               </div>
-              <div class="inputItem">
-                <label class="inputText">电话</label>
-                <div class="inputBox inline">
-                  <input type="text" placeholder="请输入电话">
-                </div>
+              <div class="layui-form-item">
+                  <label class="layui-form-label">邮箱</label>
+                  <div class="layui-input-block">
+                      <input placeholder="请输入邮箱" lay-reqtext="请输入邮箱" name="email" type="text"
+                          autocomplete="off" class="layui-input">
+                  </div>
               </div>
-              <div class="inputItem">
-                <label class="inputText">手机</label>
-                <div class="inputBox inline">
-                  <input type="text" placeholder="请输入手机">
-                </div>
+              <div class="layui-form-item">
+                  <label class="layui-form-label">电话</label>
+                  <div class="layui-input-block">
+                      <input placeholder="请输入电话" lay-reqtext="请输入电话" name="phone" type="text" autocomplete="off"
+                          class="layui-input">
+                  </div>
               </div>
-              <div class="inputItem">
-                <label class="left inputText"><span>*</span>是否允许登录</label>
-                <div class="left radioBox" :controller="canLogin">
-                  <p class="inline" :click="@canLoginCall(true)">
-                    <img :if="@canLogin===true" class="left" src="/img/access/third/radio_select_icon.png" alt="">
-                    <img :if="@canLogin===false" class="left" src="/img/access/third/radio_icon.png" alt="">
-                    <span class="text left">是</span>
-                  </p>
-                  <p class="inline" :click="@canLoginCall(false)">
-                    <img :if="@canLogin===true" class="left" src="/img/access/third/radio_icon.png" alt="">
-                    <img :if="@canLogin===false" class="left" src="/img/access/third/radio_select_icon.png" alt="">
-                    <span class="text left">否</span>
-                  </p>
-                  <div class="clearFloat"></div>
-                </div>
-                <p class="left tips">注：“是”代表此账号允许登录，“否”则表此帐号不允许登录</p>
-                <div class="clearFloat"></div>
+              <div class="layui-form-item">
+                  <label class="layui-form-label">手机</label>
+                  <div class="layui-input-block">
+                      <input placeholder="请输入手机" lay-reqtext="请输入手机" name="mobile" type="text" autocomplete="off"
+                          class="layui-input">
+                  </div>
               </div>
-              <div class="inputItem">
-                <label class="inputText">用户类型</label>
-                <div class="inputBox inline">
-                  <select name="interest" lay-filter="aihao">
-                    <option value="0">普通用户</option>
-                  </select>
-                </div>
+              <div class="layui-form-item">
+                  <label class="layui-form-label"><span class="danger">*</span>是否允许登陆</label>
+                  <div class="layui-input-block">
+                      <input type="radio" name="canLogin" value="1" title="是" checked="">
+                      <input type="radio" name="canLogin" value="0" title="否">
+                      <span class="danger" style="top: 5px;position: relative;">注：“是”代表此账号允许登录，“否”则表示此账号不允许登录</span>
+                  </div>
               </div>
-              <div class="inputItem">
-                <label class="left inputText"><span>*</span>用户角色</label>
-                <div class="left checkBox" :controller="userRules">
-                  <p class="inline" :for="(index, rules) in @userAllRules" :click="@userRulesCall(rules)">
-                    <img :if="@userRules.indexOf(rules)>-1" class="left" src="/img/access/third/checkbox_select_icon.png" alt="">
-                    <img :if="@userRules.indexOf(rules)===-1" class="left" src="/img/access/third/checkbox_icon.png" alt="">
-                    <span class="text left">{{ @rules }}</span>
-                  </p>
-                </div>
-                <div class="clearFloat"></div>
+              <div class="layui-form-item">
+                  <label class="layui-form-label">用户类型</label>
+                  <div class="layui-input-block">
+                      <select name="type">
+                          <option value="0">普通用户</option>
+                          <option value="1">普通用户1</option>
+                      </select>
+                  </div>
               </div>
-              <div class="inputItem">
-                <label class="inputText left">备注</label>
-                <div class="inputBox textarea left">
-                  <textarea autosize="off" cols="30" rows="10" placeholder="请输入备注"></textarea>
-                </div>
-                <div class="clearFloat"></div>
+              <div class="layui-form-item">
+                  <label class="layui-form-label"><span class="danger">*</span>用户角色</label>
+                  <div class="layui-input-block">
+                      <input type="checkbox" name="role[1]" lay-skin="primary" title="普通用户" checked="">
+                      <input type="checkbox" name="role[2]" lay-skin="primary" title="本公司管理员">
+                      <input type="checkbox" name="role[3]" lay-skin="primary" title="本部门管理员">
+                      <input type="checkbox" name="role[4]" lay-skin="primary" title="部门管理员">
+                      <input type="checkbox" name="role[5]" lay-skin="primary" title="公司管理员">
+                      <input type="checkbox" name="role[6]" lay-skin="primary" title="系统管理员">
+                  </div>
               </div>
-              <div class="btnBox">
-                <a href="./list.third.html" class="btn">保存</a>
-                <a href="./list.third.html" class="btn primary">取消</a>
+              <div class="layui-form-item">
+                  <label class="layui-form-label">备注</label>
+                  <div class="layui-input-block">
+                      <textarea placeholder="请输入备注内容" name="remark" class="layui-textarea"></textarea>
+                  </div>
               </div>
-              <br><br><br>
-            </form>
+              <div class="layui-form-item">
+                  <label class="layui-form-label"></label>
+                  <div class="layui-input-block">
+                      <button type="submit" class="layui-btn layui-btn-normal" lay-submit="" lay-filter="submit" id="userinfosubmitBtn">保存</button>
+                      <button type="reset" class="layui-btn layui-btn-primary">取消</button>
+                  </div>
+              </div>
+          </form>
           </div>
         </div>
       </div>
@@ -278,6 +285,77 @@
         }
       }
     });
+    // ie8修改start
+    (function () {
+        var treeData = [
+            {
+                value: '山东省总公司',
+                label: '山东省总公司',
+                children: [
+                    {
+                        label: '济南市分公司',
+                        value: '济南市分公司',
+                        children: [
+                            {
+                                label: '历城区分公司',
+                                value: '历城区分公司'
+                            },
+                            {
+                                label: '市中区分公司',
+                                value: '市中区分公司'
+                            },
+                            {
+                                label: '历下区分公司',
+                                value: '历下区分公司'
+                            }
+                        ]
+                    }
+                ]
+            }];
+        //归属公司
+        layui.config({
+            base: "/js/lib/layui/lay/mymodules/"
+        }).use(['form', "jquery", "cascader", "form"], function () {
+            var $ = layui.jquery;
+            var cascader = layui.cascader;
+
+            var cas = cascader({
+                elem: "#companySelect",
+                data: treeData,
+                value: [],
+                success: function (valData, labelData) {
+                    console.log(valData, labelData);
+                }
+            });
+        });
+        //表单
+        layui.use(['form', 'layedit', 'laydate'], function () {
+            var form = layui.form;
+            form.verify({
+                pass2: function (value) {
+                    if (value != form.val('userinfoForm')["password"]) {
+                        return '两次输入的密码不一致';
+                    }
+                }
+                ,pass: [
+                    /^[\S]{6,12}$/
+                    , '密码必须6到12位，且不能出现空格'
+                ]
+                , content: function (value) {
+                    layedit.sync(editIndex);
+                }
+            });
+            layui.$('#userinfosubmitBtn').on('click', function(){
+                var data = form.val('userinfoForm');
+                console.log(JSON.stringify(data));
+            });
+        });
+        //导航
+        layui.use('element', function(){
+            var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+        });
+    })()
+    // ie8修改end
   </script>
 </body>
 </html>

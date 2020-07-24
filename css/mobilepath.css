@@ -323,7 +323,7 @@
 .thirdTheme .planCom{
     background-color: #2C345B;
 }
-.thirdTheme input[disabled],input:disabled{
+.thirdTheme input[disabled],.thirdTheme input:disabled{
     background-color:#262C4E;
 }
 .thirdTheme .layui-input, .thirdTheme .layui-select, .thirdTheme .layui-textarea{
@@ -364,7 +364,7 @@
     background-color:transparent;
     color:white;
 }
-.thirdTheme input[disabled],input:disabled{
+.thirdTheme input[disabled],.thirdTheme input:disabled{
     background-color:#262C4E;
 }
 .thirdTheme .layui-input, .thirdTheme .layui-select, .thirdTheme .layui-textarea{

@@ -856,3 +856,28 @@
 .thirdTheme .total .title,.thirdTheme .total .start,.thirdTheme .total .end{
     color:white;
 }
+.thirdTheme .menus .menuTwoBox .menuChild{
+    box-shadow:0px 2px 20px 0px rgba(0,0,0,0.1);
+}
+.thirdTheme .layui-form-select dl{
+    background-color:#2C345B;
+}
+.thirdTheme .layui-form-select dl dd, .layui-form-select dl dt{
+    color:white;
+}
+.thirdTheme ul.urp-cascader-child{
+    background-color:#2C345B;
+}
+.thirdTheme ul.urp-cascader-child>li{
+    color:white;
+}
+.thirdTheme ul.urp-cascader-child>li:hover{
+    color:white;
+}
+.thirdTheme ul.urp-cascader-child>li:hover{
+    background-color: #2A7FDA;
+}
+.thirdTheme .layui-form-select dl dd:hover{
+    color:white;
+    background-color: #2A7FDA;
+}

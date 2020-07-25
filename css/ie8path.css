@@ -687,7 +687,8 @@
 .thirdTheme .layui-btn-primary:hover{
     border-color: #2A7FDA;
 }
-.thirdTheme .layui-form-radio>i:hover, .layui-form-radioed>i{
+.thirdTheme .layui-form-radio>i:hover,
+.thirdTheme .layui-form-radioed>i{
     color:#2A7FDA;
 }
 .thirdTheme .layui-form-checked[lay-skin=primary] i{
@@ -714,7 +715,8 @@
 .thirdTheme .radiusHighTable .layui-table th {
     height:55px;
 }
-.thirdTheme .radiusHighTable .layui-table-view .layui-table td, .layui-table-view .layui-table th{
+.thirdTheme .radiusHighTable .layui-table-view .layui-table td, 
+.thirdTheme .layui-table-view .layui-table th{
     padding:10px 0;
 }
 .thirdTheme .radiusHighTable .layui-table-cell{
@@ -802,7 +804,7 @@
     background-color:transparent;
     color:white;
 }
-.thirdTheme input[disabled],input:disabled{
+.thirdTheme input[disabled],.thirdTheme input:disabled{
     background-color:#262C4E;
 }
 .thirdTheme .layui-input, .thirdTheme .layui-select, .thirdTheme .layui-textarea{
@@ -862,7 +864,8 @@
 .thirdTheme .layui-form-select dl{
     background-color:#2C345B;
 }
-.thirdTheme .layui-form-select dl dd, .layui-form-select dl dt{
+.thirdTheme .layui-form-select dl dd, 
+.thirdTheme .layui-form-select dl dt{
     color:white;
 }
 .thirdTheme ul.urp-cascader-child{

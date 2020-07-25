@@ -256,9 +256,6 @@
     font-size: 16px;
     color:white;
 }
-.thirdTheme .total .title,.thirdTheme .total .start,.thirdTheme .total .end{
-    color:white;
-}
 
 .thirdTheme .primary{
     color:#2A7FDA;
@@ -403,3 +400,7 @@
 .thirdTheme  .layui-table[lay-skin=row]{
     color:white;
 }
+.thirdTheme .total .title,.thirdTheme .total .start,.thirdTheme .total .end{
+    color:white;
+}
+.thirdTheme .total .class{border-bottom: 1px solid transparent;}

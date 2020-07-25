@@ -18,7 +18,7 @@
 }
 
 .appLogin{
-    width: 392px;
+    width: 352px;
     margin: 0 auto;
     margin-top: 50px;
 }
@@ -27,13 +27,14 @@
     text-align: center;
     font-size: 26px;
     color: #333;
+    font-weight: bold;
     font-family:PingFangSC-Medium,PingFang SC;
     font-weight:500;
 }
 
 .iconInput{
     height: 50px;
-    border: 1px solid #DDDFE6;
+    border-bottom: 1px solid #DDDFE6;
     border-radius: 4px;
     padding-left: 50px;
     position: relative;

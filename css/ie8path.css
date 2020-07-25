@@ -1,4 +1,7 @@
 /* 公用样式 */
+.placeholder{
+    color:#BBBBBB;
+}
 .inputBox{
     padding:0;
 }
@@ -70,7 +73,7 @@
 }
 .chart{
     width:100%;
-    height:100%;
+    height:90%;
 }
 .blockDiv4{
     width: 790px;
@@ -103,6 +106,9 @@
 .layui-table-view dl.layui-anim {
     position : fixed;
 }
+.layui-form-item{
+    margin-bottom:25px;
+}
 /* 综合统计 */
 .taskCount .title{color: #333;}
 .taskCount .des{color: #B8C5D3;}
@@ -127,6 +133,9 @@
 .total .bar{width: 100%;height: 10px;opacity: 0.5;border-radius: 4px;margin-top: 15px;margin-bottom: 10px;}
 .total .start,.total .end{color: #333;}
 /* 第一套主题修改 */
+.firstTheme .activelocation{
+    color:#2A7FDA;
+}
 .firstTheme .primary{
     color:#2A7FDA;
 }
@@ -345,6 +354,12 @@
 .firstTheme .infoClassBox .class{cursor: pointer;padding-bottom: 20px;border-bottom:2px solid #DDDFE6;margin:0 30px;margin-bottom: -2px;}
 
 /* 第二套主题修改 */
+.secondTheme .inputBox.icon input{
+    line-height: 40px;
+}
+.secondTheme .activelocation{
+    color:#058669;
+}
 .secondTheme .primary{
     color:#058669;
 }
@@ -537,7 +552,7 @@
 .secondTheme .tiChild .treeItem{position: relative;padding-right: 0;padding-bottom: 0;padding-left: 40px;}
 .secondTheme .tiInfo{height: 22px;cursor: pointer;overflow: hidden;z-index: 2;background-color: #fff;}
 .secondTheme .tiOpenStatus{width: 18px;height: 18px;z-index: 2;float:left;margin-top: 2px;display: inline-block;}
-.secondTheme .tiIcon{width: 18px;height: 18px;float:left;margin-top: 2px;display: inline-block;background: url("/img/access/first/file2_icon.png") no-repeat;}
+.secondTheme .tiIcon{width: 18px;height: 18px;float:left;margin-top: 2px;display: inline-block;background: url("/img/access/second/file2_icon.png") no-repeat;}
 .secondTheme .tiIcon.hadChild{background: url("/img/access/first/file_icon.png") no-repeat;}
 .secondTheme .tiInfo.hadChild .tiOpenStatus{z-index: 2;background-image: url("/img/access/first/suo_icon.png");}
 .secondTheme .tiHLine{width: 10px;height: 1px;float:left;margin: 5px;margin-top: 10.5px;background: #DDDFE6;}
@@ -555,8 +570,13 @@
 .secondTheme .homeBodyContent .topInfo{
     border-bottom:none;
 }
-
+.secondTheme .menuBox:hover{
+    background-color: #058669;
+}
 /* 第三套主题修改 */
+.thirdTheme .activelocation{
+    color:#2A7FDA;
+}
 .thirdTheme .primary{
     color:#2A7FDA;
 }
@@ -884,3 +904,17 @@
     color:white;
     background-color: #2A7FDA;
 }
+.thirdTheme .menuBox.active .menuText {
+    color:#2A7FDA;
+}
+.thirdTheme .notice .class{
+    border-bottom:1px solid #565B85;
+}
+.thirdTheme .notice .active{
+    color: #3884F8;
+    border-bottom: 2px solid #3884F8;
+}
+.thirdTheme .homeBodyContent .contentItem{
+    border-bottom:1px solid #565B85;
+}
+.thirdTheme .total .class{border-bottom: 1px solid transparent;}

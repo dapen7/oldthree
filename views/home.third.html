@@ -32,7 +32,7 @@
     var __themeName = 'third';
   </script>
   <script src="/js/lib/avalon/avalon.js"></script>
-  <script src="/js/lib/layui/layui.js"></script>
+  <script src="/js/lib/layui/layui.js"></script><script src="/js/lib/jquery.js"></script>
   <script src="/js/lib/tool/echarts.js"></script>
 </head>
 <body class="thirdTheme">
@@ -124,7 +124,7 @@
           </ul>
           <!--栅格化-->
           <div class="layui-row homeContent layui-col-space25">
-            <div class="layui-col-md4">
+            <div class="layui-col-md3">
               <!--顶部信息-->
               <div class="info layui-row layui-col-space25" :controller="info">
                 <div class="layui-col-xs12" :for="(i, info) in @infos">
@@ -141,7 +141,7 @@
                 </div>
               </div>
             </div>
-            <div class="layui-col-md8">
+            <div class="layui-col-md9">
               <!--图表-->
               <div class="homeBodyContent dataView ms-controller" :controller="notice">
                 <div class="topInfo">
@@ -388,24 +388,38 @@
           axisLine: {
             lineStyle: {
               width: 1,
-              color: '#D3D3D3'
+              color: '#565B85'
             }
+          },
+          axisLabel:{
+            color:'#fff'
           }
         },
         yAxis: {
           type: 'value',
+          splitLine:{
+            lineStyle:{
+              color:'#565B85'
+            }
+          },
+          axisLabel:{
+              color:'#fff'
+          },
           axisLine: {
             lineStyle: {
-              width: 1,
-              color: '#D3D3D3'
-            }
+              width: 0,
+              color: '#565B85'
+            },
           }
         },
         series: [
           {
             data: [820, 932, 901, 934, 1290, 1330, 1320],
             type: 'line',
-            smooth: true
+            smooth: true,
+            lineStyle:{
+              width: 3,
+            }
           }]
       };
 

@@ -32,7 +32,7 @@
     var __themeName = 'third';
   </script>
   <script src="/js/lib/avalon/avalon.js"></script>
-  <script src="/js/lib/layui/layui.js"></script>
+  <script src="/js/lib/layui/layui.js"></script><script src="/js/lib/jquery.js"></script>
 </head>
 <body class="thirdTheme">
   <div class="layout showMenu" :controller="layout">
@@ -202,7 +202,7 @@
                   <div class="layui-input-block">
                       <input type="radio" name="canLogin" value="1" title="是" checked="">
                       <input type="radio" name="canLogin" value="0" title="否">
-                      <span class="danger" style="top: 5px;position: relative;">注：“是”代表此账号允许登录，“否”则表示此账号不允许登录</span>
+                      <span class="primary" style="top: 5px;position: relative;">注：“是”代表此账号允许登录，“否”则表示此账号不允许登录</span>
                   </div>
               </div>
               <div class="layui-form-item">

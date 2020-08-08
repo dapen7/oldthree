@@ -918,3 +918,152 @@
     border-bottom:1px solid #565B85;
 }
 .thirdTheme .total .class{border-bottom: 1px solid transparent;}
+
+/* //组件 */
+@keyframes rotating {
+    0% {
+        transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(1turn)
+    }
+}
+.loadingbg{
+    background-color: #000;
+    /*This works in IE 8 & 9 too*/  
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";  
+    /*IE4-IE9*/  
+    filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=50); 
+}
+.loading{
+    left: 0;
+    top: 0;
+    z-index: 9999999;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: none;
+}
+.loading .loadingImg{
+    position: absolute;
+    top:50%;
+    left:50%;
+    width: 30px;
+    height: 30px;
+}
+.loading .loadingImg img{
+    /*This works in IE 8 & 9 too*/  
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";  
+    /*IE4-IE9*/  
+    filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=100); 
+    width: 30px;
+    height: 30px;
+    animation: rotating 2s linear infinite;
+}
+
+.messageDiv{
+    padding:10px 20px;
+    position: fixed;
+    right:20px;
+    top:20px;
+}
+.messageDiv.success{
+    color:#25B36E;
+    border:1px solid #25B36E;
+    background-color: #DFF4EA;
+    border-radius:4px;
+}
+.messageDiv.danger{
+    color:#E91126;
+    border:1px solid #E91126;
+    background-color: #FCDCDF;
+    border-radius:4px;
+}
+.messageDiv.warning{
+    color:#FCB222;
+    border:1px solid #FCB222;
+    background-color: #FFF4DE;
+    border-radius:4px;
+}
+.messageDiv.info{
+    color:#2A7FDA;
+    border:1px solid #2A7FDA;
+    background-color: #E6EDFF;
+    border-radius:4px;
+}
+/* 步骤条 */
+.ui-step-wrap {
+    position: relative
+}
+
+.ui-step-wrap .ui-step-bg,.ui-step-wrap .ui-step-progress {
+    height: 6px;
+    position: absolute;
+    top: 50px;
+    left: 0
+}
+
+.ui-step-wrap .ui-step-bg {
+    width: 100%;
+    background: #ddd
+}
+
+.ui-step-wrap .ui-step-progress {
+    width: 0;
+    background: #25B36E
+}
+
+.ui-step-wrap .ui-step {
+    position: relative;
+    z-index: 1;
+    list-style: none
+}
+
+.ui-step-wrap .ui-step:after {
+    content: '';
+    display: table;
+    clear: both
+}
+
+.ui-step-wrap .ui-step .ui-step-item {
+    float: left
+}
+
+.ui-step-wrap .ui-step .ui-step-item div {
+    text-align: center;
+    color: #625454
+}
+
+.ui-step-wrap .ui-step .ui-step-item .ui-step-item-num {
+    margin-top: 20px
+}
+
+.ui-step-wrap .ui-step .ui-step-item .ui-step-item-num span {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
+    border-radius: 50%;
+    background: #dad9d9
+}
+
+.ui-step-wrap .ui-step .ui-step-item.active .ui-step-item-num span {
+    color: #fff;
+    background: #25B36E
+}
+
+.layui-transfer-active .layui-btn{
+    color:white;
+}
+.layui-transfer-active .layui-btn-disabled {
+    color: #C9C9C9;
+}
+.layui-table-sort{
+    vertical-align: bottom;
+}
+.layui-layer{
+    border:1px solid #eee;
+}
+.layui-table-mend{
+    background-color: white;
+}

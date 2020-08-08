@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>组件说明</title>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-control" content="no-cache">
+  <meta http-equiv="Cache" content="no-cache">
+
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/js/lib/layui/css/layui.css">
+  <link rel="stylesheet" href="/css/ie8path.css">
+  <!-- 大于等于IE8小于等于IE10 -->
+  <!--[if (gte IE 8)&(lte IE 10)]>
+  <script src="/js/patch/ie7.js"></script>
+  <script src="/js/patch/json3.min.js"></script>
+  <script src="/js/patch/promise.js"></script>
+  <![endif]-->
+  <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+  <!--[if lt IE 9]>
+  <script src="/js/patch/html5.min.js"></script>
+  <script src="/js/patch/respond.min.js"></script>
+  <![endif]-->
+  <script src="/js/lib/avalon/avalon.js"></script>
+  <script src="/js/lib/layui/layui.js"></script><script src="/js/lib/jquery.js"></script>
+  <style>
+    body{
+        padding:30px;
+    }
+    .appDiv{
+        padding:30px;
+    }
+    h1,h2{
+        margin-bottom:15px;
+    }
+    p{
+        margin-bottom:15px;
+    }
+    xmp{
+        background-color:#fafafa;
+        padding:20px;
+        margin-bottom:30px;
+        margin-top:30px;
+    }
+    .oneCom{
+        padding: 30px;
+        background: #fff;
+    }
+</style>
+</head>
+
+<body>
+    <h1>页面中没有体现的交互组件</h1>
+
+    <div class="oneCom">
+        <h2>1.加载动画</h2>
+        <div>
+            <button onclick="showLoading()" type="button" class="layui-btn layui-btn-xs">显示加载动画</button>
+            <div class="loading loadingbg"></div>
+            <div class="loading">
+                <div class="loadingImg"><img src="../img/com/loading.png"/></div>
+            </div>
+            <script>
+                function showLoading(){
+                    $(".loading").show();
+                    setTimeout(function(){
+                        $(".loading").hide();
+                    },3000);
+                }
+            </script>
+        </div>
+    </div>
+
+    <div class="oneCom">
+        <h2>2.失败/空页面提示</h2>
+        <div>
+            <a href="404.html">404页面</a>
+        </div>
+    </div>
+
+    <div class="oneCom">
+        <h2>3.提示</h2>
+        <div>
+            <button onclick="showMessage('恭喜您，这是一条成功消息','success')" type="button" class="layui-btn layui-btn-xs">成功消息</button>
+            <button onclick="showMessage('错了哦，这是一条错误消息','danger')" type="button" class="layui-btn layui-btn-xs">错误消息</button>
+            <button onclick="showMessage('警告哦，这是一条警告消息','warning')" type="button" class="layui-btn layui-btn-xs">警告消息</button>
+            <button onclick="showMessage('注意哦，这是一条帮助消息','info')" type="button" class="layui-btn layui-btn-xs">帮助消息</button>
+        </div>
+    </div>
+
+    <div class="oneCom">
+        <h2>4.弹出框</h2>
+        <div>
+            <button id="showConfirmBtn" class="layui-btn layui-btn-xs">confirm</button>
+            <button id="showAlertBtn" class="layui-btn layui-btn-xs">alert</button>
+            <script>
+                layui.use('layer', function(){
+                    var $ = layui.jquery, layer = layui.layer;
+                    $("#showConfirmBtn").on("click",function(){
+                        layer.open({
+                            type: 1
+                            ,offset: "auto"
+                            ,id: 'confirm1'
+                            ,title:"删除提示"
+                            ,content: '<div style="padding: 20px 100px;">确认删除么?</div>'
+                            ,btn: ['确认', '取消']
+                            ,yes: function(){
+                                //确认回调
+                                //dosmthing
+                                layer.closeAll();
+                            }
+                            ,btn2: function(){
+                                //取消回调
+                                layer.closeAll();
+                            }
+                            ,btnAlign: 'c' //按钮居中
+                            ,shade: 0.8 //不显示遮罩
+                        });
+                    });
+
+                    $("#showAlertBtn").on("click",function(){
+                        layer.open({
+                            type: 1
+                            ,offset: "auto"
+                            ,id: 'alert1'
+                            ,title:"提示"
+                            ,content: '<div style="padding: 20px 100px;">删除成功</div>'
+                            ,btn: ['确认']
+                            ,yes: function(){
+                                layer.closeAll();
+                            }
+                            ,btnAlign: 'c' //按钮居中
+                            ,shade: 0 //不显示遮罩
+                        });
+                    });
+                });
+            </script>
+        </div>
+    </div>
+
+    <div class="oneCom">
+        <h2>5.穿梭框</h2>
+        <div>
+            <div id="test1"></div>
+            <script>
+                layui.use('transfer', function(){
+                     var transfer = layui.transfer;
+                     //渲染
+                     transfer.render({
+                     elem: '#test1'  //绑定元素
+                     ,title: ['候选文人', '获奖文人']  //自定义标题
+                     ,data: [
+                         {"value": "1", "title": "李白", "disabled": "", "checked": ""}
+                         ,{"value": "2", "title": "杜甫", "disabled": "", "checked": ""}
+                         ,{"value": "3", "title": "贤心", "disabled": "", "checked": ""}
+                     ]
+                     ,id: 'demo1' //定义索引
+                     ,onchange: function(data, index){
+                         console.log(data); //得到当前被穿梭的数据
+                         console.log(index); //如果数据来自左边，index 为 0，否则为 1
+                     }
+                     });
+                     //获得右侧数据
+                     var getData = transfer.getData('demo1');
+                     console.log(getData);
+                 });
+             </script>
+        </div>
+    </div>
+    <div class="oneCom">
+        <h2>6.步骤条</h2>
+        <div>
+            <p>
+                <div id="step"></div>
+            </p>
+            <p>
+                <button id="preStepBtn" class="layui-btn layui-btn-xs">上一步</button>
+                <button id="nextStepBtn" class="layui-btn layui-btn-xs">下一步</button>
+            </p>
+            <script>
+                var $step = $("#step");
+                $step.step({
+                    index: 1,
+                    time: 500,
+                    title: ["填写申请表", "上传资料", "待确认", "已确认", "预约完成"]
+                });
+                $("#preStepBtn").on("click", function() {
+                    $step.prevStep();
+                });
+                $("#nextStepBtn").on("click", function() {
+                    $step.nextStep();
+                });
+            </script>
+        </div>
+    </div>
+    <div class="oneCom">
+        <h2>7.表格相关控制</h2>
+        <div>
+            <table class="layui-hide" id="table1"></table>
+            <script>
+               layui.use('table', function(){
+                    var table = layui.table;
+                    table.render({
+                        elem: '#table1'
+                        ,data: [{
+                            "id": "10001"
+                            ,"username": "杜甫"
+                            ,"email": "xianxin@layui.com"
+                            ,"sex": "男"
+                            ,"city": "浙江杭州"
+                            ,"sign": "人生恰似一场修行"
+                            ,"experience": "116"
+                            ,"ip": "192.168.0.8"
+                            ,"logins": "108"
+                            ,"joinTime": "2016-10-14"
+                            }, {
+                            "id": "10002"
+                            ,"username": "李白"
+                            ,"email": "xianxin@layui.com"
+                            ,"sex": "男"
+                            ,"city": "浙江杭州"
+                            ,"sign": "人生恰似一场修行"
+                            ,"experience": "12"
+                            ,"ip": "192.168.0.8"
+                            ,"logins": "106"
+                            ,"joinTime": "2016-10-14"
+                            ,"LAY_CHECKED": true
+                            }, {
+                            "id": "10003"
+                            ,"username": "王勃"
+                            ,"email": "xianxin@layui.com"
+                            ,"sex": "男"
+                            ,"city": "浙江杭州"
+                            ,"sign": "人生恰似一场修行"
+                            ,"experience": "65"
+                            ,"ip": "192.168.0.8"
+                            ,"logins": "106"
+                            ,"joinTime": "2016-10-14"
+                            }, {
+                            "id": "10004"
+                            ,"username": "贤心"
+                            ,"email": "xianxin@layui.com"
+                            ,"sex": "男"
+                            ,"city": "浙江杭州"
+                            ,"sign": "人生恰似一场修行"
+                            ,"experience": "666"
+                            ,"ip": "192.168.0.8"
+                            ,"logins": "106"
+                            ,"joinTime": "2016-10-14"
+                            }, {
+                            "id": "10005"
+                            ,"username": "贤心"
+                            ,"email": "xianxin@layui.com"
+                            ,"sex": "男"
+                            ,"city": "浙江杭州"
+                            ,"sign": "人生恰似一场修行"
+                            ,"experience": "86"
+                            ,"ip": "192.168.0.8"
+                            ,"logins": "106"
+                            ,"joinTime": "2016-10-14"
+                            }, {
+                            "id": "10006"
+                            ,"username": "贤心"
+                            ,"email": "xianxin@layui.com"
+                            ,"sex": "男"
+                            ,"city": "浙江杭州"
+                            ,"sign": "人生恰似一场修行"
+                            ,"experience": "12"
+                            ,"ip": "192.168.0.8"
+                            ,"logins": "106"
+                            ,"joinTime": "2016-10-14"
+                            }, {
+                            "id": "10007"
+                            ,"username": "贤心"
+                            ,"email": "xianxin@layui.com"
+                            ,"sex": "男"
+                            ,"city": "浙江杭州"
+                            ,"sign": "人生恰似一场修行"
+                            ,"experience": "16"
+                            ,"ip": "192.168.0.8"
+                            ,"logins": "106"
+                            ,"joinTime": "2016-10-14"
+                            }, {
+                            "id": "10008"
+                            ,"username": "贤心"
+                            ,"email": "xianxin@layui.com"
+                            ,"sex": "男"
+                            ,"city": "浙江杭州"
+                            ,"sign": "人生恰似一场修行"
+                            ,"experience": "106"
+                            ,"ip": "192.168.0.8"
+                            ,"logins": "106"
+                            ,"joinTime": "2016-10-14"
+                        }]
+                        ,width: 800
+                        ,height: 300//高度固定,表头固定
+                        ,cols: [[
+                        {field:'id', width:80, title: 'ID',  fixed: 'left'}//列固定
+                        ,{field:'username', width:80, title: '用户名'}
+                        ,{field:'sex', width:80, title: '性别'}
+                        ,{field:'city', width:80, title: '城市'}//单元格信息省略
+                        ,{field:'sign', width: 219, title: '签名'}
+                        ,{field:'experience', width:80, title: '积分'}
+                        ,{field:'score', width:80, title: '评分'}
+                        ,{field:'classify', width:80, title: '职业'}
+                        ,{field:'wealth', width:120, title: '财富',  fixed: 'right'}//列固定
+                        ]]
+                        ,page: true
+                    });
+                });
+            </script>
+        </div>
+    </div>
+    
+            
+
+</body>
+<script>
+</script>
+</html>
